@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#0d0a14">
+<title>Into the Echoside</title>
+<style>
+:root{
+  --bg:#0d0a14; --bg2:#171226; --panel:#1e1733; --panel2:#2a2046;
+  --ink:#efeaff; --dim:#9d92c2; --line:#3c2f66;
+  --purple:#8b3dff; --green:#3aff8c; --red:#ff3d5e; --gold:#ffc63d;
+  --dc:#c13dff; --psy:#ff3d5e; --ug:#3aa0ff; --item:#ffc63d; --fiend:#7dff3d; --epic:#ff8c3a; --flavor:#3affe0; --jug:#b0b0b0; --start:#8a8a8a;
+  --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,'Segoe UI',Roboto,sans-serif;font-size:15px}
+#app{height:100%;display:flex;flex-direction:column}
+.screen{display:none;flex:1;flex-direction:column;overflow:hidden;padding-top:var(--safe-t)}
+.screen.on{display:flex}
+.scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px;padding-bottom:calc(20px + var(--safe-b))}
+h1,h2,h3{margin:.3em 0;font-family:Georgia,'Times New Roman',serif;letter-spacing:.5px}
+.logo{font-family:Georgia,serif;text-align:center;margin:26px 0 4px;line-height:1.05}
+.logo .l1{font-size:15px;letter-spacing:6px;color:var(--dim);text-transform:uppercase}
+.logo .l2{font-size:40px;font-weight:800;background:linear-gradient(180deg,#d9b8ff,var(--purple) 55%,#42197a);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 28px rgba(139,61,255,.45)}
+.logo .l3{font-size:11px;color:var(--dim);letter-spacing:3px;text-transform:uppercase}
+.tag{display:inline-block;font-size:10px;padding:2px 7px;border-radius:9px;border:1px solid var(--line);color:var(--dim);vertical-align:middle}
+.tag.gold{color:var(--gold);border-color:var(--gold)}
+.tag.recon{color:#ffb08a;border-color:#8a5a3c}
+button{font:inherit;color:inherit;background:none;border:none;padding:0;cursor:pointer}
+.btn{display:block;width:100%;text-align:center;padding:15px;border-radius:14px;margin:9px 0;font-weight:700;font-size:16px;border:1px solid var(--line);background:var(--panel);transition:transform .08s}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:linear-gradient(135deg,#6a24d8,#42197a);border-color:#9c5cff;box-shadow:0 4px 22px rgba(139,61,255,.35)}
+.btn.green{background:linear-gradient(135deg,#0f8a46,#0a5e30);border-color:var(--green)}
+.btn.small{width:auto;display:inline-block;padding:8px 14px;font-size:13px;margin:4px 4px 4px 0}
+.btn.ghost{background:none}
+.btn:disabled{opacity:.35}
+.topbar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--bg2)}
+.topbar .back{font-size:22px;padding:2px 8px;color:var(--dim)}
+.topbar h2{font-size:17px;margin:0;flex:1}
+/* ---------- cards ---------- */
+.card{position:relative;border-radius:10px;background:var(--panel);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;user-select:none;-webkit-user-select:none}
+.card .art{position:relative;height:58%;min-height:44px;display:flex;align-items:center;justify-content:center;font-size:30px;background:radial-gradient(circle at 50% 30%,var(--c1) 0%,#12101d 90%)}
+.card .art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card .cost{position:absolute;top:3px;left:3px;background:#000c;border:1px solid var(--gold);color:var(--gold);font-weight:800;font-size:12px;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:2}
+.card .gp{position:absolute;top:3px;right:3px;background:#000c;color:var(--green);font-weight:700;font-size:9px;padding:2px 4px;border-radius:6px;z-index:2}
+.card .icons{position:absolute;bottom:2px;right:4px;font-size:11px;z-index:2;text-shadow:0 0 4px #000}
+.card .nm{font-size:10px;font-weight:700;padding:3px 4px 0;line-height:1.15}
+.card .ty{font-size:8px;color:var(--tc);padding:0 4px 3px;text-transform:uppercase;letter-spacing:.5px}
+.card.sel{outline:2px solid var(--green);box-shadow:0 0 14px rgba(58,255,140,.5)}
+.card.tilted{transform:rotate(6deg);opacity:.65}
+.card.dis{opacity:.45}
+.cardL{width:150px;height:210px}
+.cardM{width:88px;height:124px;flex:0 0 88px}
+.cardS{width:64px;height:92px;flex:0 0 64px}
+.cardS .nm{font-size:8px}.cardS .ty{display:none}.cardS .art{font-size:22px}
+.pile{width:64px;height:92px;border-radius:10px;border:1px dashed var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:10px;color:var(--dim);flex:0 0 64px;text-align:center;gap:2px}
+.pile b{font-size:16px;color:var(--ink)}
+.pile.facedown{background:repeating-linear-gradient(45deg,#221741,#221741 6px,#191031 6px,#191031 12px);border-style:solid}
+/* ---------- board ---------- */
+#gameScr{background:radial-gradient(ellipse at 50% -10%,#241a44 0%,var(--bg) 60%)}
+.opRow{display:flex;align-items:center;gap:8px;padding:7px 12px;background:var(--bg2);border-bottom:1px solid var(--line);font-size:12px}
+.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#42197a,#8b3dff);display:flex;align-items:center;justify-content:center;font-size:17px;border:2px solid var(--line)}
+.avatar.active{border-color:var(--green);box-shadow:0 0 10px rgba(58,255,140,.6)}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:3px 8px;white-space:nowrap}
+.boardMid{flex:1;overflow-y:auto;padding:8px 10px}
+.zoneLbl{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--dim);margin:8px 0 4px}
+.rowScroll{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+.handWrap{border-top:1px solid var(--line);background:var(--bg2);padding:6px 10px calc(8px + var(--safe-b))}
+.handBar{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:13px}
+.karmaBig{font-size:17px;font-weight:800;color:var(--gold)}
+.gpBig{font-weight:700;color:var(--green);font-size:13px}
+#hand{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;min-height:128px}
+#inPlayRow{min-height:0}
+.endBtn{margin-left:auto;background:linear-gradient(135deg,#8a1030,#5e0a20);border:1px solid var(--red);padding:8px 14px;border-radius:10px;font-weight:800;font-size:13px}
+.unityBtn{background:var(--panel);border:1px solid var(--purple);border-radius:10px;padding:8px 10px;font-size:12px;font-weight:700}
+.unityBtn.ready{border-color:var(--green);color:var(--green);animation:pulse 1.2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 rgba(58,255,140,.0)}50%{box-shadow:0 0 12px rgba(58,255,140,.7)}}
+/* ---------- modal ---------- */
+#modal{position:fixed;inset:0;background:#000a;display:none;align-items:flex-end;justify-content:center;z-index:50}
+#modal.on{display:flex}
+.sheet{background:var(--panel);border:1px solid var(--line);border-radius:18px 18px 0 0;width:100%;max-width:520px;max-height:82vh;display:flex;flex-direction:column;padding:16px 16px calc(16px + var(--safe-b))}
+.sheet h3{margin:0 0 4px;font-size:17px}
+.sheet .sub{color:var(--dim);font-size:12px;margin-bottom:10px}
+.sheet .body{overflow-y:auto;flex:1}
+.optBtn{display:block;width:100%;text-align:left;padding:12px;border:1px solid var(--line);border-radius:12px;margin:6px 0;background:var(--panel2);font-size:14px}
+.optBtn:active{background:#372a5e}
+.cardGrid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.sheetBtns{display:flex;gap:8px;margin-top:12px}
+.sheetBtns .btn{margin:0;flex:1;padding:12px}
+/* ---------- big card view ---------- */
+.bigWrap{display:flex;flex-direction:column;align-items:center;gap:10px}
+.bigTxt{font-size:13px;line-height:1.45;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px;width:100%}
+/* ---------- log ---------- */
+#logDrawer{position:fixed;left:0;right:0;bottom:0;top:30%;background:var(--bg2);border-top:2px solid var(--purple);border-radius:18px 18px 0 0;z-index:40;display:none;flex-direction:column;padding:14px}
+#logDrawer.on{display:flex}
+#logBody{flex:1;overflow-y:auto;font-size:12px;line-height:1.6;color:var(--dim)}
+#logBody b{color:var(--ink)}
+/* ---------- toast / banner ---------- */
+#toast{position:fixed;top:calc(12px + var(--safe-t));left:50%;transform:translateX(-50%);background:#000d;border:1px solid var(--purple);padding:10px 16px;border-radius:12px;font-size:13px;z-index:60;display:none;max-width:90%;text-align:center}
+#turnBanner{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:#000a;z-index:55;font-family:Georgia,serif;font-size:30px;font-weight:800;letter-spacing:2px;text-shadow:0 0 30px var(--purple)}
+/* ---------- wheel ---------- */
+.wheel{width:150px;height:150px;border-radius:50%;border:4px solid var(--gold);margin:10px auto;display:flex;align-items:center;justify-content:center;font-size:52px;font-weight:900;color:var(--gold);background:conic-gradient(#2a2046 0 30deg,#1e1733 30deg 60deg,#2a2046 60deg 90deg,#1e1733 90deg 120deg,#2a2046 120deg 150deg,#1e1733 150deg 180deg,#2a2046 180deg 210deg,#1e1733 210deg 240deg,#2a2046 240deg 270deg,#1e1733 270deg 300deg,#2a2046 300deg 330deg,#1e1733 330deg 360deg);box-shadow:0 0 30px rgba(255,198,61,.35)}
+.wheel.spin{animation:spin .5s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* ---------- tutorial coach ---------- */
+.coach{display:flex;gap:8px;align-items:flex-start;margin:8px 10px 0;background:linear-gradient(135deg,#2b2410,#1e1733);border:1px solid var(--gold);border-radius:14px;padding:10px 12px;font-size:12.5px;line-height:1.45;box-shadow:0 0 16px rgba(255,198,61,.25);position:relative;z-index:5}
+.coach .cicon{font-size:20px}
+.coach .ctxt{flex:1}
+.coach .ctxt b{color:var(--gold)}
+.coach .cnext{background:var(--gold);color:#241c00;font-weight:800;border-radius:10px;padding:8px 12px;font-size:12px;flex:0 0 auto}
+.coach .cstep{position:absolute;top:-8px;right:10px;font-size:9px;background:#241c00;color:var(--gold);border:1px solid var(--gold);padding:1px 6px;border-radius:8px}
+.tutHi{outline:2px solid var(--gold)!important;box-shadow:0 0 18px rgba(255,198,61,.55)!important;border-radius:12px;animation:pulse 1.2s infinite}
+/* ---------- collection ---------- */
+.filters{display:flex;gap:6px;overflow-x:auto;padding:10px 14px 0}
+.fbtn{padding:6px 12px;border-radius:20px;border:1px solid var(--line);font-size:12px;white-space:nowrap;color:var(--dim)}
+.fbtn.on{border-color:var(--purple);color:var(--ink);background:var(--panel2)}
+.colGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px;padding:12px 14px calc(20px + var(--safe-b))}
+.colGrid .card{width:100%;height:130px}
+/* ---------- lobby & paywall ---------- */
+.heroCard{background:linear-gradient(135deg,#2b1a55,#160f2c);border:1px solid var(--purple);border-radius:18px;padding:18px;margin:10px 0}
+.priceRow{display:flex;gap:10px;margin:12px 0}
+.price{flex:1;border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center;background:var(--panel)}
+.price.sel{border-color:var(--gold);box-shadow:0 0 16px rgba(255,198,61,.3)}
+.price .amt{font-size:22px;font-weight:800;color:var(--gold)}
+.price .per{font-size:11px;color:var(--dim)}
+.feature{display:flex;gap:10px;align-items:flex-start;margin:10px 0;font-size:14px}
+.feature .ic{font-size:18px}
+.codeBox{font-size:30px;letter-spacing:8px;text-align:center;font-weight:800;color:var(--green);background:var(--panel);border:1px dashed var(--green);border-radius:14px;padding:14px;margin:12px 0}
+input.txt{width:100%;font:inherit;font-size:20px;letter-spacing:6px;text-align:center;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--ink);margin:8px 0}
+.spinner{width:40px;height:40px;border:4px solid var(--line);border-top-color:var(--purple);border-radius:50%;margin:20px auto;animation:spin 1s linear infinite}
+/* rules table */
+.rt{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}
+.rt td,.rt th{border:1px solid var(--line);padding:6px;text-align:left;vertical-align:top}
+.rt th{background:var(--panel2)}
+.notice{border:1px solid #8a5a3c;background:#2a1c12;color:#ffcfa8;border-radius:12px;padding:10px;font-size:12px;margin:10px 0}
+.statGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.statBox{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}
+.statBox b{display:block;font-size:22px;color:var(--gold)}
+.statBox span{font-size:11px;color:var(--dim)}
+.ach{display:flex;gap:10px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px;margin:6px 0}
+.ach.locked{opacity:.4}
+.ach .ic{font-size:22px}
+.ach .t b{display:block;font-size:13px}
+.ach .t span{font-size:11px;color:var(--dim)}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="homeScr" class="screen"></div>
+  <div id="gameScr" class="screen"></div>
+  <div id="colScr" class="screen"></div>
+  <div id="lobbyScr" class="screen"></div>
+  <div id="payScr" class="screen"></div>
+  <div id="rulesScr" class="screen"></div>
+  <div id="setScr" class="screen"></div>
+  <div id="profScr" class="screen"></div>
+</div>
+<div id="modal"><div class="sheet" id="sheet"></div></div>
+<div id="logDrawer"><h3 style="margin:0 0 8px">Match Log <button style="float:right;color:var(--dim);font-size:20px" onclick="UI.toggleLog(false)">✕</button></h3><div id="logBody"></div></div>
+<div id="toast"></div>
+<div id="turnBanner"></div>
+<script>
+"use strict";
+/* =====================================================================
+   INTO THE ECHOSIDE — digital edition
+   Card data compiled from the official 2016 how-to-play video, archived
+   official site pages, and photographed cards. Entries marked v:"recon"
+   have reconstructed effects (official text not publicly documented) —
+   replace with licensed card text before commercial release.
+   Types: DC=Dark Carnival, PSY=Psychopathic, UG=Underground crews.
+===================================================================== */
+const TYPE_META = {
+  DC:{label:"Dark Carnival", color:"var(--dc)", hex:"#c13dff", glyph:"🎪"},
+  PSY:{label:"Psychopathic", color:"var(--psy)", hex:"#ff3d5e", glyph:"💀"},
+  UG:{label:"Underground", color:"var(--ug)", hex:"#3aa0ff", glyph:"🎤"},
+  ITEM:{label:"Item", color:"var(--item)", hex:"#ffc63d", glyph:"🧰"},
+  FIEND:{label:"Fiend", color:"var(--fiend)", hex:"#7dff3d", glyph:"👹"},
+  EPIC:{label:"Epic", color:"var(--epic)", hex:"#ff8c3a", glyph:"🌟"},
+  FLAVOR:{label:"Flavor", color:"var(--flavor)", hex:"#3affe0", glyph:"🃏"},
+  JUG:{label:"Juggalo", color:"var(--jug)", hex:"#c9c9c9", glyph:"🤡"},
+  START:{label:"Starter", color:"var(--start)", hex:"#9a9a9a", glyph:"🥷"}
+};
+const CREWS = ["DC","PSY","UG"];
+
+// fx op reference: k, draw, drawFlavor, drawKeep{draw,keep}, drawDiscard{draw,discard},
+// abolish{from,max,opt}, or{la,a,lb,b}, obtain{maxCost,from,itemOnly}, obtainJuggalo,
+// kgShield, chooseCrew, revealTopSelf, revealTopMain, shuffleBack{maxCost,max},
+// fromDiscard{crew,dest,opt}, flavorDiscardToHand, wheel{n}, galleryWipe{max},
+// oppDiscardItems{all}, copyGallery{maxCost}, copyEpicTier, copyInPlay{maxCost},
+// sugarSlam, hocusPocus, condDC{n}, abolishSelfK{n}, peekOppHand, fromAbyss{maxCost}
+const DB = [
+// ---- starters ----
+{id:"ninja",n:"Ninja",t:"START",cost:0,gp:0,copies:0,v:"official",fx:[{op:"k",n:1}],txt:"+1 Karma."},
+{id:"hound_dogs",n:"Hound Dogs",t:"START",cost:0,gp:0,copies:0,v:"official",fx:[{op:"chooseCrew"}],txt:"Choose a Crew; this card becomes that Crew until the end of your turn."},
+// ---- Dark Carnival ----
+{id:"loons",n:"The Loons",t:"DC",cost:2,gp:1,copies:3,v:"official",fx:[{op:"k",n:2}],txt:"+2 Karma."},
+{id:"amy_attic",n:"Amy in the Attic",t:"DC",cost:4,gp:1,copies:3,v:"official",fx:[{op:"k",n:2},{op:"abolish",from:["hand","discard"],max:1,opt:1}],txt:"+2 Karma & you may abolish a card from your hand or discard pile."},
+{id:"killer_carney",n:"Killer Carney",t:"DC",cost:3,gp:1,copies:3,v:"official",fx:[{op:"or",la:"+1 Karma & you may abolish a card from your hand or discard pile",a:[{op:"k",n:1},{op:"abolish",from:["hand","discard"],max:1,opt:1}],lb:"Abolish this card to gain +2 Karma",b:[{op:"abolishSelfK",n:2}]}],txt:"+1 Karma & you may abolish a card from your hand or discard pile OR abolish this card to gain +2 Karma."},
+{id:"wicked_clowns",n:"Wicked Clowns",t:"DC",cost:3,gp:1,copies:2,v:"recon",fx:[{op:"k",n:2}],txt:"+2 Karma."},
+{id:"superballs",n:"Superballs",t:"DC",cost:3,gp:1,copies:2,v:"recon",fx:[{op:"k",n:1},{op:"abolish",from:["hand"],max:1,opt:1}],txt:"+1 Karma & you may abolish a card from your hand."},
+{id:"willoughby_rags",n:"Willoughby Rags",t:"DC",cost:4,gp:1,copies:2,v:"recon",fx:[{op:"k",n:1},{op:"drawFlavor",n:1}],txt:"+1 Karma & draw a Flavor card."},
+{id:"cartoon_nightmares",n:"Cartoon Nightmares",t:"DC",cost:5,gp:2,copies:2,v:"partial",fx:[{op:"condDC",n:3,base:1}],txt:"+1 Karma. If you have another Dark Carnival card in play, +3 Karma instead."},
+{id:"wizard_hood",n:"Wizard of the Hood",t:"DC",cost:5,gp:2,copies:2,v:"official",fx:[{op:"k",n:2},{op:"shuffleBack",maxCost:4,max:2}],txt:"+2 Karma & you may shuffle up to 2 cards of cost 4 or less from your discard pile into your deck."},
+{id:"bpb",n:"Bang! Pow! Boom!",t:"DC",cost:7,gp:2,copies:2,v:"official",fx:[{op:"k",n:2},{op:"revealTopMain"}],txt:"+2 Karma & reveal the top card of the Main Deck; then abolish it or obtain it for free."},
+{id:"wraith",n:"The Wraith",t:"DC",cost:7,gp:2,copies:2,v:"official",fx:[{op:"k",n:2},{op:"fromDiscard",crew:"DC",dest:"hand",opt:1}],txt:"+2 Karma & you may put a Dark Carnival card from your discard pile into your hand."},
+{id:"mighty_death_pop",n:"Mighty Death Pop",t:"DC",cost:8,gp:3,copies:2,v:"partial",fx:[{op:"k",n:2},{op:"abolish",from:["hand","discard"],max:2,opt:1}],txt:"+2 Karma & you may abolish up to 2 cards from your hand and/or discard pile."},
+// ---- Psychopathic ----
+{id:"homies",n:"Homies",t:"PSY",cost:3,gp:1,copies:2,v:"official",fx:[{op:"k",n:2},{op:"revealTopSelf"}],txt:"+2 Karma & reveal the top card of your deck; you may discard it or return it face down."},
+{id:"natalie",n:"Natalie the Ring Girl",t:"PSY",cost:3,gp:1,copies:2,v:"official",fx:[{op:"drawDiscard",draw:2,discard:1}],txt:"Draw 2 cards; then discard 1 card from your hand."},
+{id:"psy_soldiers",n:"Psychopathic Soldiers",t:"PSY",cost:3,gp:1,copies:2,v:"official",fx:[{op:"k",n:1},{op:"abolish",from:["hand","discard"],max:1,opt:1}],txt:"+1 Karma & you may abolish a card from your hand or discard pile."},
+{id:"jcw",n:"JCW Wrestling",t:"PSY",cost:3,gp:1,copies:1,v:"partial",shield:1,stomp:1,fx:[{op:"draw",n:1}],reaction:{cost:"discardSelf",after:[{op:"draw",n:1}]},txt:"Draw a card OR discard this card to stomp an opponent's card being played; then draw a card."},
+{id:"kevin_gill",n:"K.G. Kevin Gill",t:"PSY",cost:4,gp:1,copies:2,v:"official",fx:[{op:"k",n:2},{op:"kgShield"}],txt:"+2 Karma & none of your cards (including Fiends) can be stomped this turn."},
+{id:"soopa_ninjas",n:"Soopa Ninjas",t:"PSY",cost:4,gp:1,copies:2,v:"official",fx:[{op:"k",n:1},{op:"draw",n:1}],txt:"+1 Karma & draw a card."},
+{id:"legs_diamond",n:"Legs Diamond",t:"PSY",cost:5,gp:2,copies:2,v:"official",fx:[{op:"obtain",maxCost:5}],txt:"Obtain a card of cost 5 or less for free."},
+{id:"sugar_slam",n:"Sugar Slam",t:"PSY",cost:5,gp:2,copies:1,v:"official",fx:[{op:"sugarSlam"}],txt:"+2 Karma OR if this is the first card you played this turn, discard the rest of your hand and draw 5 new cards."},
+{id:"jumpsteady",n:"Jumpsteady",t:"PSY",cost:5,gp:2,copies:2,v:"official",fx:[{op:"draw",n:2}],txt:"Draw 2 cards."},
+{id:"blahzay_rose",n:"Blahzay Rose",t:"PSY",cost:5,gp:2,copies:1,v:"official",fx:[{op:"k",n:2},{op:"galleryWipe",max:3}],txt:"+2 Karma & you may abolish up to 3 cards from the Gallery; then replace them."},
+{id:"cupcake",n:"Cupcake",t:"PSY",cost:5,gp:2,copies:1,v:"official",fx:[{op:"k",n:1},{op:"drawFlavor",n:1}],txt:"+1 Karma & draw a Flavor card."},
+{id:"amb",n:"Axe Murder Boyz",t:"PSY",cost:6,gp:2,copies:2,v:"official",fx:[{op:"drawKeep",draw:3,keep:2}],txt:"Draw 3 cards; then keep 2 and discard the other 1."},
+{id:"big_hoodoo",n:"Big Hoodoo",t:"PSY",cost:6,gp:2,copies:2,v:"official",stomp:1,fx:[{op:"drawDiscard",draw:2,discard:1}],reaction:{cost:"discardSelf",after:[{op:"draw",n:1}]},txt:"Draw 2 cards; then discard 1 from your hand OR discard this card to stomp an opponent's card being played; then draw a card."},
+{id:"billy_bill",n:"Billy Bill",t:"PSY",cost:6,gp:2,copies:1,v:"partial",fx:[{op:"draw",n:1},{op:"obtain",maxCost:5,itemOnly:1,opt:1}],txt:"Draw a card; then you may obtain an Item card of cost 5 or less for free."},
+{id:"killjoy_club",n:"The Killjoy Club",t:"PSY",cost:7,gp:2,copies:1,v:"official",stomp:1,fx:[{op:"k",n:3}],reaction:{cost:"discardSelf",pierce:1,after:[]},txt:"+3 Karma OR discard to stomp an opponent's card being played, even if shielded or protected by any other effect."},
+{id:"psy_rydas",n:"Psychopathic Rydas",t:"PSY",cost:8,gp:3,copies:1,v:"official",shield:1,fx:[{op:"k",n:3},{op:"fromAbyss",maxCost:99,opt:1}],txt:"+3 Karma & you may obtain a card from the Abyss."},
+{id:"rude_boy",n:"Rude Boy",t:"PSY",cost:4,gp:1,copies:1,v:"recon",fx:[{op:"k",n:2},{op:"draw",n:1}],txt:"+2 Karma & draw a card."},
+// ---- Underground ----
+{id:"whitney",n:"Whitney Peyton",t:"UG",cost:3,gp:1,copies:3,v:"partial",fx:[{op:"k",n:2}],txt:"+2 Karma."},
+{id:"hype_man",n:"Hype Man",t:"UG",cost:4,gp:1,copies:3,v:"official",fx:[{op:"k",n:2},{op:"chooseCrew"}],txt:"+2 Karma & choose a Crew; this card becomes that Crew until the end of your turn."},
+{id:"jelly_roll",n:"Jelly Roll",t:"UG",cost:4,gp:1,copies:3,v:"recon",fx:[{op:"k",n:1},{op:"draw",n:1}],txt:"+1 Karma & draw a card."},
+{id:"wolfpac",n:"Wolfpac",t:"UG",cost:4,gp:1,copies:2,v:"partial",fx:[{op:"k",n:1},{op:"drawDiscard",draw:1,discard:1,opt:1}],txt:"+1 Karma & you may discard a card to draw a card."},
+{id:"bodyguard",n:"Bodyguard",t:"UG",cost:4,gp:1,copies:1,v:"official",fx:[{op:"wheel",n:1}],txt:"Take a roll on the Wheel of Fate."},
+{id:"head_pe",n:"Head P.E.",t:"UG",cost:5,gp:2,copies:3,v:"official",fx:[{op:"k",n:2},{op:"fromDiscard",crew:"UG",dest:"top",opt:1}],txt:"+2 Karma & you may place an Underground card from your discard pile on top of your deck."},
+{id:"madchild",n:"Madchild",t:"UG",cost:5,gp:2,copies:2,v:"official",fx:[{op:"copyGallery",maxCost:6}],txt:"Copy the effect of a Crew card in the Gallery of cost 6 or less."},
+{id:"inner_city",n:"Inner City Posse",t:"UG",cost:5,gp:2,copies:2,v:"official",fx:[{op:"flavorDiscardToHand"}],txt:"Put a card from the Flavor discard pile into your hand."},
+{id:"gu",n:"G.U.",t:"UG",cost:6,gp:2,copies:2,v:"official",stomp:1,fx:[{op:"k",n:1},{op:"drawFlavor",n:1}],reaction:{cost:"discardSelf",after:[{op:"draw",n:1}]},txt:"+1 Karma & draw a Flavor card OR discard this card to stomp an opponent's card being played; then draw a card."},
+{id:"kottonmouth",n:"Kottonmouth Kings",t:"UG",cost:6,gp:2,copies:2,v:"recon",fx:[{op:"k",n:2},{op:"fromDiscard",crew:"UG",dest:"hand",opt:1}],txt:"+2 Karma & you may put an Underground card from your discard pile into your hand."},
+// ---- Items ----
+{id:"gravedigger",n:"Gravedigger's Shovel",t:"ITEM",cost:4,gp:1,copies:3,v:"official",shield:1,active:[{op:"shovel"}],txt:"Once during your turn: reveal the top card of your deck; if its cost is 3 or less, draw it; otherwise return it face down."},
+{id:"juggalo_juice",n:"Juggalo Juice",t:"ITEM",cost:4,gp:1,copies:3,v:"official",shield:1,passive:"juice",txt:"When you buy a card from the Gallery, replace it immediately instead of at the end of your turn."},
+{id:"murda_cloak",n:"Murda Cloak",t:"ITEM",cost:4,gp:1,copies:1,v:"recon",shield:1,active:[{op:"cloak"}],txt:"Once during your turn: +1 Karma. If you have a Fiend in play, +2 Karma instead."},
+{id:"hatchet_charm",n:"Hatchetman Charm",t:"ITEM",cost:5,gp:2,copies:3,v:"official",shield:1,passive:"charm",txt:"Once during your turn: when you obtain a Crew card of cost 5 or less, you may place it on top of your deck instead of your discard pile."},
+{id:"ringmaster_hat",n:"Ringmaster's Hat",t:"ITEM",cost:5,gp:2,copies:2,v:"recon",shield:1,active:[{op:"k",n:1}],txt:"Once during your turn: +1 Karma."},
+{id:"ravens_mirror",n:"The Raven's Mirror",t:"ITEM",cost:5,gp:2,copies:1,v:"recon",shield:1,active:[{op:"revealTopSelf"}],txt:"Once during your turn: reveal the top card of your deck; you may discard it or return it face down."},
+{id:"chainsaw",n:"Chuck the Chainsaw",t:"ITEM",cost:6,gp:2,copies:2,v:"official",shield:1,advanced:1,active:[{op:"wheel",n:1}],txt:"Once during your turn: roll on the Wheel of Fate."},
+{id:"toy_box",n:"Toy Box",t:"ITEM",cost:6,gp:2,copies:2,v:"recon",shield:1,advanced:1,active:[{op:"drawDiscard",draw:1,discard:1}],txt:"Once during your turn: draw a card; then discard a card."},
+// ---- Fiends ----
+{id:"drainer_monks",n:"Drainer Road Monks",t:"FIEND",cost:2,gp:0,copies:5,v:"official",stomp:1,fx:null,reaction:{cost:"abolishSelf",after:[]},txt:"Abolish this card to stomp an opponent's card being played."},
+{id:"pit_demoness",n:"Pit Demoness",t:"FIEND",cost:2,gp:0,copies:4,v:"official",fiendUse:[{op:"mulligan"}],useWhen:"ownStart",txt:"Before any cards are played during your turn, discard your hand to draw 5 new cards."},
+{id:"black_eyed",n:"Black-Eyed Children",t:"FIEND",cost:3,gp:0,copies:4,v:"official",fiendUse:[{op:"k",n:1},{op:"oppDiscardItems"}],useWhen:"ownTurn",txt:"+1 Karma & you may have an opponent discard all of their Item cards in play."},
+{id:"mr_happy",n:"Mr. Happy",t:"FIEND",cost:3,gp:0,copies:1,v:"recon",fiendUse:[{op:"k",n:3}],useWhen:"ownTurn",txt:"Abolish this card to gain +3 Karma."},
+{id:"evil_eye",n:"Ol' Evil Eye",t:"FIEND",cost:4,gp:0,copies:2,v:"recon",fiendUse:[{op:"peekOppHand"}],useWhen:"ownTurn",txt:"Look at an opponent's hand; choose 1 card in it — they discard it."},
+{id:"cemetery_girl",n:"Cemetery Girl",t:"FIEND",cost:5,gp:0,copies:3,v:"official",stomp:1,fiendUse:[{op:"draw",n:2}],useWhen:"ownTurn",reaction:{cost:"abolishSelf",after:[{op:"draw",n:1}]},txt:"Draw 2 cards (during your turn) OR abolish this card to stomp an opponent's card being played; then draw a card."},
+{id:"witch",n:"The Witch",t:"FIEND",cost:6,gp:0,copies:2,v:"official",fiendUse:[{op:"k",n:2},{op:"oppDiscardItems",all:1}],useWhen:"ownTurn",txt:"+2 Karma & for each opponent you may have them discard all of their Item cards in play."},
+// ---- Epics (12) ----
+{id:"milenko",n:"The Great Milenko",t:"EPIC",cost:9,gp:4,copies:1,v:"official",fx:[{op:"k",n:2},{op:"abolish",from:["hand","discard"],max:3,opt:1}],txt:"+2 Karma & you may abolish up to 3 cards from your hand and/or discard pile."},
+{id:"riddle_box",n:"Riddle Box",t:"EPIC",cost:10,gp:4,copies:1,v:"recon",fx:[{op:"k",n:2},{op:"wheel",n:2}],txt:"+2 Karma & roll the Wheel of Fate twice."},
+{id:"missing_link",n:"The Marvelous Missing Link",t:"EPIC",cost:10,gp:4,copies:1,v:"recon",fx:[{op:"obtain",maxCost:6}],txt:"Obtain a card of cost 6 or less for free."},
+{id:"ringmaster",n:"The Ringmaster",t:"EPIC",cost:11,gp:5,copies:1,v:"official",fx:[{op:"k",n:2},{op:"abolish",from:["hand"],max:2,opt:1}],txt:"+2 Karma & you may abolish up to 2 cards from your hand."},
+{id:"carnival_carnage",n:"Carnival Carnage",t:"EPIC",cost:12,gp:5,copies:1,v:"official",fx:[{op:"copyEpicTier"}],txt:"Copy the effect of a card in the Epic Tier."},
+{id:"monoxide",n:"Monoxide",t:"EPIC",cost:12,gp:5,copies:1,v:"recon",fx:[{op:"k",n:2},{op:"draw",n:2}],txt:"+2 Karma & draw 2 cards."},
+{id:"shaggy",n:"Shaggy 2 Dope",t:"EPIC",cost:13,gp:6,copies:1,v:"official",fx:[{op:"draw",n:3}],txt:"Draw 3 cards."},
+{id:"hells_pit",n:"Hell's Pit",t:"EPIC",cost:13,gp:6,copies:1,v:"recon",fx:[{op:"k",n:4}],txt:"+4 Karma."},
+{id:"violent_j",n:"Violent J",t:"EPIC",cost:14,gp:6,copies:1,v:"official",fx:[{op:"k",n:3},{op:"fromAbyss",maxCost:6,opt:1}],txt:"+3 Karma & you may obtain a card from the Abyss of cost 6 or less for free."},
+{id:"shangri_la",n:"Shangri-La",t:"EPIC",cost:14,gp:6,copies:1,v:"recon",fx:[{op:"k",n:2},{op:"drawFlavor",n:1},{op:"fromDiscard",crew:null,dest:"hand",opt:1}],txt:"+2 Karma, draw a Flavor card & you may put a card from your discard pile into your hand."},
+{id:"dark_lotus",n:"Dark Lotus",t:"EPIC",cost:15,gp:6,copies:1,v:"recon",fx:[{op:"k",n:3},{op:"abolish",from:["hand","discard"],max:2,opt:1}],txt:"+3 Karma & you may abolish up to 2 cards from your hand and/or discard pile."},
+{id:"jamie_madrox",n:"Jamie Madrox",t:"EPIC",cost:16,gp:7,copies:1,v:"official",shield:1,fx:[{op:"drawFlavorKeep",draw:4,keep:2}],txt:"Draw 4 Flavor cards; keep 2 and discard the other 2."},
+// ---- Juggalos ----
+{id:"jug_dc",n:"Juggalo",t:"JUG",crew:"DC",cost:3,gp:1,copies:7,v:"official",fx:[{op:"k",n:2}],txt:"+2 Karma. (Dark Carnival crew)"},
+{id:"jug_psy",n:"Juggalo",t:"JUG",crew:"PSY",cost:3,gp:1,copies:7,v:"official",fx:[{op:"k",n:2}],txt:"+2 Karma. (Psychopathic crew)"},
+{id:"jug_ug",n:"Juggalo",t:"JUG",crew:"UG",cost:3,gp:1,copies:7,v:"official",fx:[{op:"k",n:2}],txt:"+2 Karma. (Underground crew)"},
+// ---- Flavor ----
+{id:"still_stabbin",n:"Still Stabbin'",t:"FLAVOR",cost:null,gp:0,copies:3,v:"official",fx:[{op:"k",n:1}],txt:"+1 Karma."},
+{id:"lil_somethin",n:"Lil Somethin' Somethin'",t:"FLAVOR",cost:null,gp:0,copies:3,v:"recon",fx:[{op:"k",n:2}],txt:"+2 Karma."},
+{id:"karma_surge",n:"Karma Surge",t:"FLAVOR",cost:null,gp:0,copies:3,v:"partial",fx:[{op:"k",n:3}],txt:"+3 Karma. (effect confirmed on camera; official name unknown)"},
+{id:"gang_related",n:"Gang Related",t:"FLAVOR",cost:null,gp:0,copies:3,v:"recon",fx:[{op:"k",n:1},{op:"draw",n:1}],txt:"+1 Karma & draw a card."},
+{id:"second_wind",n:"Second Wind",t:"FLAVOR",cost:null,gp:0,copies:3,v:"partial",fx:[{op:"k",n:1},{op:"fromDiscard",crew:null,dest:"top",nonEpic:1,opt:1}],txt:"+1 Karma & you may place a non-Epic card from your discard pile on top of your deck. (effect confirmed; official name unknown)"},
+{id:"jokers_wild",n:"Joker's Wild",t:"FLAVOR",cost:null,gp:0,copies:3,v:"recon",fx:[{op:"wheel",n:1}],txt:"Take a roll on the Wheel of Fate."},
+{id:"joke_ya_mind",n:"Joke Ya Mind",t:"FLAVOR",cost:null,gp:0,copies:2,v:"recon",fx:[{op:"drawKeep",draw:2,keep:1}],txt:"Draw 2 cards; keep 1 and discard the other."},
+{id:"if_i_was_king",n:"If I Was King",t:"FLAVOR",cost:null,gp:0,copies:2,v:"official",fx:[{op:"drawKeep",draw:3,keep:1}],txt:"Draw 3 cards; keep 1 and discard the other 2."},
+{id:"black_crows",n:"Black Crows",t:"FLAVOR",cost:null,gp:0,copies:2,v:"official",fx:[{op:"obtainJuggalo"},{op:"abolish",from:["hand","discard"],max:1,opt:1}],txt:"Obtain a Juggalo card for free; then you may abolish a card from your hand or discard pile."},
+{id:"hocus_pocus",n:"Hocus Pocus",t:"FLAVOR",cost:null,gp:0,copies:2,v:"official",fx:[{op:"k",n:2},{op:"hocusPocus"}],txt:"+2 Karma & you may put the next Item card you obtain this turn into your hand."},
+{id:"night_axe",n:"Night of the Axe",t:"FLAVOR",cost:null,gp:0,copies:2,v:"official",fx:[{op:"k",n:2},{op:"galleryWipe",max:6}],txt:"+2 Karma & you may abolish up to 6 cards from the Gallery, then replace them."},
+{id:"multiples",n:"Multiples of Myself",t:"FLAVOR",cost:null,gp:0,copies:2,v:"official",fx:[{op:"copyInPlay",maxCost:4}],txt:"Copy the effect of a Starter or Crew card you have in play of cost 4 or less."}
+];
+const DEF = {}; DB.forEach(d=>DEF[d.id]=d);
+
+// Wheel of Fate — results 1,3,7,8,10,11 confirmed from the official video; others reconstructed.
+const WHEEL = [
+ null,
+ {t:"Nothing happens.",v:"official",fx:[]},
+ {t:"+1 Karma.",v:"recon",fx:[{op:"k",n:1}]},
+ {t:"Take a card of cost 3 or less from your discard pile and put it on top of your deck.",v:"official",fx:[{op:"fromDiscard",crew:null,dest:"top",maxCost:3,opt:1}]},
+ {t:"Reveal the top card of your deck; you may discard it or return it.",v:"recon",fx:[{op:"revealTopSelf"}]},
+ {t:"Draw a card.",v:"recon",fx:[{op:"draw",n:1}]},
+ {t:"+1 Karma.",v:"recon",fx:[{op:"k",n:1}]},
+ {t:"Abolish a card from your hand or discard pile.",v:"official",fx:[{op:"abolish",from:["hand","discard"],max:1,opt:1}]},
+ {t:"+2 Karma.",v:"official",fx:[{op:"k",n:2}]},
+ {t:"Obtain a Juggalo card for free.",v:"recon",fx:[{op:"obtainJuggalo"}]},
+ {t:"Draw 2 cards.",v:"official",fx:[{op:"draw",n:2}]},
+ {t:"Draw a Flavor card.",v:"official",fx:[{op:"drawFlavor",n:1}]},
+ {t:"+2 Karma & draw a card.",v:"recon",fx:[{op:"k",n:2},{op:"draw",n:1}]}
+];
+/* ======================= PERSISTENCE ======================= */
+const S = {
+  data:null,
+  load(){ try{ this.data = JSON.parse(localStorage.getItem("echoside")||"{}"); }catch(e){ this.data={}; }
+    this.data.stats = this.data.stats||{games:0,wins:0,abolished:0,epics:0,stomps:0,online:0};
+    this.data.ach = this.data.ach||{};
+    this.data.set = Object.assign({speed:1,stompAsk:true,haptics:true,sound:true},this.data.set||{});
+    this.data.premium = this.data.premium||false; },
+  save(){ try{ localStorage.setItem("echoside",JSON.stringify(this.data)); }catch(e){} }
+};
+S.load();
+const ACHS = [
+  {id:"first_win",ic:"🏆",n:"Fresh Off the Ropes",d:"Win your first match"},
+  {id:"epic_hoard",ic:"🌟",n:"Epic Collector",d:"Buy 3 Epics in one match"},
+  {id:"abolisher",ic:"🕳️",n:"Into the Abyss",d:"Abolish 25 cards (lifetime)"},
+  {id:"stomper",ic:"🥾",n:"Stomp City",d:"Stomp 10 cards (lifetime)"},
+  {id:"big_turn",ic:"⚡",n:"Karma Overload",d:"Reach 15+ Karma in a single turn"},
+  {id:"online",ic:"🌐",n:"Echoside Online",d:"Play an online match"},
+  {id:"tutorial",ic:"🎓",n:"Carnival Graduate",d:"Complete the tutorial"}
+];
+function unlock(id){ if(!S.data.ach[id]){ S.data.ach[id]=Date.now(); S.save(); const a=ACHS.find(x=>x.id===id); UI.toast("🏅 Achievement: "+a.n); } }
+
+/* ======================= HELPERS ======================= */
+let uidC=0;
+function mk(id){ return {u:++uidC,id,d:DEF[id],crewOverride:null,tilted:false}; }
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function crewOf(c){ if(c.crewOverride) return c.crewOverride; if(c.d.t==="JUG") return c.d.crew; return CREWS.includes(c.d.t)?c.d.t:null; }
+function sleep(ms){ return new Promise(r=>setTimeout(r,ms/(S.data.set.speed||1))); }
+function d12(){ return 1+Math.floor(Math.random()*12); }
+function buzz(ms){ if(S.data.set.haptics && navigator.vibrate) navigator.vibrate(ms); }
+
+/* ======================= GAME STATE ======================= */
+let G = null;
+function newPlayer(name,isAI){
+  const deck = [];
+  for(let i=0;i<7;i++) deck.push(mk("ninja"));
+  for(let i=0;i<3;i++) deck.push(mk("hound_dogs"));
+  shuffle(deck);
+  return {name,isAI,deck,hand:[],discard:[],inPlay:[],items:[],fiends:[],karma:0,
+    unityUsed:false,epicBought:0,kg:false,hocus:false,playedCount:0,turns:0,stompAskOff:false};
+}
+function newGame(advanced, online){
+  uidC=0;
+  const main=[], flavor=[], epics=[], jug=[];
+  DB.forEach(d=>{
+    if(d.t==="START") return;
+    if(d.t==="FLAVOR"){ for(let i=0;i<d.copies;i++) flavor.push(mk(d.id)); return; }
+    if(d.t==="EPIC"){ epics.push(mk(d.id)); return; }
+    if(d.t==="JUG"){ for(let i=0;i<d.copies;i++) jug.push(mk(d.id)); return; }
+    if(!advanced && (d.t==="FIEND" || d.advanced)) return;
+    for(let i=0;i<d.copies;i++) main.push(mk(d.id));
+  });
+  shuffle(main); shuffle(flavor); shuffle(epics); shuffle(jug);
+  epics.splice(0,4); // 2-player: remove 4 unseen
+  G = { advanced, online, main, flavor, flavorDis:[], abyss:[],
+    epicDeck:epics, epicTier:[epics.pop(),epics.pop(),epics.pop()],
+    gallery:[], jug, players:[newPlayer("You",false), newPlayer(online?"Wicked_Jester_66":"Nethervoid AI",true)],
+    active:0, turnN:1, over:false, endTriggered:false, log:[] };
+  for(let i=0;i<6;i++) G.gallery.push(G.main.pop()||null);
+  G.players.forEach(p=>drawN(p,5));
+  return G;
+}
+function opp(p){ return G.players[p===G.players[0]?1:0]; }
+function me(){ return G.players[0]; }
+function log(msg){ G.log.push(msg); UI.logChanged(); }
+
+function drawN(p,n){
+  for(let i=0;i<n;i++){
+    if(!p.deck.length){
+      if(!p.discard.length) return;
+      p.deck = shuffle(p.discard.splice(0));
+    }
+    p.hand.push(p.deck.pop());
+  }
+}
+function drawFlavorN(p,n){
+  for(let i=0;i<n;i++){
+    if(!G.flavor.length){ if(!G.flavorDis.length) return; G.flavor = shuffle(G.flavorDis.splice(0)); }
+    p.hand.push(G.flavor.pop());
+  }
+}
+function toDiscard(p,c){ if(c.d.t==="FLAVOR") G.flavorDis.push(c); else p.discard.push(c); }
+function removeFrom(arr,c){ const i=arr.indexOf(c); if(i>=0) arr.splice(i,1); return c; }
+function allOwned(p){ return [...p.deck,...p.hand.filter(c=>c.d.t!=="FLAVOR"),...p.discard,...p.inPlay.filter(c=>c.d.t!=="FLAVOR"),...p.items,...p.fiends]; }
+function scoreGP(p){ return allOwned(p).reduce((s,c)=>s+(c.d.gp||0),0); }
+function crewCounts(p){
+  const n={DC:0,PSY:0,UG:0};
+  [...p.inPlay,...p.fiends,...p.items].forEach(c=>{ const cr=crewOf(c); if(cr) n[cr]++; });
+  return n;
+}
+function unityReady(p){ if(p.unityUsed) return null; const n=crewCounts(p); const r=CREWS.filter(c=>n[c]>=3); return r.length?r:null; }
+function cardValue(c){ return (c.d.gp||0)*2 + (c.d.cost||0)*.3 + (c.d.t==="EPIC"?3:0); }
+function junk(c){ return c.d.t==="START" || (c.d.gp||0)===0; }
+
+/* ======================= CHOICE ROUTING (human=UI, AI=heuristics) ======================= */
+async function pickCards(p,opts){ // {title,sub,cards,min,max,purpose,skip}
+  if(!opts.cards.length) return [];
+  if(p.isAI) return AI.pickCards(p,opts);
+  return UI.pick(opts);
+}
+async function pickOption(p,title,labels,meta){
+  if(p.isAI) return AI.pickOption(p,title,labels,meta);
+  return UI.choice(title,labels,meta);
+}
+
+/* ======================= EFFECT ENGINE ======================= */
+async function runOps(p,ops,ctx){ for(const o of (ops||[])) { if(G.over) return; await runOp(p,o,ctx||{}); } }
+async function runOp(p,o,ctx){
+  switch(o.op){
+  case "k": p.karma+=o.n; log(`<b>${p.name}</b> +${o.n} Karma (${p.karma})`); if(p.karma>=15) unlock("big_turn"); break;
+  case "draw": drawN(p,o.n); log(`<b>${p.name}</b> draws ${o.n}`); break;
+  case "drawFlavor": drawFlavorN(p,o.n); log(`<b>${p.name}</b> draws ${o.n} Flavor`); break;
+  case "drawKeep": {
+    const tmp=[]; for(let i=0;i<o.draw;i++){ if(!p.deck.length && p.discard.length) p.deck=shuffle(p.discard.splice(0)); if(p.deck.length) tmp.push(p.deck.pop()); }
+    if(!tmp.length) break;
+    const kept = await pickCards(p,{title:`Keep ${o.keep}`,sub:"The rest are discarded.",cards:tmp,min:Math.min(o.keep,tmp.length),max:Math.min(o.keep,tmp.length),purpose:"keep"});
+    tmp.forEach(c=>{ if(kept.includes(c)) p.hand.push(c); else toDiscard(p,c); });
+    log(`<b>${p.name}</b> draws ${tmp.length}, keeps ${kept.length}`); break; }
+  case "drawFlavorKeep": {
+    const tmp=[]; for(let i=0;i<o.draw;i++){ if(!G.flavor.length && G.flavorDis.length) G.flavor=shuffle(G.flavorDis.splice(0)); if(G.flavor.length) tmp.push(G.flavor.pop()); }
+    if(!tmp.length) break;
+    const kept = await pickCards(p,{title:`Keep ${o.keep} Flavor cards`,cards:tmp,min:Math.min(o.keep,tmp.length),max:Math.min(o.keep,tmp.length),purpose:"keep"});
+    tmp.forEach(c=>{ if(kept.includes(c)) p.hand.push(c); else G.flavorDis.push(c); });
+    break; }
+  case "drawDiscard": {
+    if(o.opt){ const ch = await pickOption(p,"Discard a card to draw a card?",["Yes","No"],{purpose:"optDrawDiscard"}); if(ch===1) break; }
+    drawN(p,o.draw);
+    const ds = await pickCards(p,{title:`Discard ${o.discard}`,cards:p.hand.slice(),min:Math.min(o.discard,p.hand.length),max:Math.min(o.discard,p.hand.length),purpose:"discard"});
+    ds.forEach(c=>{ removeFrom(p.hand,c); toDiscard(p,c); });
+    log(`<b>${p.name}</b> draws ${o.draw}, discards ${ds.length}`); break; }
+  case "abolish": {
+    const pool=[]; if(o.from.includes("hand")) pool.push(...p.hand); if(o.from.includes("discard")) pool.push(...p.discard);
+    const sel = await pickCards(p,{title:`Abolish up to ${o.max}`,sub:"Chosen cards are removed from the game (the Abyss).",cards:pool,min:o.opt?0:Math.min(o.max,pool.length),max:o.max,purpose:"abolish",skip:!!o.opt,zoneOf:c=>p.hand.includes(c)?"hand":"discard"});
+    sel.forEach(c=>{ removeFrom(p.hand,c); removeFrom(p.discard,c); G.abyss.push(c); S.data.stats.abolished++; });
+    if(sel.length){ log(`<b>${p.name}</b> abolishes ${sel.map(c=>c.d.n).join(", ")}`); S.save(); if(S.data.stats.abolished>=25) unlock("abolisher"); }
+    break; }
+  case "abolishSelfK": if(ctx.card){ removeFrom(p.inPlay,ctx.card); G.abyss.push(ctx.card); } p.karma+=o.n; log(`<b>${p.name}</b> abolishes ${ctx.card?ctx.card.d.n:"card"} for +${o.n} Karma`); break;
+  case "or": {
+    const ch = await pickOption(p,"Choose one:",[o.la,o.lb],{purpose:"or",ctx});
+    await runOps(p, ch===0?o.a:o.b, ctx); break; }
+  case "chooseCrew": {
+    const n=crewCounts(p);
+    let cr;
+    if(p.isAI){ cr = CREWS.slice().sort((a,b)=>n[b]-n[a])[0]; }
+    else { const ch = await pickOption(p,"Choose a Crew for "+(ctx.card?ctx.card.d.n:"this card"),CREWS.map(c=>TYPE_META[c].glyph+" "+TYPE_META[c].label),{purpose:"crew"}); cr=CREWS[ch]; }
+    if(ctx.card) ctx.card.crewOverride=cr;
+    log(`<b>${p.name}</b>: ${ctx.card?ctx.card.d.n:""} becomes ${TYPE_META[cr].label}`); break; }
+  case "kgShield": p.kg=true; log(`<b>${p.name}</b> is protected from stomps this turn`); break;
+  case "hocusPocus": p.hocus=true; break;
+  case "condDC": {
+    const others = p.inPlay.filter(c=>c!==ctx.card && crewOf(c)==="DC").length;
+    const gain = others>=1?o.n:o.base; p.karma+=gain; log(`<b>${p.name}</b> +${gain} Karma (${p.karma})`); break; }
+  case "revealTopSelf": {
+    if(!p.deck.length && p.discard.length) p.deck=shuffle(p.discard.splice(0));
+    if(!p.deck.length) break;
+    const top=p.deck[p.deck.length-1];
+    const ch = await pickOption(p,`Top of your deck: ${top.d.n} — ${top.d.txt}`,["Discard it","Return it face down"],{purpose:"revealSelf",card:top});
+    if(ch===0){ p.deck.pop(); toDiscard(p,top); log(`<b>${p.name}</b> discards ${top.d.n} from top of deck`); }
+    break; }
+  case "shovel": {
+    if(!p.deck.length && p.discard.length) p.deck=shuffle(p.discard.splice(0));
+    if(!p.deck.length) break;
+    const top=p.deck[p.deck.length-1];
+    if((top.d.cost||0)<=3){ p.deck.pop(); p.hand.push(top); log(`<b>${p.name}</b>'s Shovel digs up ${top.d.n}`); if(!p.isAI) UI.toast(`⛏️ Dug up: ${top.d.n}`);}
+    else { log(`<b>${p.name}</b>'s Shovel reveals ${top.d.n} (too heavy — returned)`); if(!p.isAI) UI.toast(`Top card: ${top.d.n} (cost ${top.d.cost}) — returned`);}
+    break; }
+  case "cloak": { const g = p.fiends.length?2:1; p.karma+=g; log(`<b>${p.name}</b> +${g} Karma (Murda Cloak)`); break; }
+  case "revealTopMain": {
+    const top=G.main.pop(); if(!top) break;
+    const ch = await pickOption(p,`Top of Main Deck: ${top.d.n} (cost ${top.d.cost}) — ${top.d.txt}`,["Obtain it for free","Abolish it"],{purpose:"revealMain",card:top});
+    if(ch===0){ await gainCard(p,top,"free"); } else { G.abyss.push(top); log(`<b>${p.name}</b> abolishes ${top.d.n} off the Main Deck`); }
+    break; }
+  case "shuffleBack": {
+    const pool=p.discard.filter(c=>(c.d.cost||0)<=o.maxCost);
+    const sel = await pickCards(p,{title:`Shuffle up to ${o.max} into your deck`,cards:pool,min:0,max:o.max,purpose:"recover",skip:true});
+    sel.forEach(c=>{ removeFrom(p.discard,c); p.deck.push(c); });
+    if(sel.length){ shuffle(p.deck); log(`<b>${p.name}</b> shuffles ${sel.length} card(s) back into deck`); }
+    break; }
+  case "fromDiscard": {
+    let pool=p.discard.filter(c=>(!o.crew||crewOf(c)===o.crew)&&(!o.nonEpic||c.d.t!=="EPIC")&&(o.maxCost==null||(c.d.cost||0)<=o.maxCost));
+    const sel = await pickCards(p,{title:o.dest==="top"?"Place on top of your deck":"Put into your hand",cards:pool,min:o.opt?0:Math.min(1,pool.length),max:1,purpose:"recover",skip:!!o.opt});
+    if(sel[0]){ removeFrom(p.discard,sel[0]); if(o.dest==="top") p.deck.push(sel[0]); else p.hand.push(sel[0]); log(`<b>${p.name}</b> recovers ${sel[0].d.n}`); }
+    break; }
+  case "fromAbyss": {
+    const pool=G.abyss.filter(c=>(c.d.cost||0)<=o.maxCost && c.d.t!=="FLAVOR");
+    const sel = await pickCards(p,{title:"Obtain from the Abyss",cards:pool,min:0,max:1,purpose:"obtain",skip:true});
+    if(sel[0]){ removeFrom(G.abyss,sel[0]); await gainCard(p,sel[0],"free"); }
+    break; }
+  case "flavorDiscardToHand": {
+    const sel = await pickCards(p,{title:"Take from Flavor discard",cards:G.flavorDis.slice(),min:0,max:1,purpose:"obtain",skip:true});
+    if(sel[0]){ removeFrom(G.flavorDis,sel[0]); p.hand.push(sel[0]); log(`<b>${p.name}</b> takes ${sel[0].d.n} from the Flavor discard`); }
+    break; }
+  case "obtain": {
+    let pool=G.gallery.filter(c=>c&&(c.d.cost||0)<=o.maxCost&&(!o.itemOnly||c.d.t==="ITEM"));
+    if(!o.itemOnly && G.jug.length && 3<=o.maxCost) pool=pool.concat([G.jug[G.jug.length-1]]);
+    if(!pool.length){ if(!p.isAI) UI.toast("Nothing eligible to obtain."); break; }
+    const sel = await pickCards(p,{title:`Obtain a card (cost ≤ ${o.maxCost}) for free`,cards:pool,min:o.opt?0:1,max:1,purpose:"obtain",skip:!!o.opt});
+    if(sel[0]){
+      const c=sel[0];
+      const gi=G.gallery.indexOf(c);
+      if(gi>=0){ G.gallery[gi]=null; galleryRefillCheck(p); } else if(G.jug[G.jug.length-1]===c){ G.jug.pop(); }
+      await gainCard(p,c,"free");
+    }
+    break; }
+  case "obtainJuggalo": if(G.jug.length){ const c=G.jug.pop(); await gainCard(p,c,"free"); } break;
+  case "wheel": for(let i=0;i<o.n;i++){ if(G.over) break; await spinWheel(p); } break;
+  case "galleryWipe": {
+    const pool=G.gallery.filter(c=>c);
+    const sel = await pickCards(p,{title:`Abolish up to ${o.max} Gallery cards`,sub:"They are replaced immediately.",cards:pool,min:0,max:o.max,purpose:"wipe",skip:true});
+    sel.forEach(c=>{ const i=G.gallery.indexOf(c); G.gallery[i]=G.main.pop()||null; G.abyss.push(c); });
+    if(sel.length) log(`<b>${p.name}</b> wipes ${sel.length} Gallery card(s)`);
+    checkEndTriggers(); break; }
+  case "oppDiscardItems": {
+    const q=opp(p);
+    if(!q.items.length) break;
+    const ch = await pickOption(p,`Force ${q.name} to discard all Items in play? (${q.items.map(c=>c.d.n).join(", ")})`,["Yes — discard them","No"],{purpose:"oppItems"});
+    if(ch===0){ const n=q.items.length; q.items.splice(0).forEach(c=>q.discard.push(c)); log(`<b>${q.name}</b> discards ${n} Item(s)!`); buzz(60); }
+    break; }
+  case "peekOppHand": {
+    const q=opp(p);
+    if(!q.hand.length) break;
+    const sel = await pickCards(p,{title:`${q.name}'s hand — choose 1 to discard`,cards:q.hand.slice(),min:1,max:1,purpose:"handAttack"});
+    if(sel[0]){ removeFrom(q.hand,sel[0]); toDiscard(q,sel[0]); log(`<b>${p.name}</b> forces ${q.name} to discard ${sel[0].d.n}`); }
+    break; }
+  case "copyGallery": {
+    const pool=G.gallery.filter(c=>c&&CREWS.includes(c.d.t)&&(c.d.cost||0)<=o.maxCost&&c.d.fx);
+    const sel = await pickCards(p,{title:"Copy a Gallery Crew card's effect",cards:pool,min:0,max:1,purpose:"copy",skip:true});
+    if(sel[0]){ log(`<b>${p.name}</b> copies ${sel[0].d.n}`); await runOps(p,sel[0].d.fx,{card:ctx.card}); }
+    break; }
+  case "copyEpicTier": {
+    const pool=G.epicTier.filter(c=>c&&c.d.fx);
+    const sel = await pickCards(p,{title:"Copy an Epic Tier effect",cards:pool,min:0,max:1,purpose:"copy",skip:true});
+    if(sel[0]){ log(`<b>${p.name}</b> copies ${sel[0].d.n}`); await runOps(p,sel[0].d.fx,{card:ctx.card}); }
+    break; }
+  case "copyInPlay": {
+    const pool=p.inPlay.filter(c=>c!==ctx.card&&(c.d.t==="START"||CREWS.includes(c.d.t))&&(c.d.cost||0)<=o.maxCost&&c.d.fx);
+    const sel = await pickCards(p,{title:"Copy a card you have in play (cost ≤ 4)",cards:pool,min:0,max:1,purpose:"copy",skip:true});
+    if(sel[0]){ log(`<b>${p.name}</b> copies ${sel[0].d.n}`); await runOps(p,sel[0].d.fx,{card:ctx.card}); }
+    break; }
+  case "sugarSlam": {
+    if(p.playedCount===1 && p.hand.length){
+      const ch=await pickOption(p,"Sugar Slam",["+2 Karma","Discard the rest of your hand and draw 5 new cards"],{purpose:"sugar"});
+      if(ch===1){ const n=p.hand.length; p.hand.splice(0).forEach(c=>toDiscard(p,c)); drawN(p,5); log(`<b>${p.name}</b> mulligans ${n} cards for a fresh 5`); break; }
+    }
+    p.karma+=2; log(`<b>${p.name}</b> +2 Karma (${p.karma})`); break; }
+  case "mulligan": { const n=p.hand.length; p.hand.splice(0).forEach(c=>toDiscard(p,c)); drawN(p,5); log(`<b>${p.name}</b> discards ${n} and draws 5 (Pit Demoness)`); break; }
+  }
+  UI.render();
+}
+
+async function spinWheel(p){
+  const roll = d12();
+  await UI.showWheel(p,roll);
+  const w = WHEEL[roll];
+  log(`<b>${p.name}</b> Wheel of Fate: 🎲${roll} — ${w.t}`);
+  await runOps(p,w.fx,{});
+}
+
+/* ======================= GAIN / BUY ======================= */
+async function gainCard(p,c,how){
+  // routing: Fiends → in play; Items w/ Hocus Pocus → hand; Crew ≤5 w/ Hatchetman Charm → may top-deck
+  if(c.d.t==="FIEND"){ p.fiends.push(c); log(`<b>${p.name}</b> ${how==="free"?"obtains":"buys"} Fiend <b>${c.d.n}</b> — into play`); return; }
+  if(c.d.t==="ITEM" && p.hocus){ p.hocus=false; p.hand.push(c); log(`<b>${p.name}</b> puts ${c.d.n} into hand (Hocus Pocus)`); return; }
+  const charm = p.items.find(i=>i.d.passive==="charm"&&!i.tilted);
+  if(charm && CREWS.includes(c.d.t) && (c.d.cost||0)<=5){
+    const ch = await pickOption(p,`Hatchetman Charm: place ${c.d.n} on top of your deck?`,["Top of deck","Discard pile (normal)"],{purpose:"charm"});
+    if(ch===0){ charm.tilted=true; p.deck.push(c); log(`<b>${p.name}</b> tops the deck with ${c.d.n} (Charm)`); return; }
+  }
+  p.discard.push(c);
+  log(`<b>${p.name}</b> ${how==="free"?"obtains":"buys"} <b>${c.d.n}</b>${how==="free"?"":" for "+c.d.cost}`);
+}
+function galleryRefillCheck(p){
+  const juice = p.items.find(i=>i.d.passive==="juice");
+  if(juice){ for(let i=0;i<6;i++) if(!G.gallery[i]) G.gallery[i]=G.main.pop()||null; checkEndTriggers(); }
+}
+async function buyGallery(p,i){
+  const c=G.gallery[i];
+  if(!c||p.karma<c.d.cost) return false;
+  p.karma-=c.d.cost; G.gallery[i]=null;
+  await gainCard(p,c,"buy"); buzz(20);
+  galleryRefillCheck(p);
+  if(G.tutorial && !p.isAI) TUT.on("buy",{card:c,zone:"gallery"});
+  UI.render(); return true;
+}
+async function buyEpic(p,i){
+  const c=G.epicTier[i];
+  if(!c||p.karma<c.d.cost||p.epicBought>=1) return false;
+  p.karma-=c.d.cost; G.epicTier[i]=null; p.epicBought++;
+  S.data.stats.epics++; S.save();
+  await gainCard(p,c,"buy"); buzz(40);
+  UI.render(); return true;
+}
+async function buyJug(p){
+  if(!G.jug.length||p.karma<3) return false;
+  p.karma-=3; const c=G.jug.pop();
+  await gainCard(p,c,"buy"); UI.render(); return true;
+}
+function cycleJug(p){
+  if(!G.jug.length||p.karma<1) return false;
+  p.karma-=1; G.jug.unshift(G.jug.pop());
+  log(`<b>${p.name}</b> cycles the top Juggalo card`); UI.render(); return true;
+}
+
+/* ======================= STOMPS ======================= */
+function stompers(q,pierceNeeded){
+  const list=[];
+  q.fiends.forEach(c=>{ if(c.d.reaction) list.push({card:c,from:"play",r:c.d.reaction}); });
+  q.hand.forEach(c=>{ if(c.d.reaction) list.push({card:c,from:"hand",r:c.d.reaction}); });
+  return pierceNeeded ? list.filter(s=>s.r.pierce) : list;
+}
+async function stompWindow(p,card){
+  const q=opp(p);
+  const protectedBy = card.d.shield?"shield":(p.kg?"kg":null);
+  const avail = stompers(q, !!protectedBy);
+  if(!avail.length) return false;
+  let pick=null;
+  if(q.isAI){
+    const worth = (card.d.cost||0)>=5 || card.d.t==="EPIC";
+    if(worth) pick = avail[0];
+  } else if(G.tutorial && TUT.active && TUT.cur() && TUT.cur().id==="stomp"){
+    const ch = await UI.choice(`🎓 ${p.name} plays ${card.d.n} — STOMP IT! Your Fiend abolishes itself to counter their card completely.`,
+      avail.map(s=>`🥾 Stomp with ${s.card.d.n}`),{purpose:"stomp",card});
+    pick=avail[ch];
+  } else {
+    if(!S.data.set.stompAsk || q.stompAskOff) return false;
+    const ch = await UI.choice(`${p.name} plays ${card.d.n}${protectedBy?" (protected — only piercing stomps work)":""}. Stomp it?`,
+      [...avail.map(s=>`🥾 Stomp with ${s.card.d.n}`),"Let it resolve","Let it resolve (stop asking this game)"],{purpose:"stomp",card});
+    if(ch===avail.length+1){ q.stompAskOff=true; return false; }
+    if(ch===avail.length) return false;
+    pick=avail[ch];
+  }
+  if(!pick) return false;
+  // pay cost
+  if(pick.r.cost==="abolishSelf"){ removeFrom(q.fiends,pick.card); removeFrom(q.hand,pick.card); G.abyss.push(pick.card); }
+  else { removeFrom(q.hand,pick.card); removeFrom(q.fiends,pick.card); toDiscard(q,pick.card); }
+  // stomped card → its discard
+  removeFrom(p.inPlay,card); toDiscard(p,card);
+  S.data.stats.stomps++; S.save(); if(S.data.stats.stomps>=10) unlock("stomper");
+  log(`🥾 <b>${q.name}</b> STOMPS ${card.d.n} with ${pick.card.d.n}!`);
+  buzz(80);
+  if(!q.isAI) UI.toast("🥾 You stomped "+card.d.n+"!"); else UI.toast("🥾 "+q.name+" stomped your "+card.d.n+"!");
+  await runOps(q,pick.r.after,{});
+  if(G.tutorial && !q.isAI) TUT.on("stomp");
+  return true;
+}
+
+/* ======================= TURN FLOW ======================= */
+async function playCard(p,c){
+  if(G.over) return;
+  removeFrom(p.hand,c);
+  p.inPlay.push(c);
+  p.playedCount++;
+  log(`<b>${p.name}</b> plays <b>${c.d.n}</b>`);
+  UI.render();
+  const stomped = await stompWindow(p,c);
+  if(!stomped && c.d.fx) await runOps(p,c.d.fx,{card:c});
+  if(G.tutorial && !p.isAI) TUT.on("play",{card:c});
+  UI.render();
+}
+async function useItem(p,c){
+  if(c.tilted||!c.d.active) return;
+  c.tilted=true;
+  log(`<b>${p.name}</b> uses ${c.d.n}`);
+  await runOps(p,c.d.active,{card:c});
+  UI.render();
+}
+async function useFiend(p,c){
+  if(!c.d.fiendUse) return;
+  if(c.d.useWhen==="ownStart" && p.playedCount>0){ UI.toast("Pit Demoness must be used before playing any cards."); return; }
+  removeFrom(p.fiends,c);
+  log(`<b>${p.name}</b> unleashes Fiend <b>${c.d.n}</b>`);
+  await runOps(p,c.d.fiendUse,{card:c});
+  G.abyss.push(c);
+  UI.render();
+}
+async function claimUnity(p,crew){
+  if(p.unityUsed) return;
+  p.unityUsed=true;
+  log(`<b>${p.name}</b> claims ${TYPE_META[crew].label} Unity`);
+  if(crew==="DC") await runOps(p,[{op:"k",n:2}],{});
+  if(crew==="PSY") await runOps(p,[{op:"draw",n:1}],{});
+  if(crew==="UG") await runOps(p,[{op:"drawFlavor",n:1}],{});
+  UI.render();
+}
+function checkEndTriggers(){
+  if(G.endTriggered) return;
+  if(!G.main.length && G.gallery.some(s=>!s)) { G.endTriggered=true; log("⚠️ <b>The Main Deck is exhausted — final turns!</b>"); }
+}
+async function endTurn(p){
+  if(G.over) return;
+  if(G.tutorial && !p.isAI) TUT.on("endTurn");
+  // cleanup
+  p.inPlay.splice(0).forEach(c=>{ c.crewOverride=null; toDiscard(p,c); });
+  p.hand.splice(0).forEach(c=>toDiscard(p,c));
+  p.karma=0; p.kg=false; p.hocus=false; p.unityUsed=false; p.epicBought=0; p.playedCount=0;
+  // refill gallery
+  for(let i=0;i<6;i++) if(!G.gallery[i]) G.gallery[i]=G.main.pop()||null;
+  checkEndTriggers();
+  // refill epic tier
+  for(let i=0;i<3;i++) if(!G.epicTier[i]){
+    if(G.epicDeck.length) G.epicTier[i]=G.epicDeck.pop();
+    else if(!G.endTriggered){ G.endTriggered=true; log("⚠️ <b>The last Epic has been drawn — final turns!</b>"); }
+  }
+  if(!G.endTriggered && G.turnN>=70){ G.endTriggered=true; log("⚠️ <b>The Carnival closes its gates — final turns!</b>"); }
+  drawN(p,5);
+  p.turns++;
+  log(`— <b>${p.name}</b> ends turn ${p.turns} —`);
+  // equal turns rule
+  if(G.endTriggered && G.players[0].turns===G.players[1].turns){ return gameOver(); }
+  G.active = G.active?0:1;
+  G.turnN++;
+  UI.render();
+  const np=G.players[G.active];
+  await UI.banner(np.isAI?np.name+"'s Turn":"Your Turn");
+  np.items.forEach(i=>i.tilted=false);
+  if(np.isAI) await AI.takeTurn(np);
+  else if(G.tutorial) TUT.on("turnStart");
+}
+function gameOver(){
+  G.over=true;
+  const [a,b]=G.players, sa=scoreGP(a), sb=scoreGP(b);
+  let winner = sa>sb?a : sb>sa?b : null;
+  if(!winner){ // tiebreak: epic GP
+    const ea=allOwned(a).filter(c=>c.d.t==="EPIC").reduce((s,c)=>s+c.d.gp,0);
+    const eb=allOwned(b).filter(c=>c.d.t==="EPIC").reduce((s,c)=>s+c.d.gp,0);
+    winner = ea>eb?a : eb>ea?b : null;
+  }
+  S.data.stats.games++;
+  if(winner===a){ S.data.stats.wins++; unlock("first_win"); }
+  if(G.online){ S.data.stats.online++; unlock("online"); }
+  const myEpics = allOwned(a).filter(c=>c.d.t==="EPIC").length;
+  if(myEpics>=3) unlock("epic_hoard");
+  S.save();
+  UI.gameOver(winner,sa,sb);
+}
+
+/* ======================= AI ======================= */
+const AI = {
+  pickCards(p,opts){
+    const {cards,purpose}=opts;
+    let max=opts.max||1, min=opts.min||0;
+    let sorted;
+    switch(purpose){
+    case "abolish": sorted=cards.filter(junk); return sorted.slice(0,max);
+    case "wipe": return []; // AI doesn't bother wiping
+    case "discard": sorted=cards.slice().sort((x,y)=>cardValue(x)-cardValue(y)); return sorted.slice(0,Math.max(min,0));
+    case "keep": sorted=cards.slice().sort((x,y)=>cardValue(y)-cardValue(x)); return sorted.slice(0,max);
+    case "obtain": case "copy": case "recover": case "handAttack":
+      sorted=cards.slice().sort((x,y)=>cardValue(y)-cardValue(x));
+      if(purpose==="handAttack") return sorted.slice(0,1);
+      if(!sorted.length) return [];
+      if((purpose==="recover"||purpose==="obtain") && junk(sorted[0]) && min===0) return [];
+      return sorted.slice(0,Math.max(min,1)).slice(0,max);
+    default:
+      sorted=cards.slice().sort((x,y)=>cardValue(y)-cardValue(x));
+      return sorted.slice(0,Math.max(min,0)||Math.min(1,max));
+    }
+  },
+  pickOption(p,title,labels,meta){
+    const pur=meta&&meta.purpose;
+    if(pur==="revealMain"){ return meta.card && (meta.card.d.gp||0)>=1 ? 0 : 1; }
+    if(pur==="revealSelf"){ return meta.card && junk(meta.card) ? 0 : 1; }
+    if(pur==="oppItems") return 0;
+    if(pur==="charm") return 0;
+    if(pur==="sugar"){ const junkN=p.hand.filter(junk).length; return junkN>=3?1:0; }
+    if(pur==="optDrawDiscard") return p.hand.some(junk)?0:1;
+    return 0;
+  },
+  async takeTurn(p){
+    await sleep(600);
+    // Pit Demoness pre-play mulligan if hand is junky
+    const pit=p.fiends.find(c=>c.d.id==="pit_demoness");
+    if(pit && p.hand.filter(junk).length>=4){ await useFiend(p,pit); await sleep(500); }
+    // play hand: draw effects first, then rest
+    let guard=40;
+    while(!G.over && guard-->0){
+      const hand=p.hand.slice();
+      if(!hand.length) break;
+      const drawFirst = hand.find(c=>c.d.fx&&c.d.fx.some(o=>["draw","drawKeep","drawDiscard","drawFlavor"].includes(o.op)));
+      const next = drawFirst||hand.sort((x,y)=>cardValue(y)-cardValue(x))[0];
+      // hold stompers in hand vs playing them? AI plays them for value.
+      await playCard(p,next);
+      await sleep(450);
+    }
+    if(G.over) return;
+    // items
+    for(const it of p.items.slice()){ if(!it.tilted&&it.d.active){ await useItem(p,it); await sleep(350); } }
+    // fiends with own-turn value
+    for(const f of p.fiends.slice()){
+      if(G.over) break;
+      if(!f.d.fiendUse) continue;
+      if(f.d.id==="pit_demoness") continue;
+      const oppItems = opp(p).items.length;
+      if((f.d.id==="witch"||f.d.id==="black_eyed") && oppItems===0 && G.turnN<14) continue;
+      await useFiend(p,f); await sleep(400);
+    }
+    // unity
+    const u=unityReady(p);
+    if(u) { await claimUnity(p,u.sort((a,b)=>({DC:2,PSY:1,UG:0})[b]-({DC:2,PSY:1,UG:0})[a])[0]); await sleep(350); }
+    if(G.over) return;
+    // buys
+    let bguard=8;
+    while(!G.over && bguard-->0){
+      const epicIdx = G.epicTier.findIndex(c=>c&&p.karma>=c.d.cost);
+      if(epicIdx>=0 && p.epicBought<1){ await buyEpic(p,epicIdx); await sleep(450); continue; }
+      let best=-1,bestV=-1;
+      G.gallery.forEach((c,i)=>{ if(c&&p.karma>=c.d.cost){ const v=cardValue(c); if(v>bestV){bestV=v;best=i;} } });
+      if(p.karma>=3 && G.jug.length && bestV<2){ await buyJug(p); await sleep(400); continue; }
+      if(best>=0){ await buyGallery(p,best); await sleep(450); continue; }
+      if(p.karma>=3 && G.jug.length){ await buyJug(p); await sleep(400); continue; }
+      break;
+    }
+    await sleep(500);
+    if(!G.over) await endTurn(p);
+  }
+};
+/* ======================= TUTORIAL ======================= */
+const TUT = {
+  active:false, step:0,
+  steps:[
+    {id:"welcome",passive:1,txt:"<b>Welcome to the Echoside, ninja!</b> I'm your carny coach. The goal: build the deck worth the most <b>Gathering Points (GP)</b> by the time the carnival closes. I'll walk you through your first turns."},
+    {id:"hand",passive:1,hi:"#hand",txt:"This is your <b>hand</b>. Everyone starts with the same sad little deck: 7 Ninjas and 3 Hound Dogs. You draw 5 cards every turn. Let's put them to work."},
+    {id:"play1",hi:"#hand",hint:"Tap a Ninja in your hand, then press ▶ Play card.",txt:"Tap a <b>Ninja</b> and press <b>▶ Play card</b>. Ninjas make <b>+1 ☯ Karma</b> — Karma is the game's money, and it pools up as you play."},
+    {id:"playAll",hi:"#hand",hint:"Keep playing until your hand is empty.",txt:"Nice. Now <b>play the rest of your hand</b>, one at a time. When <b>Hound Dogs</b> asks you to pick a crew, choose 🎪 <b>Dark Carnival</b> — crews matter later."},
+    {id:"karma",passive:1,hi:".karmaBig",txt:"Look at you — <b>☯ 4 Karma</b> banked. Spend it any time during your turn. But careful: <b>unspent Karma burns</b> at end of turn, so always shop before you pass."},
+    {id:"buy1",hi:"#galleryRow",hint:"Tap The Loons in the Gallery, then Buy.",txt:"This row is the <b>Gallery</b> — the market. Buy <b>The Loons</b> (cost 2). Purchases go to your <b>discard pile</b> and shuffle into your deck later. That's the deck-building part!"},
+    {id:"buyFiend",hi:"#galleryRow",hint:"Buy Drainer Road Monks — the Fiend.",txt:"Now grab the 👹 <b>Fiend — Drainer Road Monks</b> (cost 2). Fiends don't go to your discard: they jump <b>straight into play</b> and lurk there. This one can <b>STOMP</b> an enemy card later. Devious."},
+    {id:"end",hi:".endBtn",hint:"Press End Turn.",txt:"Karma's spent. Press <b>End Turn</b> — everything you played and held gets discarded, and you draw 5 fresh cards. Your deck reshuffles your discard pile whenever it runs dry."},
+    {id:"stomp",hint:"Wait for the AI to play a card, then stomp it.",txt:"The AI is up. Watch closely — the moment it plays a card, your Fiend gets a chance to <b>🥾 STOMP</b> it. A stomped card is countered completely: it does nothing. Squash it!"},
+    {id:"turn2",passive:1,txt:"Fresh hand of 5. See how the machine turns? Play cards → bank Karma → buy stronger cards → they shuffle back around. The Loons you bought is on its way."},
+    {id:"unity",passive:1,hi:".handBar",txt:"See the <b>DC / PSY / UG counters</b>? Get <b>3+ cards of one crew in play</b> at once and the <b>UNITY</b> button lights up: 🎪 +2 Karma, 💀 draw a card, 🎤 draw a Flavor card. Once per turn — never forget to claim it."},
+    {id:"epic",passive:1,hi:"#epicRow",txt:"The 🌟 <b>Epic Tier</b> is where legends live — expensive, worth massive GP. Only <b>one Epic purchase per turn</b>, and when the last Epic is drawn, the game ends. Racing the Epic deck IS the clock."},
+    {id:"abolish",passive:1,hi:"#pilesRow",txt:"One more pro move: <b>🕳 Abolish</b> sends cards to the Abyss — gone forever. Sounds bad? It's how you <b>trash your weak Ninjas</b> so you draw your good cards more often. Cards like Amy in the Attic and The Great Milenko do this."},
+    {id:"grad",passive:1,txt:"🎓 <b>That's everything you need.</b> Stomps counter, shields 🛡 protect, Kevin Gill blocks stomps for a turn, and the Wheel of Fate 🎡 is pure carny chaos. Finish this match for real — most GP wins. <b>WHOOP WHOOP!</b>",last:1}
+  ],
+  cur(){ return this.active?this.steps[this.step]:null; },
+  hintTxt(){ const s=this.cur(); return "🎓 "+((s&&s.hint)||"Follow the coach to continue."); },
+  allow(action,data){
+    if(!this.active) return true;
+    const s=this.cur(); if(!s||s.last) return true;
+    if(action==="unity") return true;
+    if(action==="play") return !!(s.id==="play1"||s.id==="playAll");
+    if(action==="buy") return !!(data&&data.card&&((s.id==="buy1"&&data.card.d.id==="loons")||(s.id==="buyFiend"&&data.card.d.id==="drainer_monks")));
+    if(action==="end") return s.id==="end";
+    return false;
+  },
+  on(ev,data){
+    if(!this.active) return;
+    const s=this.cur(); if(!s) return;
+    if(ev==="play"&&s.id==="play1") this.next();
+    else if(ev==="play"&&s.id==="playAll"&&me().hand.length===0) this.next();
+    else if(ev==="buy"&&s.id==="buy1"&&data.card.d.id==="loons") this.next();
+    else if(ev==="buy"&&s.id==="buyFiend"&&data.card.d.id==="drainer_monks") this.next();
+    else if(ev==="endTurn"&&s.id==="end") this.next();
+    else if(ev==="stomp"&&s.id==="stomp") this.next();
+    else if(ev==="turnStart") UI.render();
+  },
+  next(){
+    if(!this.active) return;
+    this.step++;
+    if(this.step>=this.steps.length) return this.finish();
+    beep(660,.04);
+    UI.render();
+  },
+  finish(){
+    this.active=false; if(G) G.tutorial=false;
+    unlock("tutorial");
+    UI.toast("🎓 Tutorial complete — now finish the match! Most GP wins.");
+    UI.render();
+  },
+  start(){
+    newGame(true,false);
+    G.tutorial=true;
+    G.players[1].name="Carny Bot";
+    const p=me();
+    // rig opening hand: 4 Ninjas + 1 Hound Dogs (= 4 Karma, one crew-choice lesson)
+    const all=[...p.deck,...p.hand]; p.hand=[];
+    const take=id=>{ const i=all.findIndex(c=>c.d.id===id); return i>=0?all.splice(i,1)[0]:mk(id); };
+    const top=[take("ninja"),take("ninja"),take("ninja"),take("ninja"),take("hound_dogs")];
+    p.deck=shuffle(all); p.deck.push(...top);
+    drawN(p,5);
+    // rig the Gallery: cheap teaching cards + one stomp Fiend
+    G.gallery.forEach(c=>{ if(c) G.main.push(c); });
+    const wantG=["loons","soopa_ninjas","kevin_gill","amy_attic","jumpsteady","drainer_monks"];
+    G.gallery=wantG.map(id=>{ const i=G.main.findIndex(c=>c.d.id===id); return i>=0?G.main.splice(i,1)[0]:mk(id); });
+    shuffle(G.main);
+    // rig the Epic Tier with recognizable Epics
+    const pool=[...G.epicTier.filter(Boolean),...G.epicDeck];
+    const wantE=["milenko","ringmaster","shaggy"];
+    G.epicTier=wantE.map(id=>{ const i=pool.findIndex(c=>c.d.id===id); return i>=0?pool.splice(i,1)[0]:mk(id); });
+    G.epicDeck=shuffle(pool);
+    // Dark Carnival Juggalo on top
+    const ji=G.jug.findIndex(c=>c.d.id==="jug_dc");
+    if(ji>=0){ const j=G.jug.splice(ji,1)[0]; G.jug.push(j); }
+    G.active=0;
+    this.active=true; this.step=0;
+    log("🎓 <b>Tutorial started</b>");
+    UI.scr("gameScr"); UI.render();
+    UI.banner("🎓 Tutorial");
+  }
+};
+//__ENGINE_END__
+/* ======================= UI ======================= */
+const H={n:0,m:{}};
+function act(fn){ H.m[++H.n]=fn; return `UI.act(${H.n})`; }
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+
+function cardHTML(c,size,opts){
+  opts=opts||{};
+  const d=c.d||c;
+  const m=TYPE_META[d.t];
+  const icons=(d.shield?"🛡":"")+(d.stomp||d.reaction?"🥾":"");
+  const cost=d.cost!=null?`<div class="cost">${d.cost}</div>`:"";
+  const gp=d.gp?`<div class="gp">${d.gp}GP</div>`:"";
+  const crew = d.t==="JUG"?` <span style="color:${TYPE_META[d.crew].color}">·${TYPE_META[d.crew].label.split(" ")[0]}</span>`:"";
+  const ov = c.crewOverride?` <span style="color:${TYPE_META[c.crewOverride].color}">→${c.crewOverride}</span>`:"";
+  const cls=`card ${size} ${c.tilted?"tilted":""} ${opts.sel?"sel":""} ${opts.dis?"dis":""}`;
+  const click=opts.onTap?`onclick="${opts.onTap}"`:"";
+  return `<div class="${cls}" style="--c1:${m.color};--tc:${m.color}" ${click}>
+    <div class="art">${cost}${gp}<img src="assets/cards/${d.id}.jpg" alt="" onerror="this.remove()"><span>${m.glyph}</span><div class="icons">${icons}</div></div>
+    <div class="nm">${esc(d.n)}</div><div class="ty">${m.label}${crew}${ov}</div></div>`;
+}
+function vTag(d){
+  if(d.v==="official") return `<span class="tag gold">✓ official text</span>`;
+  if(d.v==="partial") return `<span class="tag recon">◐ partially confirmed</span>`;
+  return `<span class="tag recon">⚠ reconstructed effect</span>`;
+}
+
+const UI = {
+  act(i){ const f=H.m[i]; if(f) f(); },
+  scr(id){
+    document.querySelectorAll(".screen").forEach(s=>s.classList.remove("on"));
+    document.getElementById(id).classList.add("on");
+    this.current=id;
+  },
+  toast(msg,ms){
+    const t=document.getElementById("toast");
+    t.innerHTML=msg; t.style.display="block";
+    clearTimeout(this._tt); this._tt=setTimeout(()=>t.style.display="none",ms||2200);
+  },
+  banner(txt){
+    return new Promise(res=>{
+      const b=document.getElementById("turnBanner");
+      b.textContent=txt; b.style.display="flex"; beep(300,.06);
+      setTimeout(()=>{ b.style.display="none"; res(); },900/(S.data.set.speed||1));
+    });
+  },
+  /* ---- modal core ---- */
+  _sheet(html){ document.getElementById("sheet").innerHTML=html; document.getElementById("modal").classList.add("on"); },
+  closeSheet(){ document.getElementById("modal").classList.remove("on"); },
+  choice(title,labels,meta){
+    return new Promise(res=>{
+      const opts=labels.map((l,i)=>`<button class="optBtn" onclick="${act(()=>{UI.closeSheet();res(i);})}">${l}</button>`).join("");
+      this._sheet(`<h3>${title}</h3><div class="body">${opts}</div>`);
+    });
+  },
+  pick(o){ // {title,sub,cards,min,max,skip,zoneOf}
+    return new Promise(res=>{
+      const sel=new Set();
+      const min=o.min||0, max=o.max||1;
+      const draw=()=>{
+        const grid=o.cards.map((c,i)=>{
+          const zone=o.zoneOf?`<div style="font-size:9px;color:var(--dim);text-align:center">${o.zoneOf(c)}</div>`:"";
+          return `<div>${cardHTML(c,"cardM",{sel:sel.has(c),onTap:act(()=>{ sel.has(c)?sel.delete(c):(sel.size<max&&sel.add(c)); draw(); })})}${zone}</div>`;
+        }).join("");
+        const ok = sel.size>=min && sel.size<=max;
+        const btns = `<div class="sheetBtns">
+          ${o.skip&&min===0?`<button class="btn ghost" onclick="${act(()=>{UI.closeSheet();res([]);})}">Skip</button>`:""}
+          <button class="btn primary" ${ok?"":"disabled"} onclick="${act(()=>{ if(sel.size>=min){UI.closeSheet();res([...sel]);} })}">Confirm (${sel.size}${max>1?"/"+max:""})</button></div>`;
+        this._sheet(`<h3>${o.title}</h3>${o.sub?`<div class="sub">${o.sub}</div>`:""}<div class="body"><div class="cardGrid">${grid}</div></div>${btns}`);
+      };
+      draw();
+    });
+  },
+  showWheel(p,roll){
+    return new Promise(res=>{
+      this._sheet(`<h3 style="text-align:center">🎡 Wheel of Fate</h3><div class="wheel spin" id="wheelEl">?</div><div class="sub" style="text-align:center">${p.name} spins…</div>`);
+      beep(500,.05);
+      setTimeout(()=>{
+        const el=document.getElementById("wheelEl");
+        if(el){ el.classList.remove("spin"); el.textContent=roll; }
+        const w=WHEEL[roll];
+        document.getElementById("sheet").insertAdjacentHTML("beforeend",
+          `<div class="bigTxt" style="text-align:center">${w.t} ${w.v==="recon"?'<br><span class="tag recon">reconstructed result</span>':""}</div>
+           ${p.isAI?"":`<div class="sheetBtns"><button class="btn primary" onclick="${act(()=>{UI.closeSheet();res();})}">OK</button></div>`}`);
+        buzz(30);
+        if(p.isAI) setTimeout(()=>{ UI.closeSheet(); res(); },1400/(S.data.set.speed||1));
+      },1100/(S.data.set.speed||1));
+    });
+  },
+  bigCard(c,buttons){
+    const d=c.d||c;
+    const btns=(buttons||[]).map(b=>`<button class="btn ${b.cls||"primary"}" ${b.dis?"disabled":""} onclick="${act(()=>{UI.closeSheet(); b.fn&&b.fn();})}">${b.label}</button>`).join("");
+    this._sheet(`<div class="body"><div class="bigWrap">${cardHTML(c,"cardL")}
+      <div class="bigTxt"><b>${esc(d.n)}</b> — ${TYPE_META[d.t].label}${d.cost!=null?` · Cost ${d.cost}`:""}${d.gp?` · ${d.gp} GP`:""}<br><br>${esc(d.txt)}<br><br>${vTag(d)}${d.shield?' <span class="tag">🛡 shielded</span>':""}${(d.stomp||d.reaction)?' <span class="tag">🥾 can stomp</span>':""}</div></div></div>
+      <div class="sheetBtns">${btns}<button class="btn" onclick="UI.closeSheet()">Close</button></div>`);
+  },
+  viewPile(title,cards){
+    this._sheet(`<h3>${title} (${cards.length})</h3><div class="body"><div class="cardGrid">${cards.length?cards.map(c=>cardHTML(c,"cardM",{onTap:act(()=>UI.bigCard(c))})).join(""):'<div class="sub">Empty.</div>'}</div></div>
+      <div class="sheetBtns"><button class="btn" onclick="UI.closeSheet()">Close</button></div>`);
+  },
+  /* ---- log ---- */
+  toggleLog(on){ document.getElementById("logDrawer").classList.toggle("on",on); if(on) this.logChanged(); },
+  logChanged(){ const b=document.getElementById("logBody"); if(b&&document.getElementById("logDrawer").classList.contains("on")){ b.innerHTML=G?G.log.slice(-200).join("<br>"):""; b.scrollTop=b.scrollHeight; } },
+
+  /* ================= HOME ================= */
+  home(){
+    const prem=S.data.premium;
+    document.getElementById("homeScr").innerHTML=`<div class="scroll" style="max-width:480px;margin:0 auto;width:100%">
+      <div class="logo"><div class="l1">Into the</div><div class="l2">ECHOSIDE</div><div class="l3">⛧ The Official Deckbuilding Game ⛧</div></div>
+      <p style="text-align:center;color:var(--dim);font-size:12px">${prem?'<span class="tag gold">★ PREMIUM</span> ':""}Official Digital Edition</p>
+      <button class="btn primary" onclick="${act(()=>UI.newGameSheet(false))}">⚔️ Play vs AI</button>
+      <button class="btn ${S.data.ach.tutorial?"":"green"}" onclick="${act(()=>TUT.start())}">🎓 Tutorial ${S.data.ach.tutorial?"· replay":"— learn in 5 min"}</button>
+      <button class="btn ${S.data.ach.tutorial?"green":""}" onclick="${act(()=>UI.lobby())}">${prem?"🌐":"🔒"} Online Multiplayer ${prem?"":'<span class="tag gold">PREMIUM</span>'}</button>
+      <button class="btn" onclick="${act(()=>UI.collection())}">🃏 Card Collection</button>
+      <button class="btn" onclick="${act(()=>UI.rules())}">📖 How to Play</button>
+      <button class="btn" onclick="${act(()=>UI.profile())}">👤 Profile & Achievements</button>
+      <button class="btn" onclick="${act(()=>UI.settings())}">⚙️ Settings</button>
+      <div class="heroCard" style="margin-top:16px;text-align:center;padding:14px">
+        <span class="tag gold">COMING SOON</span>
+        <div style="font-family:Georgia,serif;font-size:16px;font-weight:800;margin:6px 0 2px">New Characters · New Art · New Cards</div>
+        <div style="color:var(--dim);font-size:12px">The Dark Carnival grows. Brand-new official content is on its way to the Echoside.</div>
+      </div>
+      <p style="text-align:center;color:var(--dim);font-size:10px;margin-top:14px">Into the Echoside ™ & © Psychopathic Records / Dark Carnival Games LLC. All rights reserved.</p>
+    </div>`;
+    this.scr("homeScr");
+  },
+  newGameSheet(online){
+    this._sheet(`<h3>${online?"🌐 Online Match":"New Game"}</h3><div class="sub">Choose a rules mode.</div>
+      <button class="optBtn" onclick="${act(()=>{UI.closeSheet();UI.startGame(true,online);})}"><b>Advanced</b> — Fiends & advanced Items in the deck. The way it was designed to be played.</button>
+      <button class="optBtn" onclick="${act(()=>{UI.closeSheet();UI.startGame(false,online);})}"><b>Basic</b> — no Fiends, simpler first game.</button>
+      <div class="sheetBtns"><button class="btn" onclick="UI.closeSheet()">Cancel</button></div>`);
+  },
+  async startGame(advanced,online){
+    newGame(advanced,online);
+    this.scr("gameScr"); this.render();
+    const you=d12(), them=d12();
+    log(`🎲 First-player roll — You: ${you}, ${G.players[1].name}: ${them}`);
+    const aiFirst = them>you;
+    G.active = aiFirst?1:0;
+    this.toast(`🎲 You rolled ${you}, ${G.players[1].name} rolled ${them} — ${aiFirst?"they go":"you go"} first`);
+    await this.banner(aiFirst?G.players[1].name+"'s Turn":"Your Turn");
+    this.render();
+    if(aiFirst) AI.takeTurn(G.players[1]);
+  },
+
+  /* ================= GAME RENDER ================= */
+  render(){
+    if(!G) return;
+    const scr=document.getElementById("gameScr");
+    if(!scr.classList.contains("on")) return;
+    const p=me(), q=G.players[1];
+    const myTurn=G.active===0&&!G.over;
+    const un=unityReady(p);
+    const nCounts=crewCounts(p);
+    const ts=(G.tutorial&&TUT.active)?TUT.cur():null;
+    const coach=ts?`<div class="coach"><span class="cstep">TUTORIAL ${TUT.step+1}/${TUT.steps.length}</span><span class="cicon">🃏</span><div class="ctxt">${ts.txt}</div>${ts.passive?`<button class="cnext" onclick="${act(()=>TUT.next())}">${ts.last?"Finish 🎓":"Next ›"}</button>`:""}</div>`:"";
+    scr.innerHTML=`
+    <div class="opRow">
+      <div class="avatar ${G.active===1?"active":""}">${G.online?"🌐":"🤖"}</div>
+      <div style="flex:1"><b style="font-size:13px">${q.name}</b><br>
+        <span style="color:var(--dim)">Deck ${q.deck.length} · Hand ${q.hand.length} · <span onclick="${act(()=>UI.viewPile(q.name+" discard",q.discard))}">Discard ${q.discard.length}</span> · GP ${scoreGP(q)}</span></div>
+      ${q.items.length?`<button class="stat" onclick="${act(()=>UI.viewPile(q.name+" Items",q.items))}">🧰${q.items.length}</button>`:""}
+      ${q.fiends.length?`<button class="stat" onclick="${act(()=>UI.viewPile(q.name+" Fiends",q.fiends))}">👹${q.fiends.length}</button>`:""}
+      <button class="stat" onclick="UI.toggleLog(true)">📜</button>
+      <button class="stat" onclick="${act(()=>UI.menuSheet())}">☰</button>
+    </div>
+    ${coach}
+    <div class="boardMid">
+      ${q.inPlay.length?`<div class="zoneLbl">${q.name} — in play</div><div class="rowScroll">${q.inPlay.map(c=>cardHTML(c,"cardS",{onTap:act(()=>UI.bigCard(c))})).join("")}</div>`:""}
+      <div class="zoneLbl">Epic Tier <span style="opacity:.6">(deck ${G.epicDeck.length} · one buy/turn)</span></div>
+      <div class="rowScroll" id="epicRow">${G.epicTier.map((c,i)=>c?cardHTML(c,"cardM",{dis:myTurn&&(p.karma<c.d.cost||p.epicBought>=1),onTap:act(()=>UI.marketCard(c,"epic",i))}):'<div class="pile">empty</div>').join("")}</div>
+      <div class="zoneLbl">The Gallery <span style="opacity:.6">(Main Deck ${G.main.length})</span></div>
+      <div class="rowScroll" id="galleryRow">${G.gallery.map((c,i)=>c?cardHTML(c,"cardM",{dis:myTurn&&p.karma<c.d.cost,onTap:act(()=>UI.marketCard(c,"gallery",i))}):'<div class="pile">refills at<br>end of turn</div>').join("")}</div>
+      <div class="zoneLbl">Piles</div>
+      <div class="rowScroll" id="pilesRow">
+        ${G.jug.length?cardHTML(G.jug[G.jug.length-1],"cardS",{onTap:act(()=>UI.jugSheet())}):'<div class="pile">Juggalos<br>out</div>'}
+        <div class="pile facedown" onclick="${act(()=>UI.toast("Flavor deck: "+G.flavor.length+" cards. Drawn only by card effects."))}"><b>${G.flavor.length}</b>Flavor</div>
+        <div class="pile" onclick="${act(()=>UI.viewPile("Flavor discard",G.flavorDis))}"><b>${G.flavorDis.length}</b>Flavor<br>discard</div>
+        <div class="pile" onclick="${act(()=>UI.viewPile("The Abyss",G.abyss))}"><b>${G.abyss.length}</b>Abyss 🕳</div>
+        <div class="pile" onclick="${act(()=>UI.viewPile("Your discard",p.discard))}"><b>${p.discard.length}</b>Your<br>discard</div>
+        <div class="pile facedown"><b>${p.deck.length}</b>Your<br>deck</div>
+      </div>
+      ${(p.items.length||p.fiends.length)?`<div class="zoneLbl">Your Items & Fiends</div><div class="rowScroll">
+        ${p.items.map(c=>cardHTML(c,"cardS",{onTap:act(()=>UI.ownPermanent(c,"item"))})).join("")}
+        ${p.fiends.map(c=>cardHTML(c,"cardS",{onTap:act(()=>UI.ownPermanent(c,"fiend"))})).join("")}</div>`:""}
+      ${p.inPlay.length?`<div class="zoneLbl">You — in play ${p.kg?"· 🛡 KG protection":""}</div><div class="rowScroll" id="inPlayRow">${p.inPlay.map(c=>cardHTML(c,"cardS",{onTap:act(()=>UI.bigCard(c))})).join("")}</div>`:""}
+    </div>
+    <div class="handWrap">
+      <div class="handBar">
+        <span class="karmaBig">☯ ${p.karma}</span>
+        <span class="gpBig">${scoreGP(p)} GP</span>
+        <span style="font-size:10px;color:var(--dim)">${CREWS.map(c=>`<span style="color:${TYPE_META[c].color}">${c}:${nCounts[c]}</span>`).join(" ")}</span>
+        ${un?`<button class="unityBtn ready" onclick="${act(()=>UI.unitySheet(un))}">UNITY!</button>`:(p.unityUsed?'<span class="tag">unity used</span>':"")}
+        <button class="endBtn" ${myTurn?"":"disabled"} onclick="${act(()=>UI.tryEndTurn())}">End Turn</button>
+      </div>
+      <div id="hand">${p.hand.length?p.hand.map(c=>cardHTML(c,"cardM",{onTap:act(()=>UI.handCard(c))})).join(""):'<div class="sub" style="padding:20px">No cards in hand</div>'}</div>
+    </div>`;
+    if(ts&&ts.hi){ const el=scr.querySelector(ts.hi); if(el) el.classList.add("tutHi"); }
+    this.logChanged();
+  },
+  guard(){ if(!G||G.over){return false;} if(G.active!==0){this.toast("Not your turn.");return false;} if(G.busy){return false;} return true; },
+  async wrap(fn){ if(!this.guard())return; G.busy=true; try{ await fn(); } finally { G.busy=false; this.render(); } },
+  handCard(c){
+    const mine=G.active===0&&!G.over;
+    this.bigCard(c,[{label:"▶ Play card",dis:!mine,fn:()=>{ if(!TUT.allow("play",{card:c})){UI.toast(TUT.hintTxt());return;} this.wrap(async()=>{ beep(600,.04); await playCard(me(),c); }); }}]);
+  },
+  marketCard(c,zone,i){
+    const p=me(); const mine=G.active===0&&!G.over;
+    const afford=p.karma>=(c.d.cost||0);
+    const epicBlock=zone==="epic"&&p.epicBought>=1;
+    this.bigCard(c,[{label:epicBlock?"Epic already bought this turn":`💰 Buy for ${c.d.cost} Karma`,dis:!mine||!afford||epicBlock,
+      fn:()=>{ if(!TUT.allow("buy",{card:c})){UI.toast(TUT.hintTxt());return;} this.wrap(async()=>{ beep(700,.05); zone==="epic"?await buyEpic(p,i):await buyGallery(p,i); }); }}]);
+  },
+  jugSheet(){
+    const p=me(); const c=G.jug[G.jug.length-1]; const mine=G.active===0&&!G.over;
+    this.bigCard(c,[
+      {label:"💰 Buy for 3 Karma",dis:!mine||p.karma<3,fn:()=>{ if(!TUT.allow("buy",{card:c})){UI.toast(TUT.hintTxt());return;} this.wrap(async()=>{ await buyJug(p); }); }},
+      {label:"🔄 Cycle to bottom (1 Karma)",cls:"",dis:!mine||p.karma<1,fn:()=>{ if(!TUT.allow("cycle",{})){UI.toast(TUT.hintTxt());return;} this.wrap(async()=>{ cycleJug(p); }); }}
+    ]);
+  },
+  ownPermanent(c,kind){
+    const mine=G.active===0&&!G.over;
+    const btns=[];
+    if(kind==="item"&&c.d.active) btns.push({label:c.tilted?"Already used this turn":"⚙️ Use item",dis:!mine||c.tilted,fn:()=>{ if(!TUT.allow("useItem",{})){UI.toast(TUT.hintTxt());return;} this.wrap(async()=>{ await useItem(me(),c); }); }});
+    if(kind==="item"&&c.d.passive) btns.push({label:"Passive — works automatically",dis:true});
+    if(kind==="fiend"&&c.d.fiendUse) btns.push({label:"👹 Unleash (one-time, then Abyss)",dis:!mine,fn:()=>{ if(!TUT.allow("useFiend",{})){UI.toast(TUT.hintTxt());return;} this.wrap(async()=>{ await useFiend(me(),c); }); }});
+    if(kind==="fiend"&&c.d.reaction&&!c.d.fiendUse) btns.push({label:"Held to stomp — you'll be asked when "+G.players[1].name+" plays",dis:true});
+    this.bigCard(c,btns);
+  },
+  unitySheet(crews){
+    const lbl={DC:"🎪 Dark Carnival — +2 Karma",PSY:"💀 Psychopathic — draw a card",UG:"🎤 Underground — draw a Flavor card"};
+    this.choice("Claim a Unity Benefit (once per turn)",crews.map(c=>lbl[c]).concat(["Not yet"]),{}).then(i=>{
+      if(i<crews.length) this.wrap(async()=>{ beep(800,.06); await claimUnity(me(),crews[i]); });
+    });
+  },
+  tryEndTurn(){
+    const p=me();
+    if(!TUT.allow("end",{})){ this.toast(TUT.hintTxt()); return; }
+    if(!G.tutorial&&p.karma>=3&&G.jug.length){ this.choice(`You still have ${p.karma} Karma (a Juggalo costs 3). End turn anyway?`,["End turn — burn the Karma","Keep playing"],{}).then(i=>{ if(i===0) this.wrap(()=>endTurn(p)); }); return; }
+    this.wrap(()=>endTurn(p));
+  },
+  menuSheet(){
+    this._sheet(`<h3>Menu</h3>
+      <button class="optBtn" onclick="${act(()=>{UI.closeSheet();})}">▶ Resume</button>
+      <button class="optBtn" onclick="${act(()=>{UI.closeSheet();UI.rules();})}">📖 Rules reference</button>
+      <button class="optBtn" onclick="${act(()=>{UI.closeSheet();UI.choice("Concede the match?",["Yes, concede","No"],{}).then(i=>{ if(i===0){ G.over=true; UI.home(); } });})}">🏳 Concede</button>`);
+  },
+  gameOver(winner,sa,sb){
+    const won=winner===me();
+    const tie=!winner;
+    beep(won?880:220,.2);
+    this._sheet(`<h3 style="text-align:center;font-size:24px">${tie?"🤝 Dead Even":won?"🏆 VICTORY!":"💀 Defeated"}</h3>
+      <div class="body" style="text-align:center">
+        <p style="font-size:15px">You: <b style="color:var(--green)">${sa} GP</b> &nbsp;·&nbsp; ${G.players[1].name}: <b style="color:var(--red)">${sb} GP</b></p>
+        ${tie?'<p class="sub">Tied on GP and Epic GP. The rulebook\'s official tiebreaker: whoever first says "give me my money, bitch."</p>':""}
+        <p class="sub">${G.online?"Online demo match":"vs AI"} · ${G.turnN} turns</p>
+      </div>
+      <div class="sheetBtns">
+        <button class="btn primary" onclick="${act(()=>{UI.closeSheet();UI.startGame(G.advanced,G.online);})}">Rematch</button>
+        <button class="btn" onclick="${act(()=>{UI.closeSheet();UI.home();})}">Home</button>
+      </div>`);
+  },
+
+  /* ================= COLLECTION ================= */
+  collection(filter){
+    filter=filter||"ALL";
+    const types=["ALL","DC","PSY","UG","ITEM","FIEND","EPIC","FLAVOR","JUG","START"];
+    const list=DB.filter(d=>filter==="ALL"||d.t===filter);
+    document.getElementById("colScr").innerHTML=`
+      <div class="topbar"><button class="back" onclick="${act(()=>UI.home())}">‹</button><h2>Card Collection</h2><span class="tag">${DB.length} unique</span></div>
+      <div class="filters">${types.map(t=>`<button class="fbtn ${t===filter?"on":""}" onclick="${act(()=>UI.collection(t))}">${t==="ALL"?"All":TYPE_META[t].glyph+" "+TYPE_META[t].label}</button>`).join("")}</div>
+      <div class="scroll"><div class="notice">✓ = official card text · ◐ = partially confirmed · ⚠ = reconstructed placeholder effect awaiting your licensed card data. Drop licensed art into <b>assets/cards/&lt;id&gt;.jpg</b> and it appears automatically.</div>
+      <div class="colGrid">${list.map(d=>cardHTML({d},"",{onTap:act(()=>UI.bigCard({d}))})).join("")}</div></div>`;
+    this.scr("colScr");
+  },
+
+  /* ================= LOBBY / PAYWALL ================= */
+  lobby(){
+    if(!S.data.premium){ this.paywall(); return; }
+    document.getElementById("lobbyScr").innerHTML=`
+      <div class="topbar"><button class="back" onclick="${act(()=>UI.home())}">‹</button><h2>🌐 Online Multiplayer</h2><span class="tag gold">★</span></div>
+      <div class="scroll">
+        <div class="heroCard"><b>Welcome to the Echoside, ninja.</b><br><span style="color:var(--dim);font-size:13px">Matchmaking, ranked ladders and friend battles. This preview build runs matches against a server-simulated opponent — live PvP activates when the game server ships.</span></div>
+        <button class="btn primary" onclick="${act(()=>UI.quickMatch())}">⚡ Quick Match</button>
+        <button class="btn" onclick="${act(()=>UI.createRoom())}">➕ Create Private Room</button>
+        <button class="btn" onclick="${act(()=>UI.joinRoom())}">🔑 Join with Code</button>
+        <div class="statGrid"><div class="statBox"><b>${S.data.stats.online}</b><span>online matches</span></div><div class="statBox"><b>—</b><span>rank (preseason)</span></div></div>
+      </div>`;
+    this.scr("lobbyScr");
+  },
+  quickMatch(){
+    this._sheet(`<h3>⚡ Quick Match</h3><div class="spinner"></div><div class="sub" style="text-align:center" id="mmTxt">Searching the Nethervoid for opponents…</div>`);
+    setTimeout(()=>{ const t=document.getElementById("mmTxt"); if(t) t.textContent="Opponent found: Wicked_Jester_66 (simulated)"; beep(660,.08); },1600);
+    setTimeout(()=>{ this.closeSheet(); this.newGameSheet(true); },2600);
+  },
+  createRoom(){
+    const code=Array.from({length:5},()=>"ABCDEFGHJKMNPQRSTUVWXYZ23456789"[Math.floor(Math.random()*31)]).join("");
+    this._sheet(`<h3>Private Room</h3><div class="codeBox">${code}</div>
+      <div class="sub" style="text-align:center">Share this code with your homie. Waiting for them to join…</div><div class="spinner"></div>
+      <div class="notice">Demo build: the matchmaking server isn't deployed yet, so nobody can actually join. The full flow is wired and ready for the backend.</div>
+      <div class="sheetBtns"><button class="btn" onclick="UI.closeSheet()">Cancel</button></div>`);
+  },
+  joinRoom(){
+    this._sheet(`<h3>Join Room</h3><input class="txt" id="joinCode" maxlength="5" placeholder="CODE" autocapitalize="characters">
+      <div class="sheetBtns"><button class="btn primary" onclick="${act(()=>{
+        UI._sheet('<h3>Join Room</h3><div class=spinner></div><div class=sub style=text-align:center>Connecting…</div>');
+        setTimeout(()=>{ UI._sheet('<h3>Join Room</h3><div class=notice>Could not reach the matchmaking server — this preview build has no live backend. Try Quick Match for a simulated opponent.</div><div class=sheetBtns><button class=btn onclick=UI.closeSheet()>OK</button></div>'); },1500);
+      })}">Join</button><button class="btn" onclick="UI.closeSheet()">Cancel</button></div>`);
+  },
+  paywall(sel){
+    sel=sel||"life";
+    document.getElementById("payScr").innerHTML=`
+      <div class="topbar"><button class="back" onclick="${act(()=>UI.home())}">‹</button><h2>Echoside Premium</h2></div>
+      <div class="scroll" style="max-width:480px;margin:0 auto;width:100%">
+        <div class="heroCard" style="text-align:center"><div style="font-size:40px">🌐</div><h2 style="margin:6px 0">Take the battle online</h2>
+        <span style="color:var(--dim);font-size:13px">Free players get unlimited matches vs AI. Premium unlocks the Echoside network:</span></div>
+        <div class="feature"><span class="ic">⚔️</span><span><b>Online Multiplayer</b> — quick match, private rooms with friend codes</span></div>
+        <div class="feature"><span class="ic">🏆</span><span><b>Ranked Ladder</b> — seasonal ranks from Fresh Meat to Dark Carnival Legend</span></div>
+        <div class="feature"><span class="ic">🎭</span><span><b>Exclusive avatars & card backs</b></span></div>
+        <div class="feature"><span class="ic">📊</span><span><b>Full match history & stats</b></span></div>
+        <div class="priceRow">
+          <div class="price ${sel==="mo"?"sel":""}" onclick="${act(()=>UI.paywall("mo"))}"><div class="amt">$4.99</div><div class="per">per month</div></div>
+          <div class="price ${sel==="life"?"sel":""}" onclick="${act(()=>UI.paywall("life"))}"><div class="amt">$39.99</div><div class="per">lifetime · best value</div></div>
+        </div>
+        <button class="btn primary" onclick="${act(()=>UI.purchase(sel))}">Unlock Premium ${sel==="mo"?"· $4.99/mo":"· $39.99"}</button>
+        <button class="btn ghost" style="font-size:12px;color:var(--dim)" onclick="${act(()=>{UI.toast("No previous purchases found (demo).");})}">Restore purchases</button>
+        <div class="notice">Demo paywall — no real payment is processed. Production builds hook this screen to StoreKit / Google Play Billing (required for in-app purchases on the app stores).</div>
+      </div>`;
+    this.scr("payScr");
+  },
+  purchase(plan){
+    this._sheet(`<h3>Processing…</h3><div class="spinner"></div><div class="sub" style="text-align:center">Contacting store (simulated)</div>`);
+    setTimeout(()=>{
+      S.data.premium=true; S.save(); beep(880,.15); buzz(60);
+      this._sheet(`<h3 style="text-align:center">🎉 Welcome to Premium!</h3><div class="sub" style="text-align:center">${plan==="mo"?"$4.99/month":"Lifetime"} plan activated (demo — nothing was charged).</div>
+        <div class="sheetBtns"><button class="btn primary" onclick="${act(()=>{UI.closeSheet();UI.lobby();})}">Enter the Lobby</button></div>`);
+    },1800);
+  },
+
+  /* ================= RULES ================= */
+  rules(){
+    document.getElementById("rulesScr").innerHTML=`
+      <div class="topbar"><button class="back" onclick="${act(()=>G&&!G.over?UI.scr("gameScr"):UI.home())}">‹</button><h2>How to Play</h2></div>
+      <div class="scroll" style="font-size:13px;line-height:1.6">
+      <button class="btn green" onclick="${act(()=>TUT.start())}">🎓 Prefer learning by doing? Play the 5-minute Tutorial</button>
+      <h3>The Goal</h3><p>Build the deck with the most <b style="color:var(--green)">Gathering Points (GP)</b>. The game ends when the last Epic is drawn or the Main Deck runs out — then every card you own is counted. Cheap cards score 1 GP, mid-cost 2–3, Epics the most.</p>
+      <h3>Your Turn</h3><p>Play cards from your hand one at a time — most generate <b style="color:var(--gold)">☯ Karma</b>, the only currency. Spend Karma any time on Gallery cards, one Epic per turn, or the top Juggalo card (always 3 ☯; pay 1 ☯ to cycle it). Purchases go to your <b>discard pile</b> and shuffle into your deck later. At end of turn everything played and held is discarded, leftover Karma burns, and you draw 5 fresh cards.</p>
+      <h3>Crews & Unity</h3><p>Get <b>3+ cards of one crew in play</b> to claim that crew's Unity Benefit (once per turn): <span style="color:var(--dc)">Dark Carnival +2 ☯</span>, <span style="color:var(--psy)">Psychopathic draw a card</span>, <span style="color:var(--ug)">Underground draw a Flavor card</span>.</p>
+      <h3>Card Types</h3>
+      <table class="rt">
+      <tr><th>Type</th><th>Behavior</th></tr>
+      <tr><td>🎪💀🎤 Crew</td><td>Karma, draws, abolish effects. Count toward Unity.</td></tr>
+      <tr><td>🧰 Item</td><td>Permanent. Use once per turn; readies at your turn start. Can't be stomped.</td></tr>
+      <tr><td>👹 Fiend</td><td>Enters play the moment you buy it. One-time effect — many stomp opponents' cards — then it's abolished to the Abyss.</td></tr>
+      <tr><td>🌟 Epic</td><td>Expensive, huge GP. One purchase per turn. Last Epic drawn = game end.</td></tr>
+      <tr><td>🃏 Flavor</td><td>Never bought, never joins your deck — drawn by effects, played once, then shared Flavor discard.</td></tr>
+      <tr><td>🤡 Juggalo</td><td>Always on sale for 3 ☯, gives +2 ☯, belongs to a crew.</td></tr></table>
+      <h3>Stomps, Abolish & the Wheel</h3>
+      <p><b>🥾 Stomp</b>: counter an opponent's card <i>as it's played</i> — it never resolves. 🛡 shielded cards can't be stomped; <b>K.G. Kevin Gill</b> protects your whole turn (but not from Fiend attacks). <b>🕳 Abolish</b>: exile cards to the Abyss — thin your starter Ninjas out of your deck! <b>🎡 Wheel of Fate</b>: some cards roll the d12 on a 12-result table of fortunes.</p>
+      <h3>Strategy tips (from the designers)</h3><p>Commit to one or two crews. Early game: buy Karma generators and abolish your starters. Juggalos are strong early buys. Watch your opponent's Fiends before playing your bombs — or lead with Kevin Gill.</p>
+      <div class="notice">This digital edition reconstructs the official 2016 rules from Psychopathic Records' how-to-play video. Cards marked ⚠ and Wheel results 2, 4, 5, 6, 9, 12 use placeholder effects until checked against licensed materials. The Oracle of the Three Rings expansion (Tarot & Gambit cards, Fast/Mirror effects) ships in a future update.</div>
+      </div>`;
+    this.scr("rulesScr");
+  },
+
+  /* ================= PROFILE & SETTINGS ================= */
+  profile(){
+    const st=S.data.stats;
+    document.getElementById("profScr").innerHTML=`
+      <div class="topbar"><button class="back" onclick="${act(()=>UI.home())}">‹</button><h2>Profile</h2>${S.data.premium?'<span class="tag gold">★ PREMIUM</span>':""}</div>
+      <div class="scroll">
+        <div class="statGrid">
+          <div class="statBox"><b>${st.games}</b><span>matches</span></div>
+          <div class="statBox"><b>${st.wins}</b><span>wins</span></div>
+          <div class="statBox"><b>${st.abolished}</b><span>cards abolished</span></div>
+          <div class="statBox"><b>${st.stomps}</b><span>stomps</span></div>
+        </div>
+        <h3>Achievements</h3>
+        ${ACHS.map(a=>`<div class="ach ${S.data.ach[a.id]?"":"locked"}"><span class="ic">${a.ic}</span><span class="t"><b>${a.n}</b><span>${a.d}</span></span></div>`).join("")}
+      </div>`;
+    this.scr("profScr");
+  },
+  settings(){
+    const st=S.data.set;
+    const tog=(key,label)=>`<button class="optBtn" onclick="${act(()=>{S.data.set[key]=!S.data.set[key];S.save();UI.settings();})}">${st[key]?"🟢":"⚪"} ${label}</button>`;
+    document.getElementById("setScr").innerHTML=`
+      <div class="topbar"><button class="back" onclick="${act(()=>UI.home())}">‹</button><h2>Settings</h2></div>
+      <div class="scroll">
+        ${tog("stompAsk","Ask before letting opponent cards resolve (stomp prompts)")}
+        ${tog("sound","Sound effects")}
+        ${tog("haptics","Haptic feedback")}
+        <button class="optBtn" onclick="${act(()=>{S.data.set.speed=st.speed>=2?0.7:st.speed+0.65;S.save();UI.settings();})}">🏃 Game speed: ${st.speed<1?"Relaxed":st.speed<1.5?"Normal":"Fast"}</button>
+        <h3 style="margin-top:20px">Danger zone</h3>
+        <button class="optBtn" style="color:var(--red)" onclick="${act(()=>{UI.choice("Reset all stats, achievements and premium status?",["Reset everything","Cancel"],{}).then(i=>{ if(i===0){ localStorage.removeItem("echoside"); S.load(); UI.toast("Progress reset."); UI.settings(); } });})}">🗑 Reset all progress</button>
+      </div>`;
+    this.scr("setScr");
+  }
+};
+
+/* ---- tiny synth ---- */
+let AC=null;
+function beep(freq,dur){
+  if(!S.data.set.sound) return;
+  try{
+    AC=AC||new (window.AudioContext||window.webkitAudioContext)();
+    const o=AC.createOscillator(), g=AC.createGain();
+    o.type="triangle"; o.frequency.value=freq;
+    g.gain.setValueAtTime(.12,AC.currentTime);
+    g.gain.exponentialRampToValueAtTime(.001,AC.currentTime+dur);
+    o.connect(g); g.connect(AC.destination);
+    o.start(); o.stop(AC.currentTime+dur);
+  }catch(e){}
+}
+
+document.getElementById("modal").addEventListener("click",e=>{ /* sheet choices must be answered — no dismiss-by-tap to avoid stuck promises */ });
+UI.home();
+</script>
+</body>
+</html>
