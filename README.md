@@ -27,3 +27,11 @@ Known limitations: no Gambit draft, no 2v2 team rules, no account-based cross-de
 `npm test` checks printed base component counts, invalid actions, private state projections, deterministic choice replay, every implemented card effect, and 30 complete two-, three-, and four-player AI games. The simulated games preserve unique physical cards and finish with equal turn counts. Local API integration checks used independent cookie sessions for host and guest: create/join/start, authorization, hidden hands, stale revision rejection, synchronized moves, and reconnect.
 
 Tutorial checks cover prepared setup, legal lesson progression, deterministic choices, card conservation, leaving guidance, and isolation from normal multiplayer and expansion games.
+
+## GitHub Pages
+
+The playable GitHub edition is at https://kirkcreason-dev.github.io/Into-the-echoside/ . The root `index.html`, `.nojekyll`, and `public/pages-bundle.js` are ready-to-serve files for the repository’s existing **main / (root)** Pages setting. After changing the game, run `npm run build:pages` and commit those generated files together with the source. `pages-dist/` is a standalone static export for other static hosts.
+
+The GitHub edition runs the same rules engine entirely in the browser. Solo matches and tutorials save on the device in IndexedDB. Online rooms use encrypted WebRTC data connections through PeerJS’s public signaling service. The host validates moves, saves the match, and sends each guest a view with other hands and deck order removed. Keep the host’s tab open; the host’s browser must return for a disconnected match to resume. Rejoin from the same browser to keep your seat. The host holds the full match state, so play with someone you trust. No dedicated TURN relay is configured; restrictive networks may prevent a direct connection. This differs from the separately hosted Worker/D1 edition described above.
+
+GitHub Pages validation includes room permissions, stale moves, hidden guest hands, choice replay, tutorial persistence, untrusted remote-view validation, and a two-browser multiplayer walkthrough with the Oracle card set. Generated Pages files do not require a ChatGPT sign-in.

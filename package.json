@@ -1,1 +1,21 @@
-{"name":"echoside-game-table","version":"0.1.0","private":true,"type":"module","scripts":{"dev":"wrangler dev --port 4173","build":"node build.mjs","test":"node --test test/*.test.mjs"},"dependencies":{"drizzle-orm":"^0.44.6"},"devDependencies":{"drizzle-kit":"^0.31.5","esbuild":"^0.25.10","wrangler":"^4.40.0"}}
+{
+  "name": "echoside-game-table",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --port 4173",
+    "build": "node build.mjs",
+    "test": "node --test test/*.test.mjs",
+    "build:pages": "node build-pages.mjs"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.44.6",
+    "peerjs": "^1.5.5"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.5",
+    "esbuild": "^0.25.10",
+    "wrangler": "^4.40.0"
+  }
+}
