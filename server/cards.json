@@ -4710,7 +4710,7 @@
   },
   {
     "id": "gambit01",
-    "n": "Gain 1 Karma",
+    "n": "Karma Infusion",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -4727,11 +4727,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=2s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=601s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit02",
-    "n": "3 GP",
+    "n": "GP Surge",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -4743,7 +4745,9 @@
     "txt": "This Gambit contributes 3 GP at game end.",
     "fx": [],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=6s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=617s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit03",
@@ -4765,11 +4769,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=10s",
-    "descriptiveName": true
+    "descriptiveName": true,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=551s",
+    "nameConfidence": "medium"
   },
   {
     "id": "gambit04",
-    "n": "Karma and reshuffle",
+    "n": "Karma Surge",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -4789,7 +4795,9 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=13s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=599s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit05",
@@ -4813,11 +4821,13 @@
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=18s",
     "descriptiveName": true,
-    "fast": true
+    "fast": true,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=582s",
+    "nameConfidence": "medium"
   },
   {
     "id": "gambit06",
-    "n": "Arrange top five",
+    "n": "Oracle's Wish",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -4834,12 +4844,14 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=20s",
-    "descriptiveName": true,
-    "fast": true
+    "descriptiveName": false,
+    "fast": true,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=584s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit07",
-    "n": "Stomp a non-Epic, even shielded",
+    "n": "Big Papa Stomp",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -4851,15 +4863,17 @@
     "txt": "Stomp a non-Epic card an opponent is playing. Shielding does not prevent this stomp.",
     "fx": [],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=23s",
-    "descriptiveName": true,
+    "descriptiveName": false,
     "reaction": {
       "nonEpic": true,
       "pierceShield": true
-    }
+    },
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=594s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit08",
-    "n": "Trade a Crew or Item",
+    "n": "Even Trade",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -4875,11 +4889,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=27s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=563s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit09",
-    "n": "Four of one Crew: abolish",
+    "n": "Abolish Novice",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -4895,7 +4911,9 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=31s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=614s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit10",
@@ -4916,11 +4934,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=34s",
-    "descriptiveName": true
+    "descriptiveName": true,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=557s",
+    "nameConfidence": "medium"
   },
   {
     "id": "gambit11",
-    "n": "Replace an Epic Tier card",
+    "n": "Epic Bone",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -4936,12 +4956,14 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=37s",
-    "descriptiveName": true,
-    "fast": true
+    "descriptiveName": false,
+    "fast": true,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=569s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit12",
-    "n": "Recover cards stomped this turn",
+    "n": "Necromancy Master",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -4958,11 +4980,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=40s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=623s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit13",
-    "n": "Wheel roll minus two",
+    "n": "Wheel Novice",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -4980,11 +5004,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=44s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=609s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit14",
-    "n": "Abolish your card and Gallery cards",
+    "n": "Abolish Master",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5011,11 +5037,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=48s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=612s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit15",
-    "n": "Obtain up to cost four",
+    "n": "Thief Master",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5032,11 +5060,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=52s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=585s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit16",
-    "n": "Obtain cost two",
+    "n": "Thief Novice",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5054,11 +5084,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=54s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=587s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit17",
-    "n": "Return Abyss cards to Main Deck",
+    "n": "Dark Priest",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5074,11 +5106,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=56s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=575s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit18",
-    "n": "Obtain up to cost three",
+    "n": "Thief Expert",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5095,11 +5129,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=60s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=586s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit19",
-    "n": "Top-deck up to cost five",
+    "n": "Gravedigger Expert",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5117,7 +5153,9 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=63s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=590s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit20",
@@ -5134,11 +5172,13 @@
     "fx": [],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=66s",
     "descriptiveName": false,
-    "mirror": true
+    "mirror": true,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=547s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit21",
-    "n": "Nullify all of one opponent's Fiends",
+    "n": "Fiendish Control",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5155,8 +5195,10 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=69s",
-    "descriptiveName": true,
-    "fast": true
+    "descriptiveName": false,
+    "fast": true,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=578s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit22",
@@ -5180,11 +5222,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=73s",
-    "descriptiveName": true
+    "descriptiveName": true,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=554s",
+    "nameConfidence": "medium"
   },
   {
     "id": "gambit23",
-    "n": "Discount Epic purchases",
+    "n": "Karma Boost",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5201,11 +5245,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=76s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=603s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit24",
-    "n": "Wheel roll plus one",
+    "n": "Wheel Expert",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5223,7 +5269,9 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=79s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=607s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit25",
@@ -5243,11 +5291,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=82s",
-    "descriptiveName": false
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=574s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit26",
-    "n": "Bitch Slap",
+    "n": "Pimp Slap",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5265,11 +5315,13 @@
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=87s",
     "descriptiveName": false,
-    "fast": true
+    "fast": true,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=581s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit27",
-    "n": "Wheel roll plus three",
+    "n": "Wheel Master",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5287,7 +5339,9 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=91s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=605s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit28",
@@ -5307,11 +5361,13 @@
     "reaction": {
       "nonEpic": false,
       "maxCost": 3
-    }
+    },
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=597s",
+    "nameConfidence": "medium"
   },
   {
     "id": "gambit29",
-    "n": "Abolish one of your cards",
+    "n": "Abolish Expert",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5332,11 +5388,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=97s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=613s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit30",
-    "n": "Recover a stomped card up to cost four",
+    "n": "Necromancy Novice",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5353,11 +5411,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=100s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=626s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit31",
-    "n": "2 GP",
+    "n": "GP Infusion",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5369,11 +5429,13 @@
     "txt": "This Gambit contributes 2 GP at game end.",
     "fx": [],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=104s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=619s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit32",
-    "n": "Stomp up to cost five",
+    "n": "Big Baby Stomp",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5385,15 +5447,17 @@
     "txt": "Stomp a card costing 5 or less that an opponent is playing.",
     "fx": [],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=107s",
-    "descriptiveName": true,
+    "descriptiveName": false,
     "reaction": {
       "nonEpic": false,
       "maxCost": 5
-    }
+    },
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=595s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit33",
-    "n": "Top-deck up to cost three",
+    "n": "Gravedigger Novice",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5411,11 +5475,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=110s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=591s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit34",
-    "n": "Recover a stomped card up to cost six",
+    "n": "Necromancy Expert",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5432,11 +5498,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=113s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=625s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit35",
-    "n": "Top-deck a non-Epic",
+    "n": "Gravedigger Master",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5454,11 +5522,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=117s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=589s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit36",
-    "n": "1 GP",
+    "n": "GP Boost",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5470,11 +5540,13 @@
     "txt": "This Gambit contributes 1 GP at game end.",
     "fx": [],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=120s",
-    "descriptiveName": true
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=620s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit37",
-    "n": "Nullify all of one opponent's Items",
+    "n": "Item Malfunction",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5491,12 +5563,14 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=123s",
-    "descriptiveName": true,
-    "fast": true
+    "descriptiveName": false,
+    "fast": true,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=580s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit38",
-    "n": "Reveal two, keep one on top",
+    "n": "Winds of Change",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5513,8 +5587,10 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=125s",
-    "descriptiveName": true,
-    "fast": true
+    "descriptiveName": false,
+    "fast": true,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=559s",
+    "nameConfidence": "high"
   },
   {
     "id": "gambit39",
@@ -5535,11 +5611,13 @@
       }
     ],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=128s",
-    "descriptiveName": true
+    "descriptiveName": true,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=573s",
+    "nameConfidence": "medium"
   },
   {
     "id": "gambit40",
-    "n": "Initial Speed",
+    "n": "Ninja Speed",
     "t": "GAMBIT",
     "set": "oracle",
     "copies": 1,
@@ -5551,6 +5629,8 @@
     "txt": "You take the first turn when the game begins; play then continues clockwise.",
     "fx": [],
     "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=138s",
-    "descriptiveName": false
+    "descriptiveName": false,
+    "nameSource": "https://www.youtube.com/watch?v=M1S0Til3mQk&t=561s",
+    "nameConfidence": "high"
   }
 ]

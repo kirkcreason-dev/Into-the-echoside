@@ -201,7 +201,7 @@ test("Gambit scoring remains private until the final score", async () => {
   assert.equal(after.scores[1].gp, 3);
   assert.equal(viewState(after, 0).players[1].gambits[0].d.gp, 3);
 });
-test("Initial Speed controls the first turn and is consumed", async () => {
+test("Ninja Speed controls the first turn and is consumed", async () => {
   let found = false;
   for (let seed = 1; seed < 30 && !found; seed++) {
     const config = {
@@ -220,6 +220,7 @@ test("Initial Speed controls the first turn and is consumed", async () => {
       assert.equal(r.pending, null);
       assert.equal(r.state.active, 0);
       assert.equal(r.state.first, 0);
+      assert.deepEqual(r.state.firstRolls, []);
       assert(r.state.gambitRemoved.some((c) => c.id === "gambit40"));
       found = true;
     }

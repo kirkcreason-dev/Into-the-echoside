@@ -4,7 +4,7 @@ This release corrects the earlier development build; it is not a claim of publis
 
 ## Automated checks
 
-All 48 checks passed; both Pages and Worker builds completed.
+All 59 checks passed; both Pages and Worker builds completed.
 
 - Base component counts; beginner exclusions; deterministic first-player rolls.
 - Invalid actions leave the source state unchanged; choices replay deterministically.
@@ -12,7 +12,7 @@ All 48 checks passed; both Pages and Worker builds completed.
 - Guided tutorial progression, leaving guidance, and isolation from ordinary matches.
 - Juggalo cycle limit; protected Flavor; copied Juggalo and Item effects; Soopa Soaka timing; counter-stomps; Fiend targets and lifetime; team gifts and enemy targeting.
 - Epic-point scoring ties, printed Crew scoring, Fast purchase/Item interrupts, Mirror draw quantity, Jacob's Word Karma, Gallery replacement boundaries and multiple My Axe effects.
-- All 40 Gambits: draft budgets, privacy, one-use removal, legal effect resolution, reaction limits, private final points and Initial Speed.
+- All 40 Gambits: draft budgets, privacy, one-use removal, legal effect resolution, reaction limits, private final points and Ninja Speed.
 - Host backups preserve pending drafts and deterministic continuation; imported card definitions are canonicalized; malformed backups are rejected.
 - Clock expiry rejects early claims and advances a stalled match.
 - Thirty complete base/Oracle games and six Gambit games across two, three and four seats check conservation and equal final turn counts.
@@ -23,6 +23,16 @@ Two independent browser origins were used as host and guest. Verified room creat
 
 ## Limits
 
-The original base manual was recovered. Oracle verification uses physical-card video and narrated rulebook examples; exact Epic setup and uncommon timings remain open. Gambit artwork and 36 printed names are unavailable at reliable quality. See README.md and SOURCES.md.
+The original base manual was recovered. Oracle verification uses physical-card video and narrated rulebook examples; exact Epic setup and uncommon timings remain open. Clean Gambit artwork and six printed names remain unavailable at reliable quality. See README.md and SOURCES.md.
 
 GitHub Pages rooms require an online host tab and a working direct WebRTC connection. Backups and recovery keys support manual recovery; there is no automatic host migration, dedicated relay, account system or always-on game server. Automated simulations do not prove every possible card interaction.
+
+## Version 0.3.0 additions
+
+- All four base variants: legal setup, Unity replacement, custom Epic supplies, Main-only ending, top-card privacy, shared Relic ownership/activation/cleanup and room projection.
+- Shovel/Mirror, full discard shuffle/Flying Guillotine, copied Sideshow, and Ninja Speed setup ordering regressions.
+- Eight reproducible practice scripts checked against explicit outcome assertions. Kit positions use physically available cards and deck order is printed top first.
+- Large card inspection, required-choice inspection, contextual reactions, persistent sound, mobile controls and reduced motion.
+- Browser checks cover variant creation, Relic activation, visible deck tops, enlarged printed cards, Oracle scenario resolution, and a 390-pixel mobile layout.
+
+Human physical sessions remain outstanding. The comparison form downloads a replayable report locally and sends nothing automatically.

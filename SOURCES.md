@@ -68,9 +68,25 @@ The 20-page PDF was extracted and its setup, optional rules, team play and FAQ p
 Physical card visual source: MegzDiamond, “Gambit Cards From Into The Echoside Expansion Oracle Of The Three Rings,” July 21, 2023:
 https://www.youtube.com/watch?v=6sEtkXGAqFc
 
-All 40 printed effects and draft costs were visually checked. `sources/gambits.json` records paraphrased mechanics, timing, cost, source timestamp links, and whether a displayed name is descriptive. Four printed names are legible; 36 use descriptive labels. No video footage or still images are redistributed with the game.
+All 40 printed effects and draft costs were visually checked. `sources/gambits.json` records paraphrased mechanics, timing, cost, source timestamp links, and whether a displayed name is descriptive. The original short video verified four names; the later cross-reference below corroborates 34 and leaves six descriptive labels. No video footage or still images are redistributed with the game.
 
 Secondary rulebook demonstration: DCFAYGOGUY, “Oracle Of The Three Rings (Unboxing/Review),” May 22, 2018:
 https://www.youtube.com/watch?v=GuQZWbNhZiY
 
 Relevant segments: 10:06 Tarot; 11:48 Oracle's Favor before a draw; 14:14 Dumpin interrupts a purchase without spending buyer Karma; 15:28 Bitch Slap interrupts Item activation; 17:14 Fast Karma survives to the owner's turn; 18:04 Mirror takes one draw from Jumpsteady's two-card draw; 22:26 two-player Gambit setup (ten choices, three points, hidden picks, single use). Narrated examples are secondary evidence, not a recovered complete Oracle manual. The Epic setup count, full three-/four-player Gambit setup, starting-Tarot details, and uncommon priority interactions remain unverified.
+
+## Second Oracle booklet and Gambit source
+
+Fear the Fn beard, “Unboxing into The Echoside oracles Of The Three Rings,” May 23, 2018: https://www.youtube.com/watch?v=M1S0Til3mQk
+
+The presenter displays and reads Gambits around 9:07–10:30. A second-source cross-reference corroborates 34 normalized names. Six medium-confidence readings are retained only in research; the game keeps descriptive labels for those. This corrects the previously displayed Gambit names Initial Speed to **Ninja Speed** and Bitch Slap to **Pimp Slap**; the Main Deck Bitch Slap cards are separate. Per-card timestamp links and confidence are stored in `sources/gambits.json`.
+
+Readable booklet footage around 4:00–4:15 confirms Ninja Speed is revealed after Gambit selection and before the first-player die roll, and GP Gambits are revealed at scoring. It also describes the Juggalo Army expansion variant, which is not implemented in this release. Setup and Tarot pages remain too blurred/cropped to settle the Epic count, full 3–4-player draft or starting Tarot. A higher-bitrate rendition did not recover the missing text.
+
+No clean new Gambit artwork was recovered. Four video frames can serve as small photographic research references but are not scan-quality game assets. They are not distributed.
+
+## Base variants and audit corrections
+
+The recovered base manual p.14 supplies Abolish Made Easy, A Matter of Time, House of Mirrors and Relic of Power. The digital Relic is excluded from ownership, scoring and effect targets; an ability that requires removing it cannot be paid. Zero selected Epics is treated as a Main-only game, an explicit setup convention for the manual's open-ended Epic-count option.
+
+Printed Shovel draws now offer a Mirror response. Flying Guillotine runs before effect-driven full discard shuffles as well as draw-pile replenishment. Sideshow Freaks counts two other Dark Carnival cards when its effect is copied. Dedicated regression cases accompany these changes. The audit inventory and physical comparison kit do not claim exhaustive proof of every combination.

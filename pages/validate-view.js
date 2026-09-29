@@ -76,6 +76,7 @@ export function validateView(value) {
       g[zone] = cards(g[zone]);
     for (const zone of ["gambitReserve", "gambitRemoved"])
       if (g[zone]) g[zone] = cards(g[zone], 40);
+    if (g.relic) g.relic = card(g.relic);
     if (!g.jug || !number(g.jug.count, 0, 100)) bad();
     g.jug.top = card(g.jug.top);
     if (g.jug.cards) g.jug.cards = cards(g.jug.cards, 100);
@@ -106,6 +107,7 @@ export function validateView(value) {
         q.labels.some((s) => typeof s !== "string" || s.length > 2000))
     )
       bad();
+    if (q.contextCards) q.contextCards = cards(q.contextCards);
     if (q.kind === "cards") {
       q.cards = cards(q.cards);
       if (

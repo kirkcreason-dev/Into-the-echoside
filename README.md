@@ -10,6 +10,19 @@ Start with **Learn to play · guided game**, play against the Void, or create an
 
 Oracle tables deal ten private Gambit choices to each player with a three-point selection budget. Selected Gambits remain separate from the deck. Use each once at its stated time; reaction Gambits appear automatically at eligible windows. Unreadable printed names use identified descriptive labels. Their effects and draft costs were checked against visible physical cards.
 
+## Variants, card inspection, and practice
+
+All four requested base variants are available in **Optional variants** when creating a solo or online table:
+
+- **Abolish Made Easy:** replace a Unity benefit with abolishing one eligible card from hand or discard.
+- **A Matter of Time:** choose the Epic supply and optionally play until the Main Deck runs out. Zero Epics automatically selects the Main-only ending.
+- **House of Mirrors:** the top Main, Epic and Flavor cards remain public; lower cards remain hidden.
+- **Relic of Power:** select an eligible Item or draw one randomly. Every player uses it during their own turn, without owning, scoring, or removing it.
+
+Cards enlarge in a separate window, including during required selections. Reaction windows show card effects. Sound preferences persist on the device; mobile controls, focus indicators, readable labels and reduced-motion support are included.
+
+[Oracle guided practice and physical test kit](https://kirkcreason-dev.github.io/Into-the-echoside/public/playtest/) provide eight controlled scenarios, exact card orders, expected results, printable positions and downloadable comparison reports. [Download the kit](https://kirkcreason-dev.github.io/Into-the-echoside/public/playtest/echoside-playtest-kit.zip). Its audit CSV inventories all 236 definitions and distinguishes source evidence from uncompleted physical verification. See [playtest instructions](playtest/README.md).
+
 ## Online rooms and recovery
 
 GitHub Pages uses PeerJS/WebRTC connections. The host validates moves and stores the full match in IndexedDB; other players receive only their permitted view. Keep the host's tab open. The host can see full underlying state, so use a trusted host. Some restrictive networks block direct connections; no dedicated TURN relay is configured.
@@ -36,8 +49,8 @@ Remaining fidelity limits are explicit:
 - No complete readable Oracle manual was located. The current Epic setup uses 11/13/15 cards for 2/3/4 players; that expansion count is not independently verified.
 - Ten Gambit choices and a three-point budget are demonstrated for two players. Applying the same deal to three and four players is an implementation assumption.
 - Fast/Mirror behavior follows visible card text and narrated book examples. Uncommon priority interactions and starting-Tarot details still need the full manual.
-- Four Gambit names are legible; the remaining 36 use descriptive names and text-based card faces.
-- Optional base variants other than team play (Abolish Made Easy, A Matter of Time, House of Mirrors and Relic of Power) are not included.
+- Thirty-four Gambit names are corroborated across physical-card videos; six remain descriptive labels. All Gambit faces use readable text layouts because clean artwork scans are unavailable.
+- Physical-versus-digital results have not yet been collected. The supplied kit prepares that work; it does not certify the replica.
 
 No publishing license or publisher endorsement is asserted.
 

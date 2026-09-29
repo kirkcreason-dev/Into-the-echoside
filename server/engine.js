@@ -1,4 +1,5 @@
 import DB from "./cards.json" with { type: "json" };
+import { normalizeVariants } from "./variants.js";
 export { DB };
 const DEF = Object.fromEntries(DB.map((d) => [d.id, d]));
 const CREWS = ["DC", "PSY", "UG"];
@@ -131,6 +132,7 @@ export function makeRuntime(state, answers = []) {
       kind: opts.kind,
       title: opts.title,
       sub: opts.sub || "",
+      ...(opts.contextCards ? { contextCards: opts.contextCards.map(c => ({u:c.u,id:c.id,d:c.d})) } : {}),
       labels: opts.labels,
       cards: cards.map((c) => ({ u: c.u, id: c.id, d: c.d })),
       min,
@@ -264,7 +266,7 @@ export function makeRuntime(state, answers = []) {
     return choose(p, { ...opts, kind: "cards" });
   }
   async function pickOption(p, title, labels, meta) {
-    return choose(p, { title, labels, meta, kind: "option" });
+    return choose(p, { title, labels, meta, sub: meta?.sub, contextCards: meta?.contextCards, kind: "option" });
   }
 
   /* ======================= EFFECT ENGINE ======================= */
@@ -272,7 +274,7 @@ export function makeRuntime(state, answers = []) {
     for (const o of ops || []) {
       if (G.over) return;
       if (++budget > 700) throw Error("This effect chain is too long.");
-      await fastWindow(p, `${p.name}: ${o.op}`, ctx || {});
+      await fastWindow(p, ctx?.card ? `${p.name} resolves ${ctx.card.d.n}: ${ctx.card.d.txt}` : `${p.name} resolves a benefit`, ctx || {});
       await runOp(p, o, ctx || {});
     }
   }
@@ -283,21 +285,24 @@ export function makeRuntime(state, answers = []) {
         log(`<b>${p.name}</b> +${o.n} Karma (${p.karma})`);
         if (p.karma >= 15) unlock("big_turn");
         break;
-      case "draw":
-        await drawSafe(p, o.n);
-        log(`<b>${p.name}</b> draws ${o.n}`);
-        await mirrorWindow(p, "draw", ctx);
+      case "draw": {
+        const drawn = await drawSafe(p, o.n);
+        log(`<b>${p.name}</b> draws ${drawn.length}`);
+        if (drawn.length) await mirrorWindow(p, "draw", ctx);
         break;
-      case "drawFlavor":
+      }
+      case "drawFlavor": {
+        const before = p.hand.length;
         drawFlavorN(p, o.n);
-        log(`<b>${p.name}</b> draws ${o.n} Flavor`);
-        await mirrorWindow(p, "flavor", ctx);
+        log(`<b>${p.name}</b> draws ${p.hand.length - before} Flavor`);
+        if (p.hand.length > before) await mirrorWindow(p, "flavor", ctx);
         break;
+      }
       case "drawKeep": {
         const tmp = await drawSafe(p, o.draw);
         tmp.forEach((c) => removeFrom(p.hand, c));
-        await mirrorWindow(p, "draw", ctx);
         if (!tmp.length) break;
+        await mirrorWindow(p, "draw", ctx);
         const kept = await pickCards(p, {
           title: `Keep ${o.keep}`,
           sub: "The rest are discarded.",
@@ -480,6 +485,7 @@ export function makeRuntime(state, answers = []) {
           p.deck.pop();
           p.hand.push(top);
           log(`<b>${p.name}</b>'s Shovel digs up ${top.d.n}`);
+          await mirrorWindow(p, "draw", ctx);
           if (!p.isAI) UI.toast(`⛏️ Dug up: ${top.d.n}`);
         } else {
           log(
@@ -862,16 +868,24 @@ export function makeRuntime(state, answers = []) {
     if (p.unityUsed || !unityReady(p)?.includes(crew)) return;
     p.unityUsed = true;
     log(`<b>${p.name}</b> claims ${TYPE_META[crew].label} Unity`);
+    if (await replaceUnity(p)) return;
     if (crew === "DC") await runOps(p, [{ op: "k", n: 2 }], {});
     if (crew === "PSY") await runOps(p, [{ op: "draw", n: 1 }], {});
     if (crew === "UG") await runOps(p, [{ op: "drawFlavor", n: 1 }], {});
     UI.render();
   }
+  async function replaceUnity(p) {
+    if (!G.variants?.abolishUnity || ![...p.hand, ...p.discard].some(c => c.d.t !== "FLAVOR")) return false;
+    const choice = await pickOption(p, "Abolish Made Easy", ["Take the Unity benefit", "Abolish a card instead"], {});
+    if (choice !== 1) return false;
+    await runOps(p, [{ op: "abolish", from: ["hand", "discard"], max: 1 }], {});
+    return true;
+  }
   function living(c) {
     return c && !c.nullBy && c.nullTurn !== G.turnN;
   }
   function passives(p, kind) {
-    return [...p.items, ...p.inPlay, ...(p.endTurnEffects || [])].filter(
+    return [...p.items, ...p.inPlay, ...(p.endTurnEffects || []), ...(G.relic && G.players[G.active] === p ? [G.relic] : [])].filter(
       (c) => living(c) && (c.d.passive === kind || c.borrowedPassive === kind),
     );
   }
@@ -909,14 +923,17 @@ export function makeRuntime(state, answers = []) {
   }
   async function ensureDeck(p) {
     if (!p.deck.length && p.discard.length) {
-      for (const effect of passives(p, "guillotine"))
+      await beforeDiscardShuffle(p);
+      p.deck = shuffle(p.discard.splice(0));
+    }
+  }
+  async function beforeDiscardShuffle(p) {
+    if (p.discard.length) for (const effect of passives(p, "guillotine"))
         await runOps(
           p,
           [{ op: "abolish", from: ["hand", "discard"], max: 1, opt: true }],
           { noMirror: true, noFast: true },
         );
-      p.deck = shuffle(p.discard.splice(0));
-    }
   }
   async function drawSafe(p, n) {
     const drawn = [];
@@ -930,6 +947,7 @@ export function makeRuntime(state, answers = []) {
     return drawn;
   }
   async function newGame(config) {
+    const variants = normalizeVariants(config.variants, !!config.expansion, config.advanced !== false);
     if (config.teams && config.players.length !== 4)
       throw Error("Team play requires four players.");
     if (
@@ -963,6 +981,7 @@ export function makeRuntime(state, answers = []) {
       advanced: config.advanced !== false,
       log: [],
       expansion: !!config.expansion,
+      variants,
       config,
       extraGallery: [],
     };
@@ -992,20 +1011,22 @@ export function makeRuntime(state, answers = []) {
     shuffle(G.flavor);
     shuffle(G.epicDeck);
     shuffle(G.jug);
+    if (variants.relic) {
+      const i = variants.relic === "random"
+        ? G.main.findLastIndex(c => c.d.t === "ITEM" && c.id !== "c2512")
+        : G.main.findIndex(c => c.id === variants.relic);
+      if (i < 0) throw Error("The selected Relic is not in this card set.");
+      G.relic = G.main.splice(i, 1)[0];
+      if (variants.relic === "random") shuffle(G.main);
+      log(`Relic of Power: <b>${G.relic.d.n}</b>. Its effects are available during each player's own turn.`);
+    }
     G.players = config.players.map((p) => newPlayer(p.name, !!p.isAI));
     for (const p of G.players) await drawSafe(p, 5);
-    G.epicDeck.splice(0, Math.max(0, (4 - G.players.length) * 2));
+    const epicCount = variants.epicCount ?? G.epicDeck.length - Math.max(0, (4 - G.players.length) * 2);
+    G.epicDeck.splice(0, G.epicDeck.length - epicCount);
     G.epicTier = G.epicDeck.splice(-3);
-    let contenders = G.players.map((_, i) => i);
-    G.firstRolls = [];
-    while (contenders.length > 1) {
-      const rolls = contenders.map((seat) => ({ seat, roll: d12() }));
-      G.firstRolls.push(rolls);
-      const best = Math.max(...rolls.map((r) => r.roll));
-      contenders = rolls.filter((r) => r.roll === best).map((r) => r.seat);
-    }
-    G.active = contenders[0];
-    G.first = G.active;
+    while (G.epicTier.length < 3) G.epicTier.push(null);
+    G.first = 0;
     G.gambitsEnabled = G.expansion && !!config.gambits;
     G.gambitRemoved = [];
     G.gambitReserve = [];
@@ -1045,6 +1066,19 @@ export function makeRuntime(state, answers = []) {
       }
       delete G.phase;
     }
+    // Ninja Speed is revealed after drafting, before any first-player roll.
+    if (!G.gambitRemoved.some(c => c.d.timing === "game_start")) {
+      let contenders = G.players.map((_, i) => i);
+      G.firstRolls = [];
+      while (contenders.length > 1) {
+        const rolls = contenders.map((seat) => ({ seat, roll: d12() }));
+        G.firstRolls.push(rolls);
+        const best = Math.max(...rolls.map((r) => r.roll));
+        contenders = rolls.filter((r) => r.roll === best).map((r) => r.seat);
+      }
+      G.active = contenders[0];
+      G.first = G.active;
+    } else G.firstRolls = [];
     await refillGallery(G.players[G.active]);
     if (config.tutorial) {
       // Rearrange existing cards, preserving the printed starter deck and all supplies.
@@ -1149,7 +1183,7 @@ export function makeRuntime(state, answers = []) {
     checkEndTriggers();
   }
   function checkEndTriggers() {
-    if (!G.endTriggered && (!G.main.length || !G.epicDeck.length)) {
+    if (!G.endTriggered && (!G.main.length || (!G.variants?.mainOnly && !G.epicDeck.length))) {
       G.endTriggered = true;
       log("The shared deck is exhausted. Finish the round with equal turns.");
     }
@@ -1332,7 +1366,7 @@ export function makeRuntime(state, answers = []) {
           q,
           title,
           [...cards.map((c) => "Fast: " + c.d.n), "Pass"],
-          { purpose: "reaction" },
+          { purpose: "reaction", contextCards: cards, sub: "Use a Fast card now, or pass to continue the announced action." },
         );
         if (ch >= cards.length) break;
         if (cards[ch].d.t === "GAMBIT")
@@ -1363,7 +1397,7 @@ export function makeRuntime(state, answers = []) {
           choice = avail.length && c.d.cost >= 5 ? 0 : options.length - 1;
         } else
           choice = await pickOption(q, `${p.name} plays ${c.d.n}`, options, {
-            purpose: "reaction",
+            purpose: "reaction", contextCards: [c, ...avail, ...fast], sub: "A stomp cancels the played card if it resolves. Fast cards interrupt before the effect continues.",
           });
         if (choice === options.length - 1) break;
         if (choice >= avail.length) {
@@ -1429,7 +1463,7 @@ export function makeRuntime(state, answers = []) {
         q,
         `Mirror ${p.name}'s ${kind} effect?`,
         [...cards.map((c) => "Play " + c.d.n), "Pass"],
-        { purpose: "reaction" },
+        { purpose: "reaction", contextCards: cards, sub: "Mirror copies one draw or one abolish benefit; it does not copy the entire printed effect." },
       );
       if (ch < cards.length) {
         const c = cards[ch];
@@ -1682,6 +1716,7 @@ export function makeRuntime(state, answers = []) {
     G.active = (G.active + 1) % G.players.length;
     G.turnN++;
     const np = G.players[G.active];
+    if (G.relic) G.relic.tilted = false;
     np.items.forEach((c) => (c.tilted = false));
     for (const q of G.players)
       for (const c of [...q.items, ...q.fiends, ...q.inPlay]) {
@@ -1699,7 +1734,7 @@ export function makeRuntime(state, answers = []) {
       }
     }
     await refillGallery(np);
-    if (np.hand.length < 5 && has(np, "lotus")) {
+    if (np.hand.length < 5 && np.items.some(c => c.d.passive === "lotus" && living(c))) {
       const c = np.items.find((c) => c.d.passive === "lotus" && living(c));
       const ch = await pickOption(
         np,
@@ -1783,6 +1818,7 @@ export function makeRuntime(state, answers = []) {
             {},
           )) === 0
         ) {
+          await beforeDiscardShuffle(p);
           p.deck.push(...p.discard.splice(0));
           shuffle(p.deck);
         }
@@ -1953,7 +1989,7 @@ export function makeRuntime(state, answers = []) {
         G.abyss.push(ctx.card);
         break;
       case "crewAbolish":
-        if (crewCounts(p)[o.crew] >= 3)
+        if ([...p.inPlay, ...p.items, ...p.fiends].filter(c => c !== ctx.card && crewOf(c) === o.crew).length >= 2)
           await runOps(
             p,
             [{ op: "abolish", from: ["hand", "discard"], max: 1, opt: true }],
@@ -1961,6 +1997,7 @@ export function makeRuntime(state, answers = []) {
           );
         break;
       case "freeUnity": {
+        if (await replaceUnity(p)) break;
         const i = await pickOption(
           p,
           "Choose a Unity benefit",
@@ -1985,7 +2022,7 @@ export function makeRuntime(state, answers = []) {
         break;
       }
       case "juggaloKarma":
-        p.karma += [...p.inPlay, ...p.items, ...p.discard].filter((c) =>
+        p.karma += [...p.inPlay, ...p.items, ...p.discard, ...(G.relic && G.players[G.active] === p ? [G.relic] : [])].filter((c) =>
           /juggalo/i.test(c.d.n),
         ).length;
         break;
@@ -2367,6 +2404,7 @@ export function makeRuntime(state, answers = []) {
             {},
           )) === 0
         ) {
+          await beforeDiscardShuffle(p);
           p.deck.push(...p.discard.splice(0));
           shuffle(p.deck);
         }
@@ -2575,6 +2613,7 @@ export function makeRuntime(state, answers = []) {
       (c) => living(c) && !c.tilted && (c.d.active || c.borrowedActive),
     );
     if (it) return { type: "item", id: it.u };
+    if (G.relic?.d.active && !G.relic.tilted) return { type: "relic" };
     const u = unityReady(p);
     if (u) return { type: "unity", crew: u[0] };
     const epic = G.epicTier.findIndex(
@@ -2684,6 +2723,9 @@ export function makeRuntime(state, answers = []) {
               [...p.items, ...p.inPlay].find((c) => c.u === action.id),
             );
             break;
+          case "relic":
+            await useItem(p, G.relic);
+            break;
           case "fiend":
             await useFiend(
               p,
@@ -2746,9 +2788,11 @@ export function viewState(state, seat) {
     p.deck = Array(p.deck.length).fill(null);
     if (i !== seat && !g.over) p.hand = Array(p.hand.length).fill(null);
   });
-  g.main = Array(g.main.length).fill(null);
-  g.flavor = Array(g.flavor.length).fill(null);
-  g.epicDeck = Array(g.epicDeck.length).fill(null);
+  for (const zone of ["main", "flavor", "epicDeck"]) {
+    const top = g[zone].at(-1);
+    g[zone] = Array(g[zone].length).fill(null);
+    if (g.variants?.mirrors && top) g[zone][g[zone].length - 1] = top;
+  }
   g.jug = { count: g.jug.length, top: g.jug.at(-1) || null, cards: g.jug };
   if (g.gambitReserve)
     g.gambitReserve = Array(g.gambitReserve.length).fill(null);

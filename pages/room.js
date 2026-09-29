@@ -1,4 +1,5 @@
 import { transition, viewState } from "../server/engine.js";
+import { normalizeVariants } from "../server/variants.js";
 
 export function fail(status, message) {
   const e = new Error(message);
@@ -52,6 +53,7 @@ export async function createRoom(session, body) {
         ? body.turnSeconds
         : 0,
     expansion: body.tutorial ? false : !!body.expansion,
+    variants: normalizeVariants(body.tutorial ? {} : body.variants, !!body.expansion, body.advanced !== false),
     seed: crypto.getRandomValues(new Uint32Array(1))[0],
     game: null,
     pending: null,
@@ -65,6 +67,7 @@ export async function createRoom(session, body) {
         advanced: room.advanced,
         expansion: room.expansion,
         gambits: room.expansion,
+        variants: room.variants,
         tutorial: !!body.tutorial,
         seed: room.seed,
       },
@@ -83,6 +86,7 @@ export function projectRoom(room, session) {
     expansion: room.expansion,
     teams: !!room.teams,
     advanced: room.advanced !== false,
+    variants: room.variants || {},
     turnSeconds: room.turnSeconds || 0,
     deadline:
       room.turnSeconds && room.status === "playing"
@@ -140,6 +144,7 @@ export async function changeRoom(source, session, route, body = {}) {
           advanced: room.advanced,
           expansion: room.expansion,
           gambits: room.expansion,
+          variants: room.variants,
           seed: room.seed,
         },
       });
@@ -201,6 +206,7 @@ export async function changeRoom(source, session, route, body = {}) {
               "buy",
               "cycle",
               "item",
+              "relic",
               "fiend",
               "unity",
               "end",
