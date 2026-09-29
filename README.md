@@ -8,7 +8,7 @@ A community digital adaptation with the base game, Oracle cards, all 40 Gambit e
 
 Start with **Learn to play · guided game**, play against the Void, or create an online room and share its invitation. Choose the beginner base game, advanced base game, or base plus Oracle. In team games, seats 1 + 3 face seats 2 + 4.
 
-Oracle tables deal ten private Gambit choices to each player with a three-point selection budget. Selected Gambits remain separate from the deck. Use each once at its stated time; reaction Gambits appear automatically at eligible windows. Unreadable printed names use identified descriptive labels. Their effects and draft costs were checked against visible physical cards.
+Oracle tables offer an **Include Gambits** switch. With it enabled, they deal ten private Gambit choices to each player with a three-point selection budget. Selected Gambits remain separate from the deck. Use each once at its stated time; reaction Gambits appear automatically at eligible windows. Unreadable printed names use identified descriptive labels. Their effects and draft costs were checked against visible physical cards.
 
 ## Variants, card inspection, and practice
 
@@ -19,9 +19,11 @@ All four requested base variants are available in **Optional variants** when cre
 - **House of Mirrors:** the top Main, Epic and Flavor cards remain public; lower cards remain hidden.
 - **Relic of Power:** select an eligible Item or draw one randomly. Every player uses it during their own turn, without owning, scoring, or removing it.
 
+**Juggalo Army** is also available with Oracle: remove three chosen Starters, recruit three Juggalos in rounds starting with a separate die winner, then shuffle before drawing opening hands. Removed Starters stay outside the game. Gambits can be enabled independently.
+
 Cards enlarge in a separate window, including during required selections. Reaction windows show card effects. Sound preferences persist on the device; mobile controls, focus indicators, readable labels and reduced-motion support are included.
 
-[Oracle guided practice and physical test kit](https://kirkcreason-dev.github.io/Into-the-echoside/public/playtest/) provide eight controlled scenarios, exact card orders, expected results, printable positions and downloadable comparison reports. [Download the kit](https://kirkcreason-dev.github.io/Into-the-echoside/public/playtest/echoside-playtest-kit.zip). Its audit CSV inventories all 236 definitions and distinguishes source evidence from uncompleted physical verification. See [playtest instructions](playtest/README.md).
+[Oracle guided practice and physical test kit](https://kirkcreason-dev.github.io/Into-the-echoside/public/playtest/) provide eight controlled scenarios, exact card orders, expected results, printable positions and downloadable comparison reports. [Download the kit](https://kirkcreason-dev.github.io/Into-the-echoside/public/playtest/echoside-playtest-kit.zip). Its audit CSV inventories all 236 definitions and distinguishes source evidence from uncompleted physical verification. See [playtest instructions](playtest/README.md) and the [Oracle setup checklist](playtest/setup-checks.md).
 
 ## Online rooms and recovery
 
@@ -50,6 +52,7 @@ Remaining fidelity limits are explicit:
 - Ten Gambit choices and a three-point budget are demonstrated for two players. Applying the same deal to three and four players is an implementation assumption.
 - Fast/Mirror behavior follows visible card text and narrated book examples. Uncommon priority interactions and starting-Tarot details still need the full manual.
 - Thirty-four Gambit names are corroborated across physical-card videos; six remain descriptive labels. All Gambit faces use readable text layouts because clean artwork scans are unavailable.
+- The public [source-request draft](sources/oracle-source-request.md) identifies a community member who offered the missing PDFs; no request has been sent and no files received.
 - Physical-versus-digital results have not yet been collected. The supplied kit prepares that work; it does not certify the replica.
 
 No publishing license or publisher endorsement is asserted.
@@ -70,6 +73,6 @@ The optional Worker/D1 transport uses the same room rules as Pages. Run `npx wra
 
 ## Verification
 
-The automated suite covers permissions, hidden views, deterministic pending-choice replay, invalid/stale actions, tutorial progression, printed rule regressions, all implemented card effects, Gambit costs/drafts/timing/scoring, backups and clocks. It runs 30 complete base/Oracle games plus six complete Gambit games across 2–4 seats, checking card conservation and equal final turn counts.
+The automated suite covers permissions, hidden views, deterministic pending-choice replay, invalid/stale actions, tutorial progression, printed rule regressions, all implemented card effects, Gambit costs/drafts/timing/scoring, backups and clocks. It runs 30 complete base/Oracle games plus six complete Gambit games, three Juggalo Army/Gambit/Relic games, and two combined-variant games across 2–4 seats, checking card conservation and equal final turn counts.
 
 Browser checks cover private online drafts, synchronized recruitment and turn handoff, reconnecting after reload, the repaired Gambit controls, and narrow-screen rendering. See [VALIDATION.md](VALIDATION.md) for release checks and practical limits.

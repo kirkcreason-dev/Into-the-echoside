@@ -42,6 +42,20 @@ test('online room carries variants into setup and validates projected relic/top 
 test('Shovel draw opens a Mirror reaction',async()=>{
  let g=await start({},true),p=g.players[g.active],other=(g.active+1)%2;g.players[other].isAI=false;g.players[other].hand=[];add(g,'c1414','hand',other);const shovel=add(g,'c2500','items');p.deck=[{id:'c1203',u:++g.uid,d:defs.c1203}];const r=await transition(g,{type:'item',id:shovel.u});assert.match(r.pending.title,/Mirror/);
 });
+test('Mirror requires an actual draw after draw-discard, abolish-draw and mulligan effects',async()=>{
+ for(const id of ['c2603','c1310','c2807']) {
+  const g=await start({},true),seat=g.active,p=g.players[seat],other=(seat+1)%2;
+  p.hand=[];p.deck=[];p.discard=[];p.items=[];p.fiends=[];p.inPlay=[];p.playedCount=0;
+  g.players[other].isAI=false;g.players[other].hand=[];add(g,'c1414','hand',other);
+  if(id==='c1310')add(g,'c1203');
+  const c=add(g,id,id==='c2807'?'fiends':'hand');
+  const action={type:id==='c2807'?'fiend':'play',id:c.u};
+  const result=await transition(g,action,id==='c1310'?[1]:[]); // Pass the real abolish reaction.
+  assert.equal(result.pending,null,id+' must not offer an empty draw reaction');
+  assert.equal(result.state.players[other].karma,0);
+  assert.equal(result.state.players[other].hand[0].id,'c1414');
+ }
+});
 test('Flying Guillotine triggers before a full effect-driven discard shuffle',async()=>{
  let g=await start({},true),p=g.players[g.active];p.isAI=false;p.hand=[];p.discard=[];add(g,'c2831','items');const flavor=add(g,'c2933'),junk=add(g,'c1203','discard');
  const action={type:'play',id:flavor.u};const r=await transition(g,action,[0]);assert.equal(r.pending.kind,'cards');assert(r.pending.cards.some(c=>c.u===junk.u));

@@ -1307,7 +1307,8 @@
         "epicCount": null,
         "mainOnly": false,
         "mirrors": false,
-        "relic": null
+        "relic": null,
+        "juggaloArmy": false
       },
       "config": {
         "seed": 1701,
@@ -1327,6 +1328,7 @@
         }
       },
       "extraGallery": [],
+      "armyRemoved": [],
       "first": 0,
       "gambitsEnabled": false,
       "gambitRemoved": [],
@@ -1364,7 +1366,7 @@
       "Ninja is in the Abyss; the Flavor card stays in hand."
     ],
     "oracle": false,
-    "version": "0.3.0"
+    "version": "0.3.1"
   },
   {
     "id": "time",
@@ -2511,7 +2513,8 @@
         "epicCount": 4,
         "mainOnly": true,
         "mirrors": false,
-        "relic": null
+        "relic": null,
+        "juggaloArmy": false
       },
       "config": {
         "seed": 1701,
@@ -2532,6 +2535,7 @@
         }
       },
       "extraGallery": [],
+      "armyRemoved": [],
       "first": 0,
       "gambitsEnabled": false,
       "gambitRemoved": [],
@@ -2562,7 +2566,7 @@
       "The final round has not started. Player B is active."
     ],
     "oracle": false,
-    "version": "0.3.0"
+    "version": "0.3.1"
   },
   {
     "id": "mirrors",
@@ -3767,7 +3771,8 @@
         "epicCount": null,
         "mainOnly": false,
         "mirrors": true,
-        "relic": null
+        "relic": null,
+        "juggaloArmy": false
       },
       "config": {
         "seed": 1701,
@@ -3787,6 +3792,7 @@
         }
       },
       "extraGallery": [],
+      "armyRemoved": [],
       "first": 0,
       "gambitsEnabled": false,
       "gambitRemoved": [],
@@ -3825,7 +3831,7 @@
       "The next card is faceup on the Main Deck. Flavor and Epic tops are unchanged."
     ],
     "oracle": false,
-    "version": "0.3.0"
+    "version": "0.3.1"
   },
   {
     "id": "relic",
@@ -5030,7 +5036,8 @@
         "epicCount": null,
         "mainOnly": false,
         "mirrors": false,
-        "relic": "c2515"
+        "relic": "c2515",
+        "juggaloArmy": false
       },
       "config": {
         "seed": 1701,
@@ -5050,6 +5057,7 @@
         }
       },
       "extraGallery": [],
+      "armyRemoved": [],
       "first": 0,
       "gambitsEnabled": false,
       "gambitRemoved": [],
@@ -5118,7 +5126,7 @@
       "The Wraith’s Tome remains the shared Relic, is used this turn, and adds no Gathering Points."
     ],
     "oracle": false,
-    "version": "0.3.0"
+    "version": "0.3.1"
   },
   {
     "id": "mirror",
@@ -6377,7 +6385,8 @@
         "epicCount": null,
         "mainOnly": false,
         "mirrors": false,
-        "relic": null
+        "relic": null,
+        "juggaloArmy": false
       },
       "config": {
         "seed": 1701,
@@ -6395,6 +6404,7 @@
         "variants": {}
       },
       "extraGallery": [],
+      "armyRemoved": [],
       "first": 0,
       "gambitsEnabled": false,
       "gambitRemoved": [],
@@ -6429,7 +6439,7 @@
       "B drew exactly one card, gained 2 Karma, and In Yo Face stays in play."
     ],
     "oracle": true,
-    "version": "0.3.0"
+    "version": "0.3.1"
   },
   {
     "id": "fast",
@@ -7694,7 +7704,8 @@
         "epicCount": null,
         "mainOnly": false,
         "mirrors": false,
-        "relic": null
+        "relic": null,
+        "juggaloArmy": false
       },
       "config": {
         "seed": 1701,
@@ -7712,6 +7723,7 @@
         "variants": {}
       },
       "extraGallery": [],
+      "armyRemoved": [],
       "first": 0,
       "gambitsEnabled": false,
       "gambitRemoved": [],
@@ -7749,7 +7761,7 @@
       "B has 3 Karma and Bitch Slap in play."
     ],
     "oracle": true,
-    "version": "0.3.0"
+    "version": "0.3.1"
   },
   {
     "id": "tarot",
@@ -8981,7 +8993,8 @@
         "epicCount": null,
         "mainOnly": false,
         "mirrors": false,
-        "relic": null
+        "relic": null,
+        "juggaloArmy": false
       },
       "config": {
         "seed": 1701,
@@ -8999,6 +9012,7 @@
         "variants": {}
       },
       "extraGallery": [],
+      "armyRemoved": [],
       "first": 0,
       "gambitsEnabled": false,
       "gambitRemoved": [],
@@ -9029,7 +9043,7 @@
       "A has six cards after the Tarot draw and normal cleanup draw; B has two."
     ],
     "oracle": true,
-    "version": "0.3.0"
+    "version": "0.3.1"
   },
   {
     "id": "gambit",
@@ -10286,7 +10300,8 @@
         "epicCount": null,
         "mainOnly": false,
         "mirrors": false,
-        "relic": null
+        "relic": null,
+        "juggaloArmy": false
       },
       "config": {
         "seed": 1701,
@@ -10304,6 +10319,7 @@
         "variants": {}
       },
       "extraGallery": [],
+      "armyRemoved": [],
       "first": 0,
       "gambitsEnabled": false,
       "gambitRemoved": [],
@@ -10335,6 +10351,6 @@
       "GP Boost remains private and contributes 1 GP at scoring."
     ],
     "oracle": true,
-    "version": "0.3.0"
+    "version": "0.3.1"
   }
 ]

@@ -10,8 +10,11 @@ export function normalizeVariants(value = {}, expansion = false, advanced = true
   const relic = value.relic || null;
   if (relic && relic !== 'random' && !relicOptions(expansion, advanced).some(d => d.id === relic))
     throw Error('Choose an available Item other than Soopa Soaka for the Relic.');
+  if (value.juggaloArmy && !expansion)
+    throw Error('Juggalo Army requires the Oracle card set.');
   return { abolishUnity: !!value.abolishUnity, epicCount,
-    mainOnly: !!value.mainOnly || epicCount === 0, mirrors: !!value.mirrors, relic };
+    mainOnly: !!value.mainOnly || epicCount === 0, mirrors: !!value.mirrors, relic,
+    juggaloArmy: !!value.juggaloArmy };
 }
 
 export function relicOptions(expansion = false, advanced = true) {

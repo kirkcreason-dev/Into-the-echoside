@@ -4,7 +4,7 @@ This release corrects the earlier development build; it is not a claim of publis
 
 ## Automated checks
 
-All 59 checks passed; both Pages and Worker builds completed.
+All 64 checks passed; both Pages and Worker builds completed.
 
 - Base component counts; beginner exclusions; deterministic first-player rolls.
 - Invalid actions leave the source state unchanged; choices replay deterministically.
@@ -36,3 +36,14 @@ GitHub Pages rooms require an online host tab and a working direct WebRTC connec
 - Browser checks cover variant creation, Relic activation, visible deck tops, enlarged printed cards, Oracle scenario resolution, and a 390-pixel mobile layout.
 
 Human physical sessions remain outstanding. The comparison form downloads a replayable report locally and sends nothing automatically.
+
+## Version 0.3.1 additions
+
+- Juggalo Army setup checked at two, three and four seats: exactly three chosen Starters removed, one recruitment per seat in each of three rounds, no repeated physical card, correct remaining supply, separate draft/game rolls and hidden deck order.
+- Wrong-seat and incomplete choices rejected. Each setup prompt survives host backup restoration and produces the same continuation as the live transaction.
+- Three complete Army/Gambit/Relic games conserve all physical cards and finish with equal turn counts.
+- Optional Gambits checked for solo, online, restored lobbies and older saved lobbies.
+- Empty draw-discard, abolish-draw and Fiend mulligan effects do not offer false Mirror draw reactions.
+- Oracle setup and reference-capture checklist added to the downloadable kit.
+
+Browser v0.3.1 checks: Oracle Gambit switch, Juggalo Army starter selection, grouped Crew choices and remaining supplies, enlarged Crew card text, three recruitment rounds, reload during a pending draft, initial Tarot continuation, and the playable table at 390 px. No console errors were reported during that check.

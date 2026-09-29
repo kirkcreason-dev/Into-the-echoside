@@ -350,8 +350,8 @@ export function makeRuntime(state, answers = []) {
           );
           if (ch === 1) break;
         }
-        await drawSafe(p, o.draw);
-        await mirrorWindow(p, "draw", ctx);
+        const drawn = await drawSafe(p, o.draw);
+        if (drawn.length) await mirrorWindow(p, "draw", ctx);
         const ds = await pickCards(p, {
           title: `Discard ${o.discard}`,
           cards: p.hand.slice(),
@@ -393,8 +393,8 @@ export function makeRuntime(state, answers = []) {
           log(`<b>${p.name}</b> abolishes ${sel.map((c) => c.d.n).join(", ")}`);
           await mirrorWindow(p, "abolish", ctx);
           if (o.drawEach) {
-            await drawSafe(p, sel.length);
-            await mirrorWindow(p, "draw", ctx);
+            const drawn = await drawSafe(p, sel.length);
+            if (drawn.length) await mirrorWindow(p, "draw", ctx);
           }
           if (o.gainEach) p.karma += o.gainEach * sel.length;
           if (o.then) await runOps(p, o.then, ctx);
@@ -799,9 +799,9 @@ export function makeRuntime(state, answers = []) {
           if (ch === 1) {
             const n = p.hand.length;
             p.hand.splice(0).forEach((c) => toDiscard(p, c));
-            await drawSafe(p, 5);
-            await mirrorWindow(p, "draw", ctx);
-            log(`<b>${p.name}</b> mulligans ${n} cards for a fresh 5`);
+            const drawn = await drawSafe(p, 5);
+            if (drawn.length) await mirrorWindow(p, "draw", ctx);
+            log(`<b>${p.name}</b> mulligans ${n} cards and draws ${drawn.length}`);
             break;
           }
         }
@@ -812,9 +812,9 @@ export function makeRuntime(state, answers = []) {
       case "mulligan": {
         const n = p.hand.length;
         p.hand.splice(0).forEach((c) => toDiscard(p, c));
-        await drawSafe(p, 5);
-        await mirrorWindow(p, "draw", ctx);
-        log(`<b>${p.name}</b> discards ${n} and draws 5 (Pit Demoness)`);
+        const drawn = await drawSafe(p, 5);
+        if (drawn.length) await mirrorWindow(p, "draw", ctx);
+        log(`<b>${p.name}</b> discards ${n} and draws ${drawn.length} (Pit Demoness)`);
         break;
       }
       default:
@@ -946,6 +946,56 @@ export function makeRuntime(state, answers = []) {
     }
     return drawn;
   }
+  async function setupJuggaloArmy() {
+    G.phase = "army";
+    for (const p of G.players) {
+      G.active = G.players.indexOf(p);
+      const removed = await pickCards(p, {
+        title: "Juggalo Army · replace three starters",
+        sub: "Choose any three Starter cards to remove from your deck. They stay outside the game; you will recruit three Juggalos in their place.",
+        cards: p.deck,
+        min: 3,
+        max: 3,
+        purpose: "discard",
+      });
+      for (const c of removed) {
+        removeFrom(p.deck, c);
+        G.armyRemoved.push(c);
+      }
+    }
+    let contenders = G.players.map((_, i) => i);
+    G.armyRolls = [];
+    while (contenders.length > 1) {
+      const rolls = contenders.map(seat => ({ seat, roll: d12() }));
+      G.armyRolls.push(rolls);
+      const highest = Math.max(...rolls.map(r => r.roll));
+      contenders = rolls.filter(r => r.roll === highest).map(r => r.seat);
+    }
+    const first = contenders[0];
+    G.armyDraftOrder = G.players.map((_, i) => (first + i) % G.players.length);
+    log(`Juggalo Army: <b>${G.players[first].name}</b> won the draft roll. Each player recruits one Juggalo per round for three rounds.`);
+    for (let round = 0; round < 3; round++) {
+      for (const seat of G.armyDraftOrder) {
+        G.active = seat;
+        const p = G.players[seat];
+        const [c] = await pickCards(p, {
+          title: `Juggalo Army · recruit ${round + 1} of 3`,
+          sub: "Choose one card from the remaining Juggalo Deck. Play passes around the table after each choice.",
+          cards: G.jug,
+          min: 1,
+          max: 1,
+          purpose: "keep",
+        });
+        removeFrom(G.jug, c);
+        p.deck.push(c);
+        log(`<b>${p.name}</b> recruits <b>${c.d.n}</b> (${c.d.crew}) for Juggalo Army.`);
+      }
+    }
+    shuffle(G.jug);
+    for (const p of G.players) shuffle(p.deck);
+    G.active = 0;
+    delete G.phase;
+  }
   async function newGame(config) {
     const variants = normalizeVariants(config.variants, !!config.expansion, config.advanced !== false);
     if (config.teams && config.players.length !== 4)
@@ -984,6 +1034,7 @@ export function makeRuntime(state, answers = []) {
       variants,
       config,
       extraGallery: [],
+      armyRemoved: [],
     };
     uidC = 0;
     for (const d of DB) {
@@ -1021,6 +1072,7 @@ export function makeRuntime(state, answers = []) {
       log(`Relic of Power: <b>${G.relic.d.n}</b>. Its effects are available during each player's own turn.`);
     }
     G.players = config.players.map((p) => newPlayer(p.name, !!p.isAI));
+    if (variants.juggaloArmy) await setupJuggaloArmy();
     for (const p of G.players) await drawSafe(p, 5);
     const epicCount = variants.epicCount ?? G.epicDeck.length - Math.max(0, (4 - G.players.length) * 2);
     G.epicDeck.splice(0, G.epicDeck.length - epicCount);
@@ -2305,8 +2357,8 @@ export function makeRuntime(state, answers = []) {
         ) {
           removeFrom(p.hand, c);
           toDiscard(p, c);
-          await drawSafe(p, 1);
-          await mirrorWindow(p, "draw", ctx);
+          const drawn = await drawSafe(p, 1);
+          if (drawn.length) await mirrorWindow(p, "draw", ctx);
         }
         break;
       }

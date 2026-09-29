@@ -1,6 +1,6 @@
 # Echoside physical-versus-digital test kit
 
-Version 0.3.0 · Prepared September 29, 2026
+Version 0.3.1 · Prepared September 29, 2026
 
 This kit is ready for your group to run. No physical playtest results are claimed. The digital scripts are deterministic and checked automatically, but those checks are not independent proof that every printed interaction is correct.
 
@@ -24,6 +24,10 @@ The practice page also serves as the expansion tutorial: choose Mirror, Fast, Ta
 
 The kit’s scripted actions avoid random shuffle decisions. If you expand a scenario and reach a shuffle or die roll, agree on a recorded order/roll before comparing; do not compare independent random outcomes as a rules mismatch.
 
+## Oracle setup checks
+
+Use [setup-checks.md](setup-checks.md) for Juggalo Army, optional Gambits, reload/backup recovery during setup and a precise list of missing source evidence. These checks supplement the eight fixed positions.
+
 ## Acceptance checklist
 
 - Every scenario has a physical result and a rule citation or a clearly identified uncertainty.
@@ -42,6 +46,7 @@ For follow-up interaction sessions, combine: copied Items plus cleanup, stacked 
 
 ## Files
 
+- `setup-checks.md`: Oracle setup checklist and the specific missing rules/card references.
 - `positions.md`: exact physical layouts and steps for all eight scenarios.
 - `scenarios.json`: complete reproducible starting states and action scripts.
 - `mismatch-template.csv`: a spreadsheet-friendly recording form.

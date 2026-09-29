@@ -1,6 +1,6 @@
 import { DB, transition } from '../server/engine.js';
 const defs = Object.fromEntries(DB.map(d => [d.id, d]));
-export const KIT_VERSION = '0.3.0';
+export const KIT_VERSION = '0.3.1';
 async function table(variants = {}, expansion = false) {
   const g = (await transition({config:{seed:1701,players:[{name:'Player A',isAI:true},{name:'Player B',isAI:true}],expansion,variants}}, {type:'start'})).state;
   g.active=0;g.first=0;g.turnN=1;g.endTriggered=false;g.log=[];g.uid=0;

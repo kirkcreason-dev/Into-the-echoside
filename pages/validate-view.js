@@ -74,7 +74,7 @@ export function validateView(value) {
       "extraGallery",
     ])
       g[zone] = cards(g[zone]);
-    for (const zone of ["gambitReserve", "gambitRemoved"])
+    for (const zone of ["gambitReserve", "gambitRemoved", "armyRemoved"])
       if (g[zone]) g[zone] = cards(g[zone], 40);
     if (g.relic) g.relic = card(g.relic);
     if (!g.jug || !number(g.jug.count, 0, 100)) bad();

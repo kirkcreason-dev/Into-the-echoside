@@ -1,6 +1,6 @@
 # Exact playtest positions
 
-Kit 0.3.0. Decks are listed top first. Slots and ordinary zones are left to right. These are controlled midgame positions, not standard opening deals. All unlisted cards stay out of the test.
+Kit 0.3.1. Decks are listed top first. Slots and ordinary zones are left to right. These are controlled midgame positions, not standard opening deals. All unlisted cards stay out of the test.
 
 ## Abolish Made Easy
 
@@ -8,7 +8,7 @@ Unity can be exchanged for abolishing one card. Flavor is never eligible.
 
 Active: Player A. Turn 1. Karma: A 0, B 0. Both have completed 0 turns; Unity unused.
 
-Variants: {"abolishUnity":true,"epicCount":null,"mainOnly":false,"mirrors":false,"relic":null}
+Variants: {"abolishUnity":true,"epicCount":null,"mainOnly":false,"mirrors":false,"relic":null,"juggaloArmy":false}
 
 ### Player A
 
@@ -55,7 +55,7 @@ In Main Deck ending mode, exhausting the Epic draw pile does not end the match.
 
 Active: Player A. Turn 1. Karma: A 0, B 0. Both have completed 0 turns; Unity unused.
 
-Variants: {"abolishUnity":false,"epicCount":4,"mainOnly":true,"mirrors":false,"relic":null}
+Variants: {"abolishUnity":false,"epicCount":4,"mainOnly":true,"mirrors":false,"relic":null,"juggaloArmy":false}
 
 ### Player A
 
@@ -102,7 +102,7 @@ The current top Main, Epic and Flavor cards are public. All lower cards remain h
 
 Active: Player A. Turn 1. Karma: A 2, B 0. Both have completed 0 turns; Unity unused.
 
-Variants: {"abolishUnity":false,"epicCount":null,"mainOnly":false,"mirrors":true,"relic":null}
+Variants: {"abolishUnity":false,"epicCount":null,"mainOnly":false,"mirrors":true,"relic":null,"juggaloArmy":false}
 
 ### Player A
 
@@ -150,7 +150,7 @@ Each player may activate The Wraith’s Tome once during their turn. The Relic b
 
 Active: Player A. Turn 1. Karma: A 0, B 0. Both have completed 0 turns; Unity unused.
 
-Variants: {"abolishUnity":false,"epicCount":null,"mainOnly":false,"mirrors":false,"relic":"c2515"}
+Variants: {"abolishUnity":false,"epicCount":null,"mainOnly":false,"mirrors":false,"relic":"c2515","juggaloArmy":false}
 
 ### Player A
 
@@ -200,7 +200,7 @@ Mirror gives one draw when an opponent draws cards, even if the original effect 
 
 Active: Player A. Turn 1. Karma: A 0, B 0. Both have completed 0 turns; Unity unused.
 
-Variants: {"abolishUnity":false,"epicCount":null,"mainOnly":false,"mirrors":false,"relic":null}
+Variants: {"abolishUnity":false,"epicCount":null,"mainOnly":false,"mirrors":false,"relic":null,"juggaloArmy":false}
 
 ### Player A
 
@@ -247,7 +247,7 @@ Bitch Slap can nullify an Item as its activation is announced. The activation is
 
 Active: Player A. Turn 1. Karma: A 0, B 0. Both have completed 0 turns; Unity unused.
 
-Variants: {"abolishUnity":false,"epicCount":null,"mainOnly":false,"mirrors":false,"relic":null}
+Variants: {"abolishUnity":false,"epicCount":null,"mainOnly":false,"mirrors":false,"relic":null,"juggaloArmy":false}
 
 ### Player A
 
@@ -294,7 +294,7 @@ Tarot interrupts Gallery refill. Both players accept the draw; then refill conti
 
 Active: Player A. Turn 1. Karma: A 0, B 0. Both have completed 0 turns; Unity unused.
 
-Variants: {"abolishUnity":false,"epicCount":null,"mainOnly":false,"mirrors":false,"relic":null}
+Variants: {"abolishUnity":false,"epicCount":null,"mainOnly":false,"mirrors":false,"relic":null,"juggaloArmy":false}
 
 ### Player A
 
@@ -341,7 +341,7 @@ This practice hand spends a three-point draft budget: Karma Infusion costs two, 
 
 Active: Player A. Turn 1. Karma: A 0, B 0. Both have completed 0 turns; Unity unused.
 
-Variants: {"abolishUnity":false,"epicCount":null,"mainOnly":false,"mirrors":false,"relic":null}
+Variants: {"abolishUnity":false,"epicCount":null,"mainOnly":false,"mirrors":false,"relic":null,"juggaloArmy":false}
 
 ### Player A
 
