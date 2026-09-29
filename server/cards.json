@@ -81,7 +81,8 @@
       },
       {
         "op": "obtain",
-        "maxCost": 6
+        "maxCost": 6,
+        "opt": true
       }
     ],
     "shield": true,
@@ -974,7 +975,7 @@
   },
   {
     "id": "c1424",
-    "n": "Oracle\u2019s Favor",
+    "n": "Oracle’s Favor",
     "t": "DC",
     "cost": 3,
     "gp": 1,
@@ -1003,7 +1004,7 @@
     "cost": 4,
     "gp": 0,
     "copies": 1,
-    "txt": "+2 Karma & this card is worth 1 GP for each \u00ae Dark Carnival card in your deck (excluding this one).",
+    "txt": "+2 Karma & this card is worth 1 GP for each ® Dark Carnival card in your deck (excluding this one).",
     "v": "scan",
     "art": 1425,
     "set": "oracle",
@@ -1223,7 +1224,7 @@
   },
   {
     "id": "c2500",
-    "n": "Gravedigger\u2019s Shovel",
+    "n": "Gravedigger’s Shovel",
     "t": "ITEM",
     "cost": 5,
     "gp": 2,
@@ -1259,7 +1260,7 @@
   },
   {
     "id": "c2502",
-    "n": "Joey\u2019s Bazooka",
+    "n": "Joey’s Bazooka",
     "t": "ITEM",
     "cost": 3,
     "gp": 1,
@@ -1318,7 +1319,7 @@
   },
   {
     "id": "c2505",
-    "n": "Milenko\u2019s Wand",
+    "n": "Milenko’s Wand",
     "t": "ITEM",
     "cost": 4,
     "gp": 1,
@@ -1387,7 +1388,7 @@
   },
   {
     "id": "c2510",
-    "n": "The Raven\u2019s Mirror",
+    "n": "The Raven’s Mirror",
     "t": "ITEM",
     "cost": 4,
     "gp": 1,
@@ -1407,7 +1408,7 @@
   },
   {
     "id": "c2511",
-    "n": "Ringmaster\u2019s Hat",
+    "n": "Ringmaster’s Hat",
     "t": "ITEM",
     "cost": 5,
     "gp": 2,
@@ -1485,7 +1486,7 @@
   },
   {
     "id": "c2515",
-    "n": "The Wraith\u2019s Tome",
+    "n": "The Wraith’s Tome",
     "t": "ITEM",
     "cost": 7,
     "gp": 2,
@@ -2016,7 +2017,7 @@
   },
   {
     "id": "c2604",
-    "n": "Oracle\u2019s Favor",
+    "n": "Oracle’s Favor",
     "t": "PSY",
     "cost": 3,
     "gp": 1,
@@ -2310,7 +2311,7 @@
     "cost": 5,
     "gp": 2,
     "copies": 1,
-    "txt": "Draw a card. OR Discard to stomp an opponent's non-\u0415pic card being played, even if shielded.",
+    "txt": "Draw a card. OR Discard to stomp an opponent's non-Еpic card being played, even if shielded.",
     "v": "scan",
     "art": 2617,
     "set": "oracle",
@@ -2506,7 +2507,7 @@
     "cost": 4,
     "gp": 0,
     "copies": 1,
-    "txt": "+2 Karma & this card is worth 1 GP for each \u00ae Underground card in your deck (excluding this one).",
+    "txt": "+2 Karma & this card is worth 1 GP for each ® Underground card in your deck (excluding this one).",
     "v": "scan",
     "art": 2700,
     "set": "oracle",
@@ -2682,7 +2683,7 @@
   },
   {
     "id": "c2707",
-    "n": "Oracle\u2019s Favor",
+    "n": "Oracle’s Favor",
     "t": "UG",
     "cost": 3,
     "gp": 1,
@@ -3383,7 +3384,7 @@
   },
   {
     "id": "c2805",
-    "n": "Ol\u2019 Evil Eye",
+    "n": "Ol’ Evil Eye",
     "t": "FIEND",
     "cost": 5,
     "gp": 0,
@@ -4031,7 +4032,7 @@
   },
   {
     "id": "c2902",
-    "n": "Chicken Huntin\u2019",
+    "n": "Chicken Huntin’",
     "t": "FLAVOR",
     "cost": 0,
     "gp": 0,
@@ -4256,7 +4257,7 @@
   },
   {
     "id": "c2915",
-    "n": "Jacob\u2019s Word",
+    "n": "Jacob’s Word",
     "t": "FLAVOR",
     "cost": 0,
     "gp": 0,
@@ -4266,6 +4267,10 @@
     "art": 2915,
     "set": "oracle",
     "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
       {
         "op": "reorderMain",
         "n": 5
@@ -4295,7 +4300,7 @@
   },
   {
     "id": "c2917",
-    "n": "Joker\u2019s Wild",
+    "n": "Joker’s Wild",
     "t": "FLAVOR",
     "cost": 0,
     "gp": 0,
@@ -4336,7 +4341,7 @@
   },
   {
     "id": "c2921",
-    "n": "Lil Somethin\u2019 Somethin\u2019",
+    "n": "Lil Somethin’ Somethin’",
     "t": "FLAVOR",
     "cost": 0,
     "gp": 0,
@@ -4421,7 +4426,7 @@
   },
   {
     "id": "c2925",
-    "n": "Pendulum\u2019s Promise",
+    "n": "Pendulum’s Promise",
     "t": "FLAVOR",
     "cost": 0,
     "gp": 0,
@@ -4463,7 +4468,7 @@
   },
   {
     "id": "c2927",
-    "n": "Ringmaster\u2019s Word",
+    "n": "Ringmaster’s Word",
     "t": "FLAVOR",
     "cost": 0,
     "gp": 0,
@@ -4512,7 +4517,7 @@
   },
   {
     "id": "c2929",
-    "n": "Still Stabbin\u2019",
+    "n": "Still Stabbin’",
     "t": "FLAVOR",
     "cost": 0,
     "gp": 0,
@@ -4702,5 +4707,850 @@
     "crew": "UG",
     "shield": false,
     "baseCopies": 7
+  },
+  {
+    "id": "gambit01",
+    "n": "Gain 1 Karma",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "karma",
+    "txt": "Gain 1 Karma.",
+    "fx": [
+      {
+        "op": "k",
+        "n": 1
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=2s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit02",
+    "n": "3 GP",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 3,
+    "gp": 3,
+    "timing": "end_game",
+    "txt": "This Gambit contributes 3 GP at game end.",
+    "fx": [],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=6s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit03",
+    "n": "Recover an Item",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Return an Item from your discard pile to your hand.",
+    "fx": [
+      {
+        "op": "fromDiscard",
+        "type": "ITEM",
+        "dest": "hand"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=10s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit04",
+    "n": "Karma and reshuffle",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 3,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Gain 1 Karma. You may shuffle your discard pile into your deck.",
+    "fx": [
+      {
+        "op": "k",
+        "n": 1
+      },
+      {
+        "op": "gambitShuffle"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=13s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit05",
+    "n": "Abolish two Gallery cards",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "fast",
+    "txt": "Abolish 2 Gallery cards.",
+    "fx": [
+      {
+        "op": "galleryWipe",
+        "max": 2,
+        "required": true,
+        "refill": false
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=18s",
+    "descriptiveName": true,
+    "fast": true
+  },
+  {
+    "id": "gambit06",
+    "n": "Arrange top five",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "fast",
+    "txt": "Inspect the top 5 cards of any deck and arrange those cards in any order.",
+    "fx": [
+      {
+        "op": "arrangeDeck",
+        "n": 5
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=20s",
+    "descriptiveName": true,
+    "fast": true
+  },
+  {
+    "id": "gambit07",
+    "n": "Stomp a non-Epic, even shielded",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 3,
+    "gp": 0,
+    "timing": "stomp",
+    "txt": "Stomp a non-Epic card an opponent is playing. Shielding does not prevent this stomp.",
+    "fx": [],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=23s",
+    "descriptiveName": true,
+    "reaction": {
+      "nonEpic": true,
+      "pierceShield": true
+    }
+  },
+  {
+    "id": "gambit08",
+    "n": "Trade a Crew or Item",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Abolish a Crew or Item from your hand or discard pile, then obtain a card with equal or lower cost for free.",
+    "fx": [
+      {
+        "op": "gambitTrade"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=27s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit09",
+    "n": "Four of one Crew: abolish",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "If at least 4 cards of the same Crew are in play for you, abolish one card from your hand or discard pile.",
+    "fx": [
+      {
+        "op": "gambitCrewAbolish"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=31s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit10",
+    "n": "Draw one",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Draw 1 card.",
+    "fx": [
+      {
+        "op": "draw",
+        "n": 1
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=34s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit11",
+    "n": "Replace an Epic Tier card",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "fast",
+    "txt": "Put one Epic Tier card on the bottom of the Epic deck, then refill its place.",
+    "fx": [
+      {
+        "op": "replaceEpic"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=37s",
+    "descriptiveName": true,
+    "fast": true
+  },
+  {
+    "id": "gambit12",
+    "n": "Recover cards stomped this turn",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 3,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Return any cards in your discard pile that were stomped during your current turn to your hand.",
+    "fx": [
+      {
+        "op": "recoverStomped",
+        "all": true
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=40s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit13",
+    "n": "Wheel roll minus two",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Roll on the Wheel of Fate and subtract 2 from the roll.",
+    "fx": [
+      {
+        "op": "wheel",
+        "n": 1,
+        "bonus": -2
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=44s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit14",
+    "n": "Abolish your card and Gallery cards",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 3,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Abolish one card from your hand or discard pile. You may then abolish up to 3 Gallery cards and refill their places.",
+    "fx": [
+      {
+        "op": "abolish",
+        "from": [
+          "hand",
+          "discard"
+        ],
+        "max": 1,
+        "then": [
+          {
+            "op": "galleryWipe",
+            "max": 3
+          }
+        ]
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=48s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit15",
+    "n": "Obtain up to cost four",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 3,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Obtain a card costing 4 or less for free.",
+    "fx": [
+      {
+        "op": "obtain",
+        "maxCost": 4
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=52s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit16",
+    "n": "Obtain cost two",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Obtain a card costing exactly 2 for free.",
+    "fx": [
+      {
+        "op": "obtain",
+        "maxCost": 2,
+        "exactCost": 2
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=54s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit17",
+    "n": "Return Abyss cards to Main Deck",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Put up to 5 non-Starter cards from the Abyss onto the top or bottom of the Main Deck, in any order.",
+    "fx": [
+      {
+        "op": "gambitAbyss"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=56s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit18",
+    "n": "Obtain up to cost three",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Obtain a card costing 3 or less for free.",
+    "fx": [
+      {
+        "op": "obtain",
+        "maxCost": 3
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=60s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit19",
+    "n": "Top-deck up to cost five",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Put a card costing 5 or less from your discard pile on top of your deck.",
+    "fx": [
+      {
+        "op": "fromDiscard",
+        "maxCost": 5,
+        "dest": "top"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=63s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit20",
+    "n": "Mirror Mirror",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "mirror",
+    "txt": "Mirror an opponent immediately after they draw a card, draw a Flavor card, or abolish a card from their hand or discard pile.",
+    "fx": [],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=66s",
+    "descriptiveName": false,
+    "mirror": true
+  },
+  {
+    "id": "gambit21",
+    "n": "Nullify all of one opponent's Fiends",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "fast",
+    "txt": "Choose one opponent. Nullify their Fiend cards during the current turn.",
+    "fx": [
+      {
+        "op": "gambitNullify",
+        "type": "FIEND"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=69s",
+    "descriptiveName": true,
+    "fast": true
+  },
+  {
+    "id": "gambit22",
+    "n": "Draw Flavor, then discard",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Draw 1 Flavor card, then discard 1 card from your hand.",
+    "fx": [
+      {
+        "op": "drawFlavor",
+        "n": 1
+      },
+      {
+        "op": "gambitDiscard"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=73s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit23",
+    "n": "Discount Epic purchases",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "For this turn, reduce the purchase cost of Epic cards by 1.",
+    "fx": [
+      {
+        "op": "epicDiscount",
+        "n": 1
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=76s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit24",
+    "n": "Wheel roll plus one",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Roll on the Wheel of Fate and add 1 to the roll.",
+    "fx": [
+      {
+        "op": "wheel",
+        "n": 1,
+        "bonus": 1
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=79s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit25",
+    "n": "Stomp Protection",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "For this turn, none of your cards, including Fiends, can be stomped.",
+    "fx": [
+      {
+        "op": "gambitShield"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=82s",
+    "descriptiveName": false
+  },
+  {
+    "id": "gambit26",
+    "n": "Bitch Slap",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "fast",
+    "txt": "Choose an Item or Fiend an opponent has in play. Nullify that card during the current turn.",
+    "fx": [
+      {
+        "op": "nullify",
+        "until": "turn"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=87s",
+    "descriptiveName": false,
+    "fast": true
+  },
+  {
+    "id": "gambit27",
+    "n": "Wheel roll plus three",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 3,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Roll on the Wheel of Fate and add 3 to the roll.",
+    "fx": [
+      {
+        "op": "wheel",
+        "n": 1,
+        "bonus": 3
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=91s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit28",
+    "n": "Stomp up to cost three",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "stomp",
+    "txt": "Stomp a card costing 3 or less that an opponent is playing.",
+    "fx": [],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=94s",
+    "descriptiveName": true,
+    "reaction": {
+      "nonEpic": false,
+      "maxCost": 3
+    }
+  },
+  {
+    "id": "gambit29",
+    "n": "Abolish one of your cards",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Abolish one card from your hand or discard pile.",
+    "fx": [
+      {
+        "op": "abolish",
+        "from": [
+          "hand",
+          "discard"
+        ],
+        "max": 1
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=97s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit30",
+    "n": "Recover a stomped card up to cost four",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Return one card costing 4 or less from your discard pile to your hand, if it was stomped during your current turn.",
+    "fx": [
+      {
+        "op": "recoverStomped",
+        "maxCost": 4
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=100s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit31",
+    "n": "2 GP",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 2,
+    "timing": "end_game",
+    "txt": "This Gambit contributes 2 GP at game end.",
+    "fx": [],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=104s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit32",
+    "n": "Stomp up to cost five",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "stomp",
+    "txt": "Stomp a card costing 5 or less that an opponent is playing.",
+    "fx": [],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=107s",
+    "descriptiveName": true,
+    "reaction": {
+      "nonEpic": false,
+      "maxCost": 5
+    }
+  },
+  {
+    "id": "gambit33",
+    "n": "Top-deck up to cost three",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Put a card costing 3 or less from your discard pile on top of your deck.",
+    "fx": [
+      {
+        "op": "fromDiscard",
+        "maxCost": 3,
+        "dest": "top"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=110s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit34",
+    "n": "Recover a stomped card up to cost six",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Return one card costing 6 or less from your discard pile to your hand, if it was stomped during your current turn.",
+    "fx": [
+      {
+        "op": "recoverStomped",
+        "maxCost": 6
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=113s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit35",
+    "n": "Top-deck a non-Epic",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 3,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Put a non-Epic card from your discard pile on top of your deck.",
+    "fx": [
+      {
+        "op": "fromDiscard",
+        "nonEpic": true,
+        "dest": "top"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=117s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit36",
+    "n": "1 GP",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 1,
+    "timing": "end_game",
+    "txt": "This Gambit contributes 1 GP at game end.",
+    "fx": [],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=120s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit37",
+    "n": "Nullify all of one opponent's Items",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "fast",
+    "txt": "Choose one opponent. Nullify their Item cards during the current turn.",
+    "fx": [
+      {
+        "op": "gambitNullify",
+        "type": "ITEM"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=123s",
+    "descriptiveName": true,
+    "fast": true
+  },
+  {
+    "id": "gambit38",
+    "n": "Reveal two, keep one on top",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "fast",
+    "txt": "Reveal the top 2 cards of any deck. Put one on top of that deck and the other on its bottom.",
+    "fx": [
+      {
+        "op": "oracleFavor",
+        "publicReveal": true
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=125s",
+    "descriptiveName": true,
+    "fast": true
+  },
+  {
+    "id": "gambit39",
+    "n": "Replace up to three Gallery cards",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Abolish up to 3 Gallery cards, then refill their places.",
+    "fx": [
+      {
+        "op": "galleryWipe",
+        "max": 3
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=128s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit40",
+    "n": "Initial Speed",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "game_start",
+    "txt": "You take the first turn when the game begins; play then continues clockwise.",
+    "fx": [],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=138s",
+    "descriptiveName": false
   }
 ]

@@ -1,3 +1,15 @@
-import {pagesApi} from './client.js';
-window.echosidePages={api:pagesApi};
-await import('../public/app.js');
+import {
+  pagesApi,
+  recoveryKey,
+  recoverSeat,
+  exportTable,
+  importTable,
+} from "./client.js";
+window.echosidePages = {
+  api: pagesApi,
+  recoveryKey,
+  recoverSeat,
+  exportTable,
+  importTable,
+};
+await import("../public/app.js");

@@ -1,1 +1,5556 @@
-[{"id": "c1200", "n": "Hound Dogs", "t": "START", "cost": 0, "gp": 0, "copies": 3, "txt": "Choose a Crew; this card becomes that Crew until the end of your turn.", "v": "scan", "art": 1200, "set": "base", "fx": [{"op": "chooseCrew"}], "shield": false, "baseCopies": 3}, {"id": "c1203", "n": "Ninja", "t": "START", "cost": 0, "gp": 0, "copies": 7, "txt": "+1 Karma", "v": "scan", "art": 1203, "set": "base", "fx": [{"op": "k", "n": 1}], "shield": false, "baseCopies": 7}, {"id": "c1300", "n": "17", "t": "EPIC", "cost": 13, "gp": 6, "copies": 1, "txt": "+5 Karma & you may choose 1 Item card an opponent has in play and have them discard it, even if protected by any effect.", "v": "scan", "art": 1300, "set": "oracle", "fx": [{"op": "k", "n": 5}, {"op": "discardEnemyItems", "max": 1, "pierce": true}], "shield": true, "baseCopies": 0}, {"id": "c1301", "n": "Anybody Killa", "t": "EPIC", "cost": 9, "gp": 4, "copies": 1, "txt": "+2 Karma & you may obtain a card of cost 6 or less for free.", "v": "scan", "art": 1301, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "obtain", "maxCost": 6}], "shield": true, "baseCopies": 1}, {"id": "c1302", "n": "Blaze", "t": "EPIC", "cost": 9, "gp": 4, "copies": 1, "txt": "+3 Karma OR Copy the effect of an Epic or Crew card you have in play.", "v": "scan", "art": 1302, "set": "base", "fx": [{"op": "or", "la": "+3 Karma", "a": [{"op": "k", "n": 3}], "lb": "Copy a Crew or Epic in play", "b": [{"op": "copyOwn", "types": ["DC", "PSY", "UG", "EPIC"]}]}], "shield": true, "baseCopies": 1}, {"id": "c1303", "n": "Carnival of Carnage", "t": "EPIC", "cost": 12, "gp": 5, "copies": 1, "txt": "Copy the effect of a card in the Epic Tier.", "v": "scan", "art": 1303, "set": "base", "fx": [{"op": "copyEpicTier"}], "shield": true, "baseCopies": 1}, {"id": "c1304", "n": "Juggalo Family", "t": "EPIC", "cost": 13, "gp": 6, "copies": 1, "txt": "+4 Karma OR Gain +1 Karma for each card you have in play or in your discard pile that has the word Juggalo in its title (including this one).", "v": "scan", "art": 1304, "set": "oracle", "fx": [{"op": "or", "la": "+4 Karma", "a": [{"op": "k", "n": 4}], "lb": "Karma for your Juggalo cards", "b": [{"op": "juggaloKarma"}]}], "shield": true, "baseCopies": 0}, {"id": "c1305", "n": "Violent J", "t": "EPIC", "cost": 12, "gp": 5, "copies": 1, "txt": "+3 Karma & you may obtain a card from the Abyss of cost 6 or less for free.", "v": "scan", "art": 1305, "set": "base", "fx": [{"op": "k", "n": 3}, {"op": "fromAbyss", "maxCost": 6}], "shield": true, "baseCopies": 1}, {"id": "c1306", "n": "Dark Lotus", "t": "EPIC", "cost": 10, "gp": 4, "copies": 1, "txt": "+5 Karma", "v": "scan", "art": 1306, "set": "base", "fx": [{"op": "k", "n": 5}], "shield": true, "baseCopies": 1}, {"id": "c1307", "n": "Jamie Madrox", "t": "EPIC", "cost": 11, "gp": 5, "copies": 1, "txt": "Draw 4 Flavor cards; then keep 2 and discard the other 2.", "v": "scan", "art": 1307, "set": "base", "fx": [{"op": "drawFlavorKeep", "draw": 4, "keep": 2}], "shield": true, "baseCopies": 1}, {"id": "c1308", "n": "Monoxide", "t": "EPIC", "cost": 12, "gp": 5, "copies": 1, "txt": "+3 Karma & you may put a non-Epic card from your discard pile into your hand.", "v": "scan", "art": 1308, "set": "base", "fx": [{"op": "k", "n": 3}, {"op": "fromDiscard", "crew": null, "dest": "hand", "opt": true, "nonEpic": true}], "shield": true, "baseCopies": 1}, {"id": "c1309", "n": "Riddle Box", "t": "EPIC", "cost": 10, "gp": 4, "copies": 1, "txt": "+4 Karma & you may put the next Item or Crew card you obtain this turn into your hand.", "v": "scan", "art": 1309, "set": "base", "fx": [{"op": "k", "n": 4}, {"op": "nextToHand", "types": ["ITEM", "DC", "PSY", "UG"]}], "shield": true, "baseCopies": 1}, {"id": "c1310", "n": "Ringmaster", "t": "EPIC", "cost": 11, "gp": 5, "copies": 1, "txt": "+2 Karma & you may abolish up to 2 cards from your hand and/or discard pile. For each card abolished, draw a card.", "v": "scan", "art": 1310, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "abolish", "max": 2, "from": ["hand", "discard"], "opt": true, "drawEach": true}], "shield": true, "baseCopies": 1}, {"id": "c1311", "n": "Shaggy 2 Dope", "t": "EPIC", "cost": 11, "gp": 5, "copies": 1, "txt": "Draw 3 cards.", "v": "scan", "art": 1311, "set": "base", "fx": [{"op": "draw", "n": 3}], "shield": true, "baseCopies": 1}, {"id": "c1312", "n": "Spirit of the Dark Carnival", "t": "EPIC", "cost": 13, "gp": 6, "copies": 1, "txt": "+4 Karma OR Abolish a Fiend card in play or in the Gallery to gain +6 Karma.", "v": "scan", "art": 1312, "set": "oracle", "fx": [{"op": "or", "la": "+4 Karma", "a": [{"op": "k", "n": 4}], "lb": "Abolish a Fiend for +6 Karma", "b": [{"op": "abolishFiend", "gain": 6}]}], "shield": true, "baseCopies": 0}, {"id": "c1313", "n": "Tech N9ne", "t": "EPIC", "cost": 10, "gp": 4, "copies": 1, "txt": "+4 Karma & when first obtained, you may place this card on top of your deck.", "v": "scan", "art": 1313, "set": "base", "fx": [{"op": "k", "n": 4}], "onGain": [{"op": "techTop"}], "shield": true, "baseCopies": 1}, {"id": "c1314", "n": "The Great Milenko", "t": "EPIC", "cost": 9, "gp": 4, "copies": 1, "txt": "+2 Karma & you may abolish up to 3 cards from your hand and/or discard pile.", "v": "scan", "art": 1314, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "abolish", "max": 3, "from": ["hand", "discard"], "opt": true}], "shield": true, "baseCopies": 1}, {"id": "c1400", "n": "Wicked Clownz", "t": "DC", "cost": 3, "gp": 1, "copies": 2, "txt": "+2 Karma OR Discard to stomp an opponent's card being played.", "v": "scan", "art": 1400, "set": "base", "fx": [{"op": "k", "n": 2}], "reaction": {"cost": "discardSelf", "after": []}, "shield": true, "baseCopies": 2}, {"id": "c1401", "n": "Willoughby Rags", "t": "DC", "cost": 5, "gp": 2, "copies": 1, "txt": "+2 Karma & you may put the next Dark Carnival card you obtain this turn into your hand.", "v": "scan", "art": 1401, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "nextToHand", "types": ["DC"]}], "shield": false, "baseCopies": 1}, {"id": "c1402", "n": "Ali Baba", "t": "DC", "cost": 5, "gp": 2, "copies": 1, "txt": "+2 Karma & you may put an Item card from your discard pile into your hand.", "v": "scan", "art": 1402, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "fromDiscard", "crew": null, "dest": "hand", "opt": true, "type": "ITEM"}], "shield": false, "baseCopies": 1}, {"id": "c1403", "n": "Amy in the Attic", "t": "DC", "cost": 4, "gp": 1, "copies": 1, "txt": "+2 Karma & you may abolish a card from your hand or discard pile.", "v": "scan", "art": 1403, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "abolish", "max": 1, "from": ["hand", "discard"], "opt": true}], "shield": false, "baseCopies": 1}, {"id": "c1404", "n": "Bitch Slap", "t": "DC", "cost": 6, "gp": 2, "copies": 1, "txt": "Fast Effect: +3 Karma & you may choose an opponent's Item or Fiend card in play that is nullified during the current turn.", "v": "scan", "art": 1404, "set": "oracle", "fx": [{"op": "k", "n": 3}, {"op": "nullify", "max": 1, "until": "turn"}], "fast": true, "shield": false, "baseCopies": 0}, {"id": "c1405", "n": "Bang! Pow! Boom!", "t": "DC", "cost": 7, "gp": 2, "copies": 1, "txt": "+2 Karma & reveal the top card of the Main Deck; then abolish it or obtain it for free.", "v": "scan", "art": 1405, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "revealTopMain"}], "shield": false, "baseCopies": 1}, {"id": "c1406", "n": "Carpenter Jed", "t": "DC", "cost": 4, "gp": 1, "copies": 1, "txt": "+2 Karma & you may place a non-Starter card from the Abyss on the top or bottom of the Main Deck.", "v": "scan", "art": 1406, "set": "oracle", "fx": [{"op": "k", "n": 2}, {"op": "abyssToMain"}], "shield": false, "baseCopies": 0}, {"id": "c1407", "n": "Cartoon Nightmares", "t": "DC", "cost": 4, "gp": 1, "copies": 2, "txt": "If you already have a Dark Carnival card in play, gain +3 Karma.", "v": "scan", "art": 1407, "set": "base", "fx": [{"op": "condDC", "n": 3, "base": 0}], "shield": false, "baseCopies": 2}, {"id": "c1409", "n": "Dumpin'", "t": "DC", "cost": 4, "gp": 1, "copies": 1, "txt": "Fast Effect: +2 Karma & you may abolish a card from the Gallery.", "v": "scan", "art": 1409, "set": "oracle", "fx": [{"op": "k", "n": 2}, {"op": "galleryWipe", "max": 1, "refill": false}], "fast": true, "shield": false, "baseCopies": 0}, {"id": "c1410", "n": "Eye of the Storm", "t": "DC", "cost": 5, "gp": 2, "copies": 1, "txt": "+2 Karma OR Discard to stomp an opponent's non-Epic card being played, even if shielded.", "v": "scan", "art": 1410, "set": "oracle", "fx": [{"op": "k", "n": 2}], "reaction": {"cost": "discardSelf", "after": [], "pierceShield": true, "nonEpic": true}, "shield": false, "baseCopies": 0}, {"id": "c1411", "n": "Ezmerella Zella", "t": "DC", "cost": 6, "gp": 2, "copies": 1, "txt": "+2 Karma & look at an opponent's hand. You may have them discard a Crew or Item card of your choice; then they draw a card (which you may also look at).", "v": "scan", "art": 1411, "set": "oracle", "fx": [{"op": "k", "n": 2}, {"op": "peekAttack"}], "shield": false, "baseCopies": 0}, {"id": "c1412", "n": "Fortune Teller", "t": "DC", "cost": 3, "gp": 1, "copies": 2, "txt": "+2 Karma & you may abolish a card from the Gallery and replace it.", "v": "scan", "art": 1412, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "galleryWipe", "max": 1, "refill": true}], "shield": false, "baseCopies": 2}, {"id": "c1414", "n": "In Yo Face", "t": "DC", "cost": 5, "gp": 2, "copies": 1, "txt": "+2 Karma OR Mirror an opponent who has just drawn a card, drawn a Flavor card, or abolished a card from their hand or discard pile; then gain +2 Karma.", "v": "scan", "art": 1414, "set": "oracle", "fx": [{"op": "k", "n": 2}], "mirror": true, "shield": false, "baseCopies": 0}, {"id": "c1415", "n": "The Amazing Jeckel Brothers", "t": "DC", "cost": 8, "gp": 3, "copies": 1, "txt": "+4 Karma & you may place a non-Epic card from your discard pile on top of your deck.", "v": "scan", "art": 1415, "set": "base", "fx": [{"op": "k", "n": 4}, {"op": "fromDiscard", "crew": null, "dest": "top", "opt": true, "nonEpic": true}], "shield": true, "baseCopies": 1}, {"id": "c1416", "n": "Juggalo Spirits", "t": "DC", "cost": 4, "gp": 1, "copies": 1, "txt": "+2 Karma & none of your cards (including Fiends) can be stomped this turn.", "v": "scan", "art": 1416, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "kgShield"}], "shield": true, "baseCopies": 1}, {"id": "c1417", "n": "Killer Carnie", "t": "DC", "cost": 2, "gp": 1, "copies": 2, "txt": "+1 Karma & you may abolish a card from your hand or discard pile. OR Abolish this card to gain +2 Karma.", "v": "scan", "art": 1417, "set": "base", "fx": [{"op": "or", "la": "+1 Karma & abolish a card", "a": [{"op": "k", "n": 1}, {"op": "abolish", "max": 1, "from": ["hand", "discard"], "opt": true}], "lb": "Abolish this for +2 Karma", "b": [{"op": "abolishSelfK", "n": 2}]}], "shield": false, "baseCopies": 2}, {"id": "c1419", "n": "Marvelous Missing Link: Found", "t": "DC", "cost": 6, "gp": 2, "copies": 1, "txt": "+3 Karma OR Discard to stomp an opponent's card being played; then draw a card.", "v": "scan", "art": 1419, "set": "base", "fx": [{"op": "k", "n": 3}], "reaction": {"cost": "discardSelf", "after": [{"op": "draw", "n": 1}]}, "shield": true, "baseCopies": 1}, {"id": "c1420", "n": "Marvelous Missing Link: Lost", "t": "DC", "cost": 6, "gp": 2, "copies": 1, "txt": "+4 Karma", "v": "scan", "art": 1420, "set": "base", "fx": [{"op": "k", "n": 4}], "shield": false, "baseCopies": 1}, {"id": "c1421", "n": "Moon Glorious", "t": "DC", "cost": 4, "gp": 1, "copies": 1, "txt": "+2 Karma OR Obtain 1 Item card of cost 4 or less for free.", "v": "scan", "art": 1421, "set": "base", "fx": [{"op": "or", "la": "+2 Karma", "a": [{"op": "k", "n": 2}], "lb": "Obtain an Item up to 4 Karma", "b": [{"op": "obtain", "maxCost": 4, "itemOnly": true}]}], "shield": false, "baseCopies": 1}, {"id": "c1422", "n": "Mr. White Suit", "t": "DC", "cost": 5, "gp": 2, "copies": 1, "txt": "+3 Karma", "v": "scan", "art": 1422, "set": "base", "fx": [{"op": "k", "n": 3}], "shield": false, "baseCopies": 1}, {"id": "c1423", "n": "Oracle of the Three Rings", "t": "DC", "cost": 8, "gp": 3, "copies": 1, "txt": "+4 Karma & you may reveal the top card of every player's deck (including your own); then have each player discard the revealed card or return it facedown.", "v": "scan", "art": 1423, "set": "oracle", "fx": [{"op": "k", "n": 4}, {"op": "revealAllTop"}], "shield": true, "baseCopies": 0}, {"id": "c1424", "n": "Oracle\u2019s Favor", "t": "DC", "cost": 3, "gp": 1, "copies": 1, "txt": "Fast Effect: +2 Karma & you may reveal the top 2 cards of any deck; then place 1 on top and 1 on the bottom of that deck.", "v": "scan", "art": 1424, "set": "oracle", "fx": [{"op": "k", "n": 2}, {"op": "oracleFavor"}], "fast": true, "shield": false, "baseCopies": 0}, {"id": "c1425", "n": "Red Moon Howl", "t": "DC", "cost": 4, "gp": 0, "copies": 1, "txt": "+2 Karma & this card is worth 1 GP for each \u00ae Dark Carnival card in your deck (excluding this one).", "v": "scan", "art": 1425, "set": "oracle", "fx": [{"op": "k", "n": 2}], "variableGP": "DC", "shield": false, "baseCopies": 0}, {"id": "c1426", "n": "Sideshow Freaks", "t": "DC", "cost": 3, "gp": 1, "copies": 1, "txt": "+2 Karma & if you already have at least 2 Dark Carnival cards in play, you may abolish a card from your hand or discard pile.", "v": "scan", "art": 1426, "set": "oracle", "fx": [{"op": "k", "n": 2}, {"op": "crewAbolish", "crew": "DC"}], "shield": false, "baseCopies": 0}, {"id": "c1427", "n": "Squeezy", "t": "DC", "cost": 3, "gp": 1, "copies": 1, "txt": "+2 Karma OR Abolish a card from your hand or discard pile.", "v": "scan", "art": 1427, "set": "oracle", "fx": [{"op": "or", "la": "+2 Karma", "a": [{"op": "k", "n": 2}], "lb": "Abolish a card", "b": [{"op": "abolish", "max": 1, "from": ["hand", "discard"], "opt": true}]}], "shield": false, "baseCopies": 0}, {"id": "c1428", "n": "Superballs", "t": "DC", "cost": 3, "gp": 1, "copies": 1, "txt": "Obtain a card from the Gallery of cost 4 or less for free.", "v": "scan", "art": 1428, "set": "base", "fx": [{"op": "obtain", "maxCost": 4, "galleryOnly": true}], "shield": false, "baseCopies": 1}, {"id": "c1429", "n": "The Butterfly", "t": "DC", "cost": 7, "gp": 2, "copies": 1, "txt": "+3 Karma & draw 3 Main Deck cards to be placed below the Gallery. At the end of your turn, place any not obtained into any empty Gallery slots; then abolish the rest.", "v": "scan", "art": 1429, "set": "oracle", "fx": [{"op": "k", "n": 3}, {"op": "butterfly"}], "shield": false, "baseCopies": 0}, {"id": "c1430", "n": "The Loons", "t": "DC", "cost": 2, "gp": 1, "copies": 1, "txt": "+2 Karma", "v": "scan", "art": 1430, "set": "base", "fx": [{"op": "k", "n": 2}], "shield": false, "baseCopies": 1}, {"id": "c1431", "n": "The Mighty Death Pop!", "t": "DC", "cost": 6, "gp": 2, "copies": 1, "txt": "Abolish a card from your hand or discard pile to gain +3 Karma.", "v": "scan", "art": 1431, "set": "base", "fx": [{"op": "abolish", "max": 1, "from": ["hand", "discard"], "opt": true, "gainEach": 3}], "shield": false, "baseCopies": 1}, {"id": "c1432", "n": "The Wraith", "t": "DC", "cost": 7, "gp": 2, "copies": 1, "txt": "+2 Karma & you may put a Dark Carnival card from your discard pile into your hand.", "v": "scan", "art": 1432, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "fromDiscard", "crew": "DC", "dest": "hand", "opt": true}], "shield": false, "baseCopies": 1}, {"id": "c1433", "n": "Vera Lee", "t": "DC", "cost": 5, "gp": 2, "copies": 1, "txt": "+2 Karma & you may place a Dark Carnival card from your discard pile on top of your deck.", "v": "scan", "art": 1433, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "fromDiscard", "crew": "DC", "dest": "top", "opt": true}], "shield": false, "baseCopies": 1}, {"id": "c2500", "n": "Gravedigger\u2019s Shovel", "t": "ITEM", "cost": 5, "gp": 2, "copies": 1, "txt": "Once during your turn you may reveal your deck's top card. If its cost is 3 or less, draw it; otherwise return it facedown.", "v": "scan", "art": 2500, "set": "base", "fx": [], "active": [{"op": "shovel"}], "shield": true, "baseCopies": 1}, {"id": "c2501", "n": "Hatchetman Charm", "t": "ITEM", "cost": 5, "gp": 2, "copies": 1, "txt": "Once during your tur when you obtain a Crew card of cost 5 or less, you may place it on top of your deck.", "v": "scan", "art": 2501, "set": "base", "fx": [], "passive": "charm", "shield": true, "baseCopies": 1}, {"id": "c2502", "n": "Joey\u2019s Bazooka", "t": "ITEM", "cost": 3, "gp": 1, "copies": 1, "txt": "Once during your turn you may abolish a card from the Gallery and replace it.", "v": "scan", "art": 2502, "set": "oracle", "fx": [], "active": [{"op": "galleryWipe", "max": 1, "refill": true}], "shield": true, "baseCopies": 0}, {"id": "c2503", "n": "Juggalo Juice", "t": "ITEM", "cost": 2, "gp": 1, "copies": 1, "txt": "Whenever you obtain a card from the Gallery, immediately replace it.", "v": "scan", "art": 2503, "set": "base", "fx": [], "passive": "juice", "shield": true, "baseCopies": 1}, {"id": "c2504", "n": "The Lotus Cross", "t": "ITEM", "cost": 7, "gp": 2, "copies": 1, "txt": "At the start of your turn, if you have less than 5 cards in your hand, you may discard this card to draw back up to 5 cards. Whenever this card is put into play, draw a card.", "v": "scan", "art": 2504, "set": "oracle", "fx": [{"op": "draw", "n": 1}], "passive": "lotus", "shield": true, "baseCopies": 0}, {"id": "c2505", "n": "Milenko\u2019s Wand", "t": "ITEM", "cost": 4, "gp": 1, "copies": 1, "txt": "Once during your turn you may flip a card from the Gallery facedown (it can't be obtained or abolished). Then at the start of your next turn, flip it faceup.", "v": "scan", "art": 2505, "set": "oracle", "fx": [], "active": [{"op": "flipGallery", "max": 1}], "shield": true, "baseCopies": 0}, {"id": "c2506", "n": "Marvelous Missing Link Mask", "t": "ITEM", "cost": 8, "gp": 3, "copies": 1, "txt": "When drawing cards at the end of your turn, draw 1 extra card.", "v": "scan", "art": 2506, "set": "base", "fx": [], "passive": "mask", "shield": true, "baseCopies": 1}, {"id": "c2507", "n": "Murder Cloak", "t": "ITEM", "cost": 6, "gp": 2, "copies": 1, "txt": "None of your cards (including Fiends) can be stomped.", "v": "scan", "art": 2507, "set": "base", "fx": [], "passive": "cloak", "shield": true, "baseCopies": 1}, {"id": "c2508", "n": "My Axe", "t": "ITEM", "cost": 3, "gp": 1, "copies": 2, "txt": "Once during your turn when you obtain a Fiend card you may abolish a card from your hand or discard pile.", "v": "scan", "art": 2508, "set": "base", "fx": [], "passive": "axe", "shield": true, "baseCopies": 2}, {"id": "c2510", "n": "The Raven\u2019s Mirror", "t": "ITEM", "cost": 4, "gp": 1, "copies": 1, "txt": "Once during your turn you may change a Crew card you have in play to a Crew of your choice until the end of your turn.", "v": "scan", "art": 2510, "set": "base", "fx": [], "active": [{"op": "changeCrew"}], "shield": true, "baseCopies": 1}, {"id": "c2511", "n": "Ringmaster\u2019s Hat", "t": "ITEM", "cost": 5, "gp": 2, "copies": 1, "txt": "Whenever you obtain Item cards, put them directly into play.", "v": "scan", "art": 2511, "set": "base", "fx": [], "passive": "hat", "shield": true, "baseCopies": 1}, {"id": "c2512", "n": "Soopa Soaka", "t": "ITEM", "cost": 7, "gp": 2, "copies": 1, "txt": "When in play, discard this card to stomp an opponent's card being played. Whenever this card is put into play, draw a card.", "v": "scan", "art": 2512, "set": "base", "fx": [{"op": "draw", "n": 1}], "reaction": {"cost": "discardSelf", "after": []}, "shield": true, "baseCopies": 1}, {"id": "c2513", "n": "Toy Box", "t": "ITEM", "cost": 4, "gp": 1, "copies": 1, "txt": "Whenever an opponent's effect would cause you to discard any Item cards in play, ignore that effect.", "v": "scan", "art": 2513, "set": "base", "fx": [], "passive": "toy", "shield": true, "baseCopies": 1}, {"id": "c2514", "n": "Voodoo Doll", "t": "ITEM", "cost": 5, "gp": 2, "copies": 1, "txt": "Once during your turn you may choose an opponent's Item or Fiend card in play that is nullified until the start of your next turn.", "v": "scan", "art": 2514, "set": "oracle", "fx": [], "active": [{"op": "nullify", "max": 1, "until": "next"}], "shield": true, "baseCopies": 0}, {"id": "c2515", "n": "The Wraith\u2019s Tome", "t": "ITEM", "cost": 7, "gp": 2, "copies": 1, "txt": "Once during your turn you may draw a Flavor card.", "v": "scan", "art": 2515, "set": "base", "fx": [], "active": [{"op": "drawFlavor", "n": 1}], "shield": true, "baseCopies": 1}, {"id": "c2516", "n": "The Killjoy Club", "t": "PSY", "cost": 7, "gp": 2, "copies": 1, "txt": "+3 Karma OR Discard to stomp an opponent's card being played, even if shielded or protected by any other effect.", "v": "scan", "art": 2516, "set": "base", "fx": [{"op": "k", "n": 3}], "reaction": {"cost": "discardSelf", "after": [], "pierce": true}, "shield": true, "baseCopies": 1}, {"id": "c2517", "n": "Axe Murder Boyz", "t": "PSY", "cost": 6, "gp": 2, "copies": 1, "txt": "Draw 3 cards; then keep 2 and discard the other 1.", "v": "scan", "art": 2517, "set": "base", "fx": [{"op": "drawKeep", "draw": 3, "keep": 2}], "shield": false, "baseCopies": 1}, {"id": "c2518", "n": "Big Hoodoo", "t": "PSY", "cost": 6, "gp": 2, "copies": 1, "txt": "Draw 2 cards; then discard 1 from your hand. OR Discard to stomp an opponent's card being played; then draw a card.", "v": "scan", "art": 2518, "set": "base", "fx": [{"op": "drawDiscard", "draw": 2, "discard": 1}], "reaction": {"cost": "discardSelf", "after": [{"op": "draw", "n": 1}]}, "shield": true, "baseCopies": 1}, {"id": "c2519", "n": "Big Silva", "t": "PSY", "cost": 3, "gp": 1, "copies": 1, "txt": "+2 Karma OR Abolish a card from your hand or discard pile.", "v": "scan", "art": 2519, "set": "oracle", "fx": [{"op": "or", "la": "+2 Karma", "a": [{"op": "k", "n": 2}], "lb": "Abolish a card", "b": [{"op": "abolish", "max": 1, "from": ["hand", "discard"], "opt": true}]}], "shield": false, "baseCopies": 0}, {"id": "c2520", "n": "Billy Bill", "t": "PSY", "cost": 5, "gp": 2, "copies": 1, "txt": "Draw a card; then you may obtain an Item card of cost 5 or less for free.", "v": "scan", "art": 2520, "set": "base", "fx": [{"op": "draw", "n": 1}, {"op": "obtain", "maxCost": 5, "itemOnly": true, "opt": true}], "shield": false, "baseCopies": 1}, {"id": "c2521", "n": "Bitch Slap", "t": "PSY", "cost": 6, "gp": 2, "copies": 1, "txt": "Fast Effect: +3 Karma & you may choose an opponent's Item or Fiend card in play that is nullified during the current turn.", "v": "scan", "art": 2521, "set": "oracle", "fx": [{"op": "k", "n": 3}, {"op": "nullify", "max": 1, "until": "turn"}], "fast": true, "shield": false, "baseCopies": 0}, {"id": "c2522", "n": "Blahzay Rose", "t": "PSY", "cost": 5, "gp": 2, "copies": 1, "txt": "+2 Karma & you may abolish up to 3 cards from the Gallery; then replace them.", "v": "scan", "art": 2522, "set": "promo", "fx": [{"op": "k", "n": 2}, {"op": "galleryWipe", "max": 3, "refill": true}], "shield": false, "baseCopies": 0}, {"id": "c2523", "n": "Cupcake", "t": "PSY", "cost": 5, "gp": 2, "copies": 1, "txt": "+1 Karma & draw a Flavor card.", "v": "scan", "art": 2523, "set": "promo", "fx": [{"op": "k", "n": 1}, {"op": "drawFlavor", "n": 1}], "shield": false, "baseCopies": 0}, {"id": "c2524", "n": "DJ Clay", "t": "PSY", "cost": 6, "gp": 2, "copies": 1, "txt": "+3 Karma & Epic cards cost 1 less Karma to purchase this turn.", "v": "scan", "art": 2524, "set": "base", "fx": [{"op": "k", "n": 3}, {"op": "epicDiscount"}], "shield": false, "baseCopies": 1}, {"id": "c2525", "n": "Dumpin'", "t": "PSY", "cost": 4, "gp": 1, "copies": 1, "txt": "Fast Effect: +2 Karma & you may abolish a card from the Gallery.", "v": "scan", "art": 2525, "set": "oracle", "fx": [{"op": "k", "n": 2}, {"op": "galleryWipe", "max": 1, "refill": false}], "fast": true, "shield": false, "baseCopies": 0}, {"id": "c2526", "n": "Golden Goldies", "t": "PSY", "cost": 4, "gp": 0, "copies": 1, "txt": "+2 Karma & this card is worth 1 GP for each & Psychopathic card in your deck (excluding this one).", "v": "scan", "art": 2526, "set": "oracle", "fx": [{"op": "k", "n": 2}], "variableGP": "PSY", "shield": false, "baseCopies": 0}, {"id": "c2527", "n": "Homies", "t": "PSY", "cost": 3, "gp": 1, "copies": 2, "txt": "+2 Karma & reveal your deck's top card. You may discard it or return it facedown.", "v": "scan", "art": 2527, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "revealTopSelf"}], "shield": false, "baseCopies": 2}, {"id": "c2529", "n": "In Yo Face", "t": "PSY", "cost": 5, "gp": 2, "copies": 1, "txt": "+2 Karma OR Mirror an opponent who has just drawn a card, drawn a Flavor card, or abolished a card from their hand or discard pile; then gain +2 Karma.", "v": "scan", "art": 2529, "set": "oracle", "fx": [{"op": "k", "n": 2}], "mirror": true, "shield": false, "baseCopies": 0}, {"id": "c2530", "n": "JCW Wrestlers", "t": "PSY", "cost": 3, "gp": 1, "copies": 2, "txt": "Draw a card. OR Discard to stomp an opponent's card being played.", "v": "scan", "art": 2530, "set": "base", "fx": [{"op": "draw", "n": 1}], "reaction": {"cost": "discardSelf", "after": []}, "shield": true, "baseCopies": 2}, {"id": "c2532", "n": "Farris the Juggalawyer", "t": "PSY", "cost": 4, "gp": 1, "copies": 1, "txt": "+2 Karma & flip up to 2 cards from the Gallery facedown (they can't be obtained or abolished). Then at the start of your next turn, flip them faceup.", "v": "scan", "art": 2532, "set": "oracle", "fx": [{"op": "k", "n": 2}, {"op": "flipGallery", "max": 2}], "shield": false, "baseCopies": 0}, {"id": "c2533", "n": "Jumpsteady", "t": "PSY", "cost": 5, "gp": 2, "copies": 1, "txt": "Draw 2 cards.", "v": "scan", "art": 2533, "set": "base", "fx": [{"op": "draw", "n": 2}], "shield": false, "baseCopies": 1}, {"id": "c2534", "n": "K.G. Kevin Gill", "t": "PSY", "cost": 4, "gp": 1, "copies": 1, "txt": "+2 Karma & none of your cards (including Fiends) can be stomped this turn.", "v": "scan", "art": 2534, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "kgShield"}], "shield": true, "baseCopies": 1}, {"id": "c2600", "n": "Legz Diamond", "t": "PSY", "cost": 5, "gp": 2, "copies": 1, "txt": "Obtain a card of cost 5 or less for free.", "v": "scan", "art": 2600, "set": "base", "fx": [{"op": "obtain", "maxCost": 5}], "shield": false, "baseCopies": 1}, {"id": "c2601", "n": "Lyte", "t": "PSY", "cost": 7, "gp": 2, "copies": 1, "txt": "+2 Karma & draw a card; then you may keep it or discard it to draw a new one.", "v": "scan", "art": 2601, "set": "oracle", "fx": [{"op": "k", "n": 2}, {"op": "lyte"}], "shield": false, "baseCopies": 0}, {"id": "c2602", "n": "Mike E. Clark", "t": "PSY", "cost": 5, "gp": 2, "copies": 1, "txt": "+2 Karma & you may place a Psychopathic card from your discard pile on top of your deck.", "v": "scan", "art": 2602, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "fromDiscard", "crew": "PSY", "dest": "top", "opt": true}], "shield": false, "baseCopies": 1}, {"id": "c2603", "n": "Natalie the Ring Girl", "t": "PSY", "cost": 3, "gp": 1, "copies": 1, "txt": "Draw 2 cards; then discard 1 from your hand.", "v": "scan", "art": 2603, "set": "base", "fx": [{"op": "drawDiscard", "draw": 2, "discard": 1}], "shield": false, "baseCopies": 1}, {"id": "c2604", "n": "Oracle\u2019s Favor", "t": "PSY", "cost": 3, "gp": 1, "copies": 1, "txt": "Fast Effect: +2 Karma & you may reveal the top 2 cards of any deck; then place 1 on top and 1 on the bottom of that deck.", "v": "scan", "art": 2604, "set": "oracle", "fx": [{"op": "k", "n": 2}, {"op": "oracleFavor"}], "fast": true, "shield": false, "baseCopies": 0}, {"id": "c2605", "n": "Ouija Macc", "t": "PSY", "cost": 6, "gp": 2, "copies": 1, "txt": "+3 Karma & when first obtained, you may shuffle up to 2 cards of cost 6 or less (excluding this one) from your discard pile into your deck.", "v": "scan", "art": 2605, "set": "oracle", "fx": [{"op": "k", "n": 3}], "onGain": [{"op": "shuffleBack", "maxCost": 6, "max": 2}], "shield": false, "baseCopies": 0}, {"id": "c2606", "n": "Psychopathic Rydas", "t": "PSY", "cost": 8, "gp": 3, "copies": 1, "txt": "+3 Karma & you may purchase one card from the Abyss this turn.", "v": "scan", "art": 2606, "set": "base", "fx": [{"op": "k", "n": 3}, {"op": "buyAbyss"}], "shield": true, "baseCopies": 1}, {"id": "c2607", "n": "Psychopathic Soldiers", "t": "PSY", "cost": 2, "gp": 1, "copies": 2, "txt": "+1 Karma & you may abolish a card from your hand or discard pile. OR Abolish this card to draw a card.", "v": "scan", "art": 2607, "set": "base", "fx": [{"op": "or", "la": "+1 Karma & abolish a card", "a": [{"op": "k", "n": 1}, {"op": "abolish", "max": 1, "from": ["hand", "discard"], "opt": true}], "lb": "Abolish this to draw a card", "b": [{"op": "abolishSelf"}, {"op": "draw", "n": 1}]}], "shield": false, "baseCopies": 2}, {"id": "c2609", "n": "Road Dogs", "t": "PSY", "cost": 3, "gp": 1, "copies": 1, "txt": "+2 Karma & if you already have at least 2 Psychopathic cards in play, you may abolish a card from your hand or discard pile.", "v": "scan", "art": 2609, "set": "oracle", "fx": [{"op": "k", "n": 2}, {"op": "crewAbolish", "crew": "PSY"}], "shield": false, "baseCopies": 0}, {"id": "c2610", "n": "Rude Boy", "t": "PSY", "cost": 4, "gp": 1, "copies": 1, "txt": "Draw a card; then you may abolish a card from your hand or discard pile.", "v": "scan", "art": 2610, "set": "base", "fx": [{"op": "draw", "n": 1}, {"op": "abolish", "max": 1, "from": ["hand", "discard"], "opt": true}], "shield": false, "baseCopies": 1}, {"id": "c2611", "n": "Soopa Ninjas", "t": "PSY", "cost": 4, "gp": 1, "copies": 2, "txt": "+1 Karma & draw a card.", "v": "scan", "art": 2611, "set": "base", "fx": [{"op": "k", "n": 1}, {"op": "draw", "n": 1}], "shield": false, "baseCopies": 2}, {"id": "c2613", "n": "Soopa Villainz", "t": "PSY", "cost": 8, "gp": 3, "copies": 1, "txt": "+3 Karma & you may abolish a non-Epic card from your hand or discard pile; then you may obtain a card of cost up to 1 higher than the abolished card for free.", "v": "scan", "art": 2613, "set": "oracle", "fx": [{"op": "k", "n": 3}, {"op": "upgrade"}], "shield": true, "baseCopies": 0}, {"id": "c2614", "n": "Street Team", "t": "PSY", "cost": 2, "gp": 1, "copies": 1, "txt": "Draw a card; then you may abolish a card from the Gallery and replace it.", "v": "scan", "art": 2614, "set": "base", "fx": [{"op": "draw", "n": 1}, {"op": "galleryWipe", "max": 1, "refill": true}], "shield": false, "baseCopies": 1}, {"id": "c2615", "n": "Sugar Slam", "t": "PSY", "cost": 4, "gp": 1, "copies": 1, "txt": "+2 Karma OR If this is the first card played, discard the rest of your hand to draw 5 new cards.", "v": "scan", "art": 2615, "set": "base", "fx": [{"op": "sugarSlam"}], "shield": false, "baseCopies": 1}, {"id": "c2616", "n": "Young Wicked", "t": "PSY", "cost": 7, "gp": 2, "copies": 1, "txt": "+2 Karma & you may put a Psychopathic card from your discard pile into your hand.", "v": "scan", "art": 2616, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "fromDiscard", "crew": "PSY", "dest": "hand", "opt": true}], "shield": false, "baseCopies": 1}, {"id": "c2617", "n": "Zug Izland", "t": "PSY", "cost": 5, "gp": 2, "copies": 1, "txt": "Draw a card. OR Discard to stomp an opponent's non-\u0415pic card being played, even if shielded.", "v": "scan", "art": 2617, "set": "oracle", "fx": [{"op": "draw", "n": 1}], "reaction": {"cost": "discardSelf", "after": [], "pierceShield": true, "nonEpic": true}, "shield": false, "baseCopies": 0}, {"id": "c2618", "n": "Ace of Cups", "t": "TAROT", "cost": 0, "gp": 0, "copies": 2, "txt": "Every player may place a card of cost 5 or less from their discard pile on top of their deck.", "v": "scan", "art": 2618, "set": "oracle", "fx": [{"op": "tarot", "kind": "cups"}], "shield": false, "baseCopies": 0}, {"id": "c2620", "n": "Ace of Pentacles", "t": "TAROT", "cost": 0, "gp": 0, "copies": 2, "txt": "Every player may draw a card.", "v": "scan", "art": 2620, "set": "oracle", "fx": [{"op": "tarot", "kind": "pentacles"}], "shield": false, "baseCopies": 0}, {"id": "c2622", "n": "Death", "t": "TAROT", "cost": 0, "gp": 0, "copies": 4, "txt": "Every player may abolish a card from their hand or discard pile.", "v": "scan", "art": 2622, "set": "oracle", "fx": [{"op": "tarot", "kind": "death"}], "shield": false, "baseCopies": 0}, {"id": "c2626", "n": "Knight of Wands", "t": "TAROT", "cost": 0, "gp": 0, "copies": 2, "txt": "Every player may draw a Flavor card, starting with the player whose turn it currently 1s and going clockwise.", "v": "scan", "art": 2626, "set": "oracle", "fx": [{"op": "tarot", "kind": "wands"}], "shield": false, "baseCopies": 0}, {"id": "c2628", "n": "Three of Swords", "t": "TAROT", "cost": 0, "gp": 0, "copies": 2, "txt": "Every player gives one non- Epic card in their hand to the player on their left, who then adds it to their hand.", "v": "scan", "art": 2628, "set": "oracle", "fx": [{"op": "tarot", "kind": "swords"}], "shield": false, "baseCopies": 0}, {"id": "c2630", "n": "Wheel of Fortune", "t": "TAROT", "cost": 0, "gp": 0, "copies": 2, "txt": "Every player may look at their deck's top 3 cards, discard whichever they choose, and return the rest facedown in any order.", "v": "scan", "art": 2630, "set": "oracle", "fx": [{"op": "tarot", "kind": "wheel"}], "shield": false, "baseCopies": 0}, {"id": "c2632", "n": "Bodyguard", "t": "UG", "cost": 3, "gp": 1, "copies": 2, "txt": "Roll on the Wheel of Fate. OR Discard to stomp an opponent's card being played.", "v": "scan", "art": 2632, "set": "base", "fx": [{"op": "wheel", "n": 1}], "reaction": {"cost": "discardSelf", "after": []}, "shield": true, "baseCopies": 2}, {"id": "c2633", "n": "Bitch Slap", "t": "UG", "cost": 6, "gp": 2, "copies": 1, "txt": "Fast Effect: +3 Karma & you may choose an opponent's Item or Fiend card in play that is nullified during the current turn.", "v": "scan", "art": 2633, "set": "oracle", "fx": [{"op": "k", "n": 3}, {"op": "nullify", "max": 1, "until": "turn"}], "fast": true, "shield": false, "baseCopies": 0}, {"id": "c2700", "n": "Kung Fu Vampire", "t": "UG", "cost": 4, "gp": 0, "copies": 1, "txt": "+2 Karma & this card is worth 1 GP for each \u00ae Underground card in your deck (excluding this one).", "v": "scan", "art": 2700, "set": "oracle", "fx": [{"op": "k", "n": 2}], "variableGP": "UG", "shield": false, "baseCopies": 0}, {"id": "c2701", "n": "Lil Wyte", "t": "UG", "cost": 5, "gp": 2, "copies": 1, "txt": "Draw a Flavor card. OR Discard to stomp an opponent's non-Epic card being played, even if shielded.", "v": "scan", "art": 2701, "set": "oracle", "fx": [{"op": "drawFlavor", "n": 1}], "reaction": {"cost": "discardSelf", "after": [], "pierceShield": true, "nonEpic": true}, "shield": false, "baseCopies": 0}, {"id": "c2702", "n": "Lo Key", "t": "UG", "cost": 3, "gp": 1, "copies": 1, "txt": "+2 Karma OR Abolish a card from your hand or discard pile.", "v": "scan", "art": 2702, "set": "oracle", "fx": [{"op": "or", "la": "+2 Karma", "a": [{"op": "k", "n": 2}], "lb": "Abolish a card", "b": [{"op": "abolish", "max": 1, "from": ["hand", "discard"], "opt": true}]}], "shield": false, "baseCopies": 0}, {"id": "c2703", "n": "Lyrikal Snuff Productions", "t": "UG", "cost": 6, "gp": 2, "copies": 1, "txt": "Roll a 12-sided die: 1-3=+2 Karma / 4-9=+3 Karma / 10-12=+4 Karma & you may abolish a Fiend card in play.", "v": "scan", "art": 2703, "set": "oracle", "fx": [{"op": "rollBand", "band": "lsp"}], "shield": false, "baseCopies": 0}, {"id": "c2704", "n": "Madchild", "t": "UG", "cost": 5, "gp": 2, "copies": 1, "txt": "Copy the effect of a Crew card in the Gallery of cost 6 or less.", "v": "scan", "art": 2704, "set": "base", "fx": [{"op": "copyGallery", "maxCost": 6}], "shield": false, "baseCopies": 1}, {"id": "c2705", "n": "Myzery", "t": "UG", "cost": 4, "gp": 1, "copies": 1, "txt": "Roll on the Wheel of Fate; then you may abolish a card from your hand or discard pile.", "v": "scan", "art": 2705, "set": "base", "fx": [{"op": "wheel", "n": 1}, {"op": "abolish", "max": 1, "from": ["hand", "discard"], "opt": true}], "shield": false, "baseCopies": 1}, {"id": "c2706", "n": "Necro", "t": "UG", "cost": 7, "gp": 2, "copies": 1, "txt": "+3 Karma OR Discard to stomp an opponent's non-Epic card being played, even if shielded; then abolish the card that was stomped if it costs 3 or less.", "v": "scan", "art": 2706, "set": "oracle", "fx": [{"op": "k", "n": 3}], "reaction": {"cost": "discardSelf", "after": [], "pierceShield": true, "nonEpic": true, "abolishMax": 3}, "shield": true, "baseCopies": 0}, {"id": "c2707", "n": "Oracle\u2019s Favor", "t": "UG", "cost": 3, "gp": 1, "copies": 1, "txt": "Fast Effect: +2 Karma & you may reveal the top 2 cards of any deck; then place 1 on top and 1 on the bottom of that deck.", "v": "scan", "art": 2707, "set": "oracle", "fx": [{"op": "k", "n": 2}, {"op": "oracleFavor"}], "fast": true, "shield": false, "baseCopies": 0}, {"id": "c2708", "n": "Project Born", "t": "UG", "cost": 3, "gp": 1, "copies": 1, "txt": "+2 Karma & if you already have at least 2 Underground cards in play, you may abolish a card from your hand or discard pile.", "v": "scan", "art": 2708, "set": "oracle", "fx": [{"op": "k", "n": 2}, {"op": "crewAbolish", "crew": "UG"}], "shield": false, "baseCopies": 0}, {"id": "c2709", "n": "Rittz", "t": "UG", "cost": 6, "gp": 2, "copies": 1, "txt": "Copy the effect of a Starter or Crew card you have in play.", "v": "scan", "art": 2709, "set": "base", "fx": [{"op": "copyOwn", "types": ["START", "DC", "PSY", "UG"]}], "shield": false, "baseCopies": 1}, {"id": "c2710", "n": "Vanilla Ice", "t": "UG", "cost": 6, "gp": 2, "copies": 1, "txt": "+2 Karma & draw a Flavor card.", "v": "scan", "art": 2710, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "drawFlavor", "n": 1}], "shield": false, "baseCopies": 1}, {"id": "c2711", "n": "Weed Man", "t": "UG", "cost": 2, "gp": 1, "copies": 2, "txt": "+1 Karma & you may abolish a card from your hand or discard pile. OR Abolish this card to draw a Flavor card.", "v": "scan", "art": 2711, "set": "base", "fx": [{"op": "or", "la": "+1 Karma & you may abolish a card", "a": [{"op": "k", "n": 1}, {"op": "abolish", "from": ["hand", "discard"], "max": 1, "opt": true}], "lb": "Abolish this card to draw Flavor", "b": [{"op": "abolishSelf"}, {"op": "drawFlavor", "n": 1}]}], "shield": false, "baseCopies": 2}, {"id": "c2713", "n": "Whitney Peyton", "t": "UG", "cost": 3, "gp": 1, "copies": 1, "txt": "Draw a Flavor card.", "v": "scan", "art": 2713, "set": "base", "fx": [{"op": "drawFlavor", "n": 1}], "shield": false, "baseCopies": 1}, {"id": "c2714", "n": "Wolfpac", "t": "UG", "cost": 4, "gp": 1, "copies": 1, "txt": "+2 Karma & none of your cards (including Fiends) can be stomped this turn.", "v": "scan", "art": 2714, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "kgShield"}], "shield": true, "baseCopies": 1}, {"id": "c2715", "n": "Boondox", "t": "UG", "cost": 8, "gp": 3, "copies": 1, "txt": "+3 Karma & you may copy the effect of an Item card in play (including an opponent's) until the end of your turn.", "v": "scan", "art": 2715, "set": "base", "fx": [{"op": "k", "n": 3}, {"op": "copyItem"}], "shield": true, "baseCopies": 1}, {"id": "c2716", "n": "Ces Cru", "t": "UG", "cost": 4, "gp": 1, "copies": 1, "txt": "Gain a Unity Benefit of your choice. This is in addition to the once per turn limit.", "v": "scan", "art": 2716, "set": "oracle", "fx": [{"op": "freeUnity"}], "shield": false, "baseCopies": 0}, {"id": "c2717", "n": "Da Mafia 6ix", "t": "UG", "cost": 7, "gp": 2, "copies": 1, "txt": "+2 Karma & draw and immediately play the top card of the Main Deck; then abolish it at the end of your turn.", "v": "scan", "art": 2717, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "playMain"}], "shield": false, "baseCopies": 1}, {"id": "c2718", "n": "Dayton Family", "t": "UG", "cost": 4, "gp": 1, "copies": 1, "txt": "Obtain a card of cost 4 or less for free; then you may abolish a card from the Gallery and replace it.", "v": "scan", "art": 2718, "set": "base", "fx": [{"op": "obtain", "maxCost": 4}, {"op": "galleryWipe", "max": 1, "refill": true}], "shield": false, "baseCopies": 1}, {"id": "c2719", "n": "Dope DOD", "t": "UG", "cost": 5, "gp": 2, "copies": 1, "txt": "+2 Karma & roll on the Wheel ofFate.", "v": "scan", "art": 2719, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "wheel", "n": 1}], "shield": false, "baseCopies": 1}, {"id": "c2720", "n": "Dumpin'", "t": "UG", "cost": 4, "gp": 1, "copies": 1, "txt": "Fast Effect: +2 Karma & you may abolish a card from the Gallery.", "v": "scan", "art": 2720, "set": "oracle", "fx": [{"op": "k", "n": 2}, {"op": "galleryWipe", "max": 1, "refill": false}], "fast": true, "shield": false, "baseCopies": 0}, {"id": "c2721", "n": "Entourage", "t": "UG", "cost": 4, "gp": 1, "copies": 2, "txt": "Copy the effect of a Starter or Crew card you have in play of cost 5 or less.", "v": "scan", "art": 2721, "set": "base", "fx": [{"op": "copyInPlay", "maxCost": 5}], "shield": false, "baseCopies": 2}, {"id": "c2723", "n": "Geto Boys", "t": "UG", "cost": 8, "gp": 3, "copies": 1, "txt": "Roll a 12-sided die: 1-3= +3 Karma / 4-9= +4 Karma / 10-12= +5 Karma & you may choose 1 Item card an opponent has in play and have them discard it.", "v": "scan", "art": 2723, "set": "oracle", "fx": [{"op": "rollBand", "band": "geto"}], "shield": true, "baseCopies": 0}, {"id": "c2724", "n": "Groupies", "t": "UG", "cost": 2, "gp": 1, "copies": 1, "txt": "Roll on the Wheel of Fate; then you may abolish a card from the Gallery and replace it.", "v": "scan", "art": 2724, "set": "base", "fx": [{"op": "wheel", "n": 1}, {"op": "galleryWipe", "max": 1, "refill": true}], "shield": false, "baseCopies": 1}, {"id": "c2725", "n": "GWAR", "t": "UG", "cost": 6, "gp": 2, "copies": 1, "txt": "+1 Karma & draw a Flavor card. OR Discard to stomp an opponent's card being played; then draw a card.", "v": "scan", "art": 2725, "set": "base", "fx": [{"op": "k", "n": 1}, {"op": "drawFlavor", "n": 1}], "reaction": {"cost": "discardSelf", "after": [{"op": "draw", "n": 1}]}, "shield": true, "baseCopies": 1}, {"id": "c2726", "n": "Hed PE", "t": "UG", "cost": 5, "gp": 2, "copies": 1, "txt": "+2 Karma & you may place an Underground card from your discard pile on top of your deck.", "v": "scan", "art": 2726, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "fromDiscard", "crew": "UG", "dest": "top", "opt": true}], "shield": false, "baseCopies": 1}, {"id": "c2727", "n": "Hype Man", "t": "UG", "cost": 3, "gp": 1, "copies": 2, "txt": "+2 Karma & choose a Crew; this card becomes that Crew until the end of your turn.", "v": "scan", "art": 2727, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "chooseCrew"}], "shield": false, "baseCopies": 2}, {"id": "c2729", "n": "Inner City Posse", "t": "UG", "cost": 5, "gp": 2, "copies": 1, "txt": "Put a card from the Flavor discard pile into your hand; then place it at the bottom of the Flavor deck at the end of your turn.", "v": "scan", "art": 2729, "set": "promo", "fx": [{"op": "flavorDiscardToHand"}], "shield": false, "baseCopies": 0}, {"id": "c2730", "n": "In Yo Face", "t": "UG", "cost": 5, "gp": 2, "copies": 1, "txt": "+2 Karma OR Mirror an opponent who has just drawn a card, drawn a Flavor card, or abolished a card from their hand or discard pile; then gain +2 Karma.", "v": "scan", "art": 2730, "set": "oracle", "fx": [{"op": "k", "n": 2}], "mirror": true, "shield": false, "baseCopies": 0}, {"id": "c2731", "n": "Jelly Roll", "t": "UG", "cost": 5, "gp": 2, "copies": 1, "txt": "+2 Karma & when first obtained, you may abolish up to 2 cards from your hand and/or discard pile.", "v": "scan", "art": 2731, "set": "base", "fx": [{"op": "k", "n": 2}], "onGain": [{"op": "abolish", "max": 2, "from": ["hand", "discard"], "opt": true}], "shield": false, "baseCopies": 1}, {"id": "c2732", "n": "Kottonmouth Kings", "t": "UG", "cost": 7, "gp": 2, "copies": 1, "txt": "+2 Karma & you may put an Underground card from your discard pile into your hand.", "v": "scan", "art": 2732, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "fromDiscard", "crew": "UG", "dest": "hand", "opt": true}], "shield": false, "baseCopies": 1}, {"id": "c2800", "n": "Wizard of the Hood", "t": "DC", "cost": 5, "gp": 2, "copies": 1, "txt": "+2 Karma & you may shuffle up to 2 cards of cost 4 or less from your discard pile into your deck.", "v": "scan", "art": 2800, "set": "promo", "fx": [{"op": "k", "n": 2}, {"op": "shuffleBack", "maxCost": 4, "max": 2}], "shield": false, "baseCopies": 0}, {"id": "c2801", "n": "Ice Lich", "t": "FIEND", "cost": 3, "gp": 0, "copies": 2, "txt": "+1 Karma & flip up to 3 cards from the Gallery facedown (they can't be obtained or abolished). Then at the start of your next turn abolish these cards and replace them.", "v": "scan", "art": 2801, "set": "base", "fiendUse": [{"op": "k", "n": 1}, {"op": "flipGallery", "max": 3, "abolish": true}], "useWhen": "ownTurn", "shield": false, "baseCopies": 2}, {"id": "c2802", "n": "Mad Professor", "t": "FIEND", "cost": 5, "gp": 0, "copies": 1, "txt": "+3 Karma & you may choose up to 5 cards from an opponent's discard pile to be shuffled into their deck.", "v": "scan", "art": 2802, "set": "base", "fiendUse": [{"op": "k", "n": 3}, {"op": "enemyShuffle", "max": 5}], "useWhen": "ownTurn", "shield": false, "baseCopies": 1}, {"id": "c2803", "n": "Mr. Happy", "t": "FIEND", "cost": 4, "gp": 0, "copies": 1, "txt": "+2 Karma OR Abolish this card to stomp an opponent's card being played; then draw a card.", "v": "scan", "art": 2803, "set": "base", "fiendUse": [{"op": "k", "n": 2}], "useWhen": "ownTurn", "reaction": {"cost": "abolishSelf", "after": [{"op": "draw", "n": 1}]}, "shield": true, "baseCopies": 1}, {"id": "c2804", "n": "Mr. Rotten Treats", "t": "FIEND", "cost": 5, "gp": 0, "copies": 1, "txt": "+3 Karma & for each opponent you may choose 1 Item card they have in play and have them discard it.", "v": "scan", "art": 2804, "set": "base", "fiendUse": [{"op": "k", "n": 3}, {"op": "discardEnemyItems", "max": 1, "all": true}], "useWhen": "ownTurn", "shield": false, "baseCopies": 1}, {"id": "c2805", "n": "Ol\u2019 Evil Eye", "t": "FIEND", "cost": 5, "gp": 0, "copies": 1, "txt": "+3 Karma & flip up to 4 cards from the Gallery facedown (they can't be obtained or abolished). Then at the start of your next turn abolish these cards and replace them.", "v": "scan", "art": 2805, "set": "base", "fiendUse": [{"op": "k", "n": 3}, {"op": "flipGallery", "max": 4, "abolish": true}], "useWhen": "ownTurn", "shield": false, "baseCopies": 1}, {"id": "c2806", "n": "Opaque Brotherhood", "t": "FIEND", "cost": 8, "gp": 0, "copies": 1, "txt": "+4 Karma OR Abolish this card to stomp an opponent's card being played; then obtain the card that was stomped for free if it costs 5 or less.", "v": "scan", "art": 2806, "set": "oracle", "fiendUse": [{"op": "k", "n": 4}], "useWhen": "ownTurn", "reaction": {"cost": "abolishSelf", "after": [], "obtainMax": 5}, "shield": true, "baseCopies": 0}, {"id": "c2807", "n": "Pit Demoness", "t": "FIEND", "cost": 2, "gp": 0, "copies": 2, "txt": "Before any cards are played during your turn, discard your hand to draw 5 new ones.", "v": "scan", "art": 2807, "set": "base", "fiendUse": [{"op": "mulligan"}], "useWhen": "ownStart", "shield": false, "baseCopies": 2}, {"id": "c2809", "n": "Prom Queen", "t": "FIEND", "cost": 4, "gp": 0, "copies": 1, "txt": "+2 Karma & you may choose up to 3 cards from an opponent's discard pile to be shuffled into their deck.", "v": "scan", "art": 2809, "set": "base", "fiendUse": [{"op": "k", "n": 2}, {"op": "enemyShuffle", "max": 3}], "useWhen": "ownTurn", "shield": false, "baseCopies": 1}, {"id": "c2810", "n": "Pumpkin Carver", "t": "FIEND", "cost": 6, "gp": 0, "copies": 1, "txt": "+4 Karma & for each opponent you may have them discard a random card from their hand.", "v": "scan", "art": 2810, "set": "base", "fiendUse": [{"op": "k", "n": 4}, {"op": "randomDiscard", "all": true}], "useWhen": "ownTurn", "shield": false, "baseCopies": 1}, {"id": "c2811", "n": "Roxie Carol", "t": "FIEND", "cost": 6, "gp": 0, "copies": 1, "txt": "+3 Karma & you may look at every opponent's hand. For each opponent, you may have them discard their hand and draw 5 new cards (which you may also look at).", "v": "scan", "art": 2811, "set": "oracle", "fiendUse": [{"op": "k", "n": 3}, {"op": "enemyMulligan"}], "useWhen": "ownTurn", "shield": false, "baseCopies": 0}, {"id": "c2812", "n": "Shadow Demon", "t": "FIEND", "cost": 7, "gp": 0, "copies": 1, "txt": "+4 Karma OR +2 Karma & obtain the last card put into the Abyss for free.", "v": "scan", "art": 2812, "set": "oracle", "fiendUse": [{"op": "or", "la": "+4 Karma", "a": [{"op": "k", "n": 4}], "lb": "+2 Karma & obtain last card in the Abyss", "b": [{"op": "k", "n": 2}, {"op": "lastAbyss"}]}], "useWhen": "ownTurn", "shield": false, "baseCopies": 0}, {"id": "c2813", "n": "The Dead One", "t": "FIEND", "cost": 3, "gp": 0, "copies": 1, "txt": "Abolish a card from your hand or discard pile; then you may have an opponent discard a random card from their hand.", "v": "scan", "art": 2813, "set": "base", "fiendUse": [{"op": "abolish", "max": 1, "from": ["hand", "discard"], "opt": true, "then": [{"op": "randomDiscard"}]}], "useWhen": "ownTurn", "shield": false, "baseCopies": 1}, {"id": "c2814", "n": "The Monster", "t": "FIEND", "cost": 4, "gp": 0, "copies": 1, "txt": "Abolish a card from your hand or discard pile; then you may abolish a card from an opponent's discard pile of cost 4 or less.", "v": "scan", "art": 2814, "set": "oracle", "fiendUse": [{"op": "abolish", "max": 1, "from": ["hand", "discard"], "opt": true, "then": [{"op": "enemyAbolish", "maxCost": 4}]}], "useWhen": "ownTurn", "shield": false, "baseCopies": 0}, {"id": "c2815", "n": "The Smog", "t": "FIEND", "cost": 5, "gp": 0, "copies": 1, "txt": "+3 Karma & all of your opponents' Item and Fiend cards are nullified until the start of your next turn.", "v": "scan", "art": 2815, "set": "oracle", "fiendUse": [{"op": "k", "n": 3}, {"op": "nullifyAll"}], "useWhen": "ownTurn", "shield": false, "baseCopies": 0}, {"id": "c2816", "n": "The Witch", "t": "FIEND", "cost": 6, "gp": 0, "copies": 1, "txt": "+3 Karma & for each opponent you may have them discard all of their Item cards in play.", "v": "scan", "art": 2816, "set": "base", "fiendUse": [{"op": "k", "n": 3}, {"op": "oppDiscardItems", "all": true}], "useWhen": "ownTurn", "shield": false, "baseCopies": 1}, {"id": "c2817", "n": "Black-Eyed Children", "t": "FIEND", "cost": 3, "gp": 0, "copies": 2, "txt": "+1 Karma & you may have an opponent discard all of their Item cards in play.", "v": "scan", "art": 2817, "set": "base", "fiendUse": [{"op": "k", "n": 1}, {"op": "oppDiscardItems"}], "useWhen": "ownTurn", "shield": false, "baseCopies": 2}, {"id": "c2819", "n": "Boogie Man", "t": "FIEND", "cost": 8, "gp": 0, "copies": 1, "txt": "+4 Karma & you may abolish up to 2 cards from your hand and/or discard pile. OR Abolish this card to stomp an opponent's card being played; then abolish the card that was stomped.", "v": "scan", "art": 2819, "set": "base", "fiendUse": [{"op": "k", "n": 4}, {"op": "abolish", "max": 2, "from": ["hand", "discard"], "opt": true}], "useWhen": "ownTurn", "reaction": {"cost": "abolishSelf", "after": [], "abolishMax": 99}, "shield": true, "baseCopies": 1}, {"id": "c2820", "n": "Cemetery Girl", "t": "FIEND", "cost": 5, "gp": 0, "copies": 1, "txt": "Draw 2 cards. OR Abolish this card to stomp an opponent's card being played; then draw a card.", "v": "scan", "art": 2820, "set": "base", "fiendUse": [{"op": "draw", "n": 2}], "useWhen": "ownTurn", "reaction": {"cost": "abolishSelf", "after": [{"op": "draw", "n": 1}]}, "shield": true, "baseCopies": 1}, {"id": "c2821", "n": "Damien", "t": "FIEND", "cost": 4, "gp": 0, "copies": 1, "txt": "+2 Karma & you may have an opponent discard a random card from their hand.", "v": "scan", "art": 2821, "set": "base", "fiendUse": [{"op": "k", "n": 2}, {"op": "randomDiscard"}], "useWhen": "ownTurn", "shield": false, "baseCopies": 1}, {"id": "c2822", "n": "Dead Body Man", "t": "FIEND", "cost": 7, "gp": 0, "copies": 1, "txt": "+3 Karma & for each opponent you may abolish a card from their discard pile with a cost 5 or less.", "v": "scan", "art": 2822, "set": "base", "fiendUse": [{"op": "k", "n": 3}, {"op": "enemyAbolish", "all": true, "maxCost": 5}], "useWhen": "ownTurn", "shield": false, "baseCopies": 1}, {"id": "c2823", "n": "Drainer Road Monks", "t": "FIEND", "cost": 2, "gp": 0, "copies": 2, "txt": "Abolish this card to stomp an opponent's card being played.", "v": "scan", "art": 2823, "set": "base", "fiendUse": [], "useWhen": "ownTurn", "reaction": {"cost": "abolishSelf", "after": []}, "shield": true, "baseCopies": 2}, {"id": "c2825", "n": "Electric Witch", "t": "FIEND", "cost": 3, "gp": 0, "copies": 1, "txt": "+1 Karma & for each opponent you may choose 1 Item or Fiend card they have in play and nullify it until the start of your next turn.", "v": "scan", "art": 2825, "set": "oracle", "fiendUse": [{"op": "k", "n": 1}, {"op": "nullify", "max": 1, "until": "next", "all": true}], "useWhen": "ownTurn", "shield": false, "baseCopies": 0}, {"id": "c2826", "n": "Halloween Head", "t": "FIEND", "cost": 4, "gp": 0, "copies": 1, "txt": "Draw a Flavor card; then for each opponent you may choose 1 Item card they have in play and have them discard it.", "v": "scan", "art": 2826, "set": "base", "fiendUse": [{"op": "drawFlavor", "n": 1}, {"op": "discardEnemyItems", "max": 1, "all": true}], "useWhen": "ownTurn", "shield": false, "baseCopies": 1}, {"id": "c2828", "n": "Chuck the Chainsaw", "t": "ITEM", "cost": 6, "gp": 2, "copies": 1, "txt": "Once during your turn you may roll on the Wheel of Fate.", "v": "scan", "art": 2828, "set": "base", "fx": [], "active": [{"op": "wheel", "n": 1}], "shield": true, "baseCopies": 1}, {"id": "c2829", "n": "Crystal Skull", "t": "ITEM", "cost": 6, "gp": 2, "copies": 1, "txt": "Once during your turn you may gain +1 Karma.", "v": "scan", "art": 2829, "set": "oracle", "fx": [], "active": [{"op": "k", "n": 1}], "shield": true, "baseCopies": 0}, {"id": "c2830", "n": "Crystal Ball", "t": "ITEM", "cost": 3, "gp": 1, "copies": 1, "txt": "Once during your turn you may look at an opponent's hand.", "v": "scan", "art": 2830, "set": "base", "fx": [], "active": [{"op": "peekHand"}], "shield": true, "baseCopies": 1}, {"id": "c2831", "n": "Flying Guillotine", "t": "ITEM", "cost": 4, "gp": 1, "copies": 1, "txt": "Whenever you need to shuffle your discard pile, you may abolish a card from your hand or discard pile before you do.", "v": "scan", "art": 2831, "set": "base", "fx": [], "passive": "guillotine", "shield": true, "baseCopies": 1}, {"id": "c2832", "n": "Backstage Pass", "t": "ITEM", "cost": 2, "gp": 1, "copies": 2, "txt": "Once during your turn you may have an opponent reveal their deck's top card; then have them discard it or return it facedown.", "v": "scan", "art": 2832, "set": "base", "fx": [], "active": [{"op": "enemyTop"}], "shield": true, "baseCopies": 2}, {"id": "c2834", "n": "Bowling Balls", "t": "ITEM", "cost": 2, "gp": 3, "copies": 1, "txt": "This card does absolutely nothing.", "v": "scan", "art": 2834, "set": "oracle", "fx": [], "shield": true, "baseCopies": 0}, {"id": "c2900", "n": "Black Crows", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 2, "txt": "Obtain a Juggalo card for free; then you may abolish a card from your hand or discard pile.", "v": "scan", "art": 2900, "set": "base", "fx": [{"op": "obtainJuggalo"}, {"op": "abolish", "max": 1, "from": ["hand", "discard"], "opt": true}], "shield": false, "baseCopies": 2}, {"id": "c2902", "n": "Chicken Huntin\u2019", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 2, "txt": "Each opponent reveals their deck's top card. You may copy the effect of one Starter or Crew card revealed Then return all cards facedown.", "v": "scan", "art": 2902, "set": "base", "fx": [{"op": "chicken"}], "shield": false, "baseCopies": 2}, {"id": "c2904", "n": "Clown Love", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 3, "txt": "+2 Karma", "v": "scan", "art": 2904, "set": "base", "fx": [{"op": "k", "n": 2}], "shield": false, "baseCopies": 3}, {"id": "c2907", "n": "Gang Related", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "Gain a Unity Benefit of your choice. This is in addition to the once per turn limit.", "v": "scan", "art": 2907, "set": "base", "fx": [{"op": "freeUnity"}], "shield": false, "baseCopies": 1}, {"id": "c2908", "n": "Gathering of the Juggalos", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "+3 Karma", "v": "scan", "art": 2908, "set": "base", "fx": [{"op": "k", "n": 3}], "shield": false, "baseCopies": 1}, {"id": "c2909", "n": "Halls of Illusions", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "+2 Karma & you may look at every opponent's hand.", "v": "scan", "art": 2909, "set": "oracle", "fx": [{"op": "k", "n": 2}, {"op": "peekAll"}], "shield": false, "baseCopies": 0}, {"id": "c2910", "n": "Hatchetman", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "+2 Karma & you may abolish a card from your hand or discard pile.", "v": "scan", "art": 2910, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "abolish", "max": 1, "from": ["hand", "discard"], "opt": true}], "shield": false, "baseCopies": 1}, {"id": "c2911", "n": "Hokus Pokus", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "+2 Karma & you may put the next Item card you obtain this turn into your hand.", "v": "scan", "art": 2911, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "hocusPocus"}], "shield": false, "baseCopies": 1}, {"id": "c2912", "n": "Hallowicked", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "Draw a card; then draw a Flavor card.", "v": "scan", "art": 2912, "set": "base", "fx": [{"op": "draw", "n": 1}, {"op": "drawFlavor", "n": 1}], "shield": false, "baseCopies": 1}, {"id": "c2913", "n": "If I Was King", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "Draw 3 cards; then keep 1 and discard the other 2.", "v": "scan", "art": 2913, "set": "base", "fx": [{"op": "drawKeep", "draw": 3, "keep": 1}], "shield": false, "baseCopies": 1}, {"id": "c2914", "n": "Into the Light", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "+1 Karma & you may place a non-Epic card from your discard pile on top of your deck.", "v": "scan", "art": 2914, "set": "base", "fx": [{"op": "k", "n": 1}, {"op": "fromDiscard", "crew": null, "dest": "top", "opt": true, "nonEpic": true}], "shield": false, "baseCopies": 1}, {"id": "c2915", "n": "Jacob\u2019s Word", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "+2 Karma & you may look at the top 5 cards of the Main Deck and arrange them in any order.", "v": "scan", "art": 2915, "set": "oracle", "fx": [{"op": "reorderMain", "n": 5}], "shield": false, "baseCopies": 0}, {"id": "c2916", "n": "Juggalo Day", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "Reveal cards from the top of the Main Deck equal to the number of players. T'hen place one ot these cards in each player's discard pile, or into their play area if it's a Fiend.", "v": "scan", "art": 2916, "set": "oracle", "fx": [{"op": "juggaloDay"}], "shield": false, "baseCopies": 0}, {"id": "c2917", "n": "Joker\u2019s Wild", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 2, "txt": "Roll on the Wheel of Fate and add 2 to the result.", "v": "scan", "art": 2917, "set": "base", "fx": [{"op": "wheel", "n": 1, "bonus": 2}], "shield": false, "baseCopies": 2}, {"id": "c2919", "n": "Joke Ya Mind", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 2, "txt": "Draw a card.", "v": "scan", "art": 2919, "set": "base", "fx": [{"op": "draw", "n": 1}], "shield": false, "baseCopies": 2}, {"id": "c2921", "n": "Lil Somethin\u2019 Somethin\u2019", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "Obtain a card of cost 4 or less for free.", "v": "scan", "art": 2921, "set": "base", "fx": [{"op": "obtain", "maxCost": 4}], "shield": false, "baseCopies": 1}, {"id": "c2922", "n": "Multiple Myselves", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "Copy the effect of a Starter or Crew card you have in play of cost 4 or less.", "v": "scan", "art": 2922, "set": "base", "fx": [{"op": "copyInPlay", "maxCost": 4}], "shield": false, "baseCopies": 1}, {"id": "c2923", "n": "My Shine", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "Obtain a card of cost 5 or less for free.", "v": "scan", "art": 2923, "set": "base", "fx": [{"op": "obtain", "maxCost": 5}], "shield": false, "baseCopies": 1}, {"id": "c2924", "n": "Night of the Axe", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "+2 Karma & you may abolish up to 6 cards from the Gallery; then replace them.", "v": "scan", "art": 2924, "set": "base", "fx": [{"op": "k", "n": 2}, {"op": "galleryWipe", "max": 6, "refill": true}], "shield": false, "baseCopies": 1}, {"id": "c2925", "n": "Pendulum\u2019s Promise", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "Draw and immediately play the top card of the Main Deck; then abolish it at the end of your turn.", "v": "scan", "art": 2925, "set": "base", "fx": [{"op": "playMain"}], "shield": false, "baseCopies": 1}, {"id": "c2926", "n": "Picker Forest", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "Put a non-Epic card from your discard pile into your hand.", "v": "scan", "art": 2926, "set": "base", "fx": [{"op": "fromDiscard", "crew": null, "dest": "hand", "opt": true, "nonEpic": true}], "shield": false, "baseCopies": 1}, {"id": "c2927", "n": "Ringmaster\u2019s Word", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "You may abolish up to 2 cards from your hand and/or discard pile.", "v": "scan", "art": 2927, "set": "base", "fx": [{"op": "abolish", "max": 2, "from": ["hand", "discard"], "opt": true}], "shield": false, "baseCopies": 1}, {"id": "c2928", "n": "The Shaggy Show", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "+1 Karma & you may copy the effect of an Item card in play (including an opponent's), in the Gallery, or in the Abyss until the end of your turn.", "v": "scan", "art": 2928, "set": "promo", "fx": [{"op": "k", "n": 1}, {"op": "copyItem", "extra": true}], "shield": false, "baseCopies": 0}, {"id": "c2929", "n": "Still Stabbin\u2019", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 2, "txt": "+1 Karma", "v": "scan", "art": 2929, "set": "base", "fx": [{"op": "k", "n": 1}], "shield": false, "baseCopies": 2}, {"id": "c2931", "n": "Southwest Voodoo", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 2, "txt": "+1 Karma & roll on the Wheel ofFate.", "v": "scan", "art": 2931, "set": "base", "fx": [{"op": "k", "n": 1}, {"op": "wheel", "n": 1}], "shield": false, "baseCopies": 2}, {"id": "c2933", "n": "Tilt-A-Whirl", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "+2 Karma & you may shuffle your discard pile into your deck.", "v": "scan", "art": 2933, "set": "oracle", "fx": [{"op": "k", "n": 2}, {"op": "shuffleAll"}], "shield": false, "baseCopies": 0}, {"id": "c2934", "n": "The Tempest", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "+1 Karma & you may obtain a card from the Abyss of cost 4 or less for free.", "v": "scan", "art": 2934, "set": "oracle", "fx": [{"op": "k", "n": 1}, {"op": "fromAbyss", "maxCost": 4}], "shield": false, "baseCopies": 0}, {"id": "c2935", "n": "The Amazing Maze", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "Roll on the Wheel of Fate twice, and choose one of the effects rolled.", "v": "scan", "art": 2935, "set": "oracle", "fx": [{"op": "doubleWheel"}], "shield": false, "baseCopies": 0}, {"id": "c2936", "n": "Thy Unveiling", "t": "FLAVOR", "cost": 0, "gp": 0, "copies": 1, "txt": "Draw 3 cards.", "v": "scan", "art": 2936, "set": "base", "fx": [{"op": "draw", "n": 3}], "shield": false, "baseCopies": 1}, {"id": "c3000", "n": "Juggalo", "t": "JUG", "cost": 3, "gp": 1, "copies": 10, "txt": "+2 Karma", "v": "scan", "art": 3000, "set": "multiple", "fx": [{"op": "k", "n": 2}], "crew": "DC", "shield": false, "baseCopies": 7}, {"id": "c3010", "n": "Juggalo", "t": "JUG", "cost": 3, "gp": 1, "copies": 10, "txt": "+2 Karma", "v": "scan", "art": 3010, "set": "multiple", "fx": [{"op": "k", "n": 2}], "crew": "PSY", "shield": false, "baseCopies": 7}, {"id": "c3020", "n": "Juggalo", "t": "JUG", "cost": 3, "gp": 1, "copies": 10, "txt": "+2 Karma", "v": "scan", "art": 3020, "set": "multiple", "fx": [{"op": "k", "n": 2}], "crew": "UG", "shield": false, "baseCopies": 7}]
+[
+  {
+    "id": "c1200",
+    "n": "Hound Dogs",
+    "t": "START",
+    "cost": 0,
+    "gp": 0,
+    "copies": 3,
+    "txt": "Choose a Crew; this card becomes that Crew until the end of your turn.",
+    "v": "scan",
+    "art": 1200,
+    "set": "base",
+    "fx": [
+      {
+        "op": "chooseCrew"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 3
+  },
+  {
+    "id": "c1203",
+    "n": "Ninja",
+    "t": "START",
+    "cost": 0,
+    "gp": 0,
+    "copies": 7,
+    "txt": "+1 Karma",
+    "v": "scan",
+    "art": 1203,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 1
+      }
+    ],
+    "shield": false,
+    "baseCopies": 7
+  },
+  {
+    "id": "c1300",
+    "n": "17",
+    "t": "EPIC",
+    "cost": 13,
+    "gp": 6,
+    "copies": 1,
+    "txt": "+5 Karma & you may choose 1 Item card an opponent has in play and have them discard it, even if protected by any effect.",
+    "v": "scan",
+    "art": 1300,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 5
+      },
+      {
+        "op": "discardEnemyItems",
+        "max": 1,
+        "pierce": true
+      }
+    ],
+    "shield": true,
+    "baseCopies": 0
+  },
+  {
+    "id": "c1301",
+    "n": "Anybody Killa",
+    "t": "EPIC",
+    "cost": 9,
+    "gp": 4,
+    "copies": 1,
+    "txt": "+2 Karma & you may obtain a card of cost 6 or less for free.",
+    "v": "scan",
+    "art": 1301,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "obtain",
+        "maxCost": 6,
+        "opt": true
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1302",
+    "n": "Blaze",
+    "t": "EPIC",
+    "cost": 9,
+    "gp": 4,
+    "copies": 1,
+    "txt": "+3 Karma OR Copy the effect of an Epic or Crew card you have in play.",
+    "v": "scan",
+    "art": 1302,
+    "set": "base",
+    "fx": [
+      {
+        "op": "or",
+        "la": "+3 Karma",
+        "a": [
+          {
+            "op": "k",
+            "n": 3
+          }
+        ],
+        "lb": "Copy a Crew or Epic in play",
+        "b": [
+          {
+            "op": "copyOwn",
+            "types": [
+              "DC",
+              "PSY",
+              "UG",
+              "EPIC"
+            ]
+          }
+        ]
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1303",
+    "n": "Carnival of Carnage",
+    "t": "EPIC",
+    "cost": 12,
+    "gp": 5,
+    "copies": 1,
+    "txt": "Copy the effect of a card in the Epic Tier.",
+    "v": "scan",
+    "art": 1303,
+    "set": "base",
+    "fx": [
+      {
+        "op": "copyEpicTier"
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1304",
+    "n": "Juggalo Family",
+    "t": "EPIC",
+    "cost": 13,
+    "gp": 6,
+    "copies": 1,
+    "txt": "+4 Karma OR Gain +1 Karma for each card you have in play or in your discard pile that has the word Juggalo in its title (including this one).",
+    "v": "scan",
+    "art": 1304,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "or",
+        "la": "+4 Karma",
+        "a": [
+          {
+            "op": "k",
+            "n": 4
+          }
+        ],
+        "lb": "Karma for your Juggalo cards",
+        "b": [
+          {
+            "op": "juggaloKarma"
+          }
+        ]
+      }
+    ],
+    "shield": true,
+    "baseCopies": 0
+  },
+  {
+    "id": "c1305",
+    "n": "Violent J",
+    "t": "EPIC",
+    "cost": 12,
+    "gp": 5,
+    "copies": 1,
+    "txt": "+3 Karma & you may obtain a card from the Abyss of cost 6 or less for free.",
+    "v": "scan",
+    "art": 1305,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 3
+      },
+      {
+        "op": "fromAbyss",
+        "maxCost": 6
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1306",
+    "n": "Dark Lotus",
+    "t": "EPIC",
+    "cost": 10,
+    "gp": 4,
+    "copies": 1,
+    "txt": "+5 Karma",
+    "v": "scan",
+    "art": 1306,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 5
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1307",
+    "n": "Jamie Madrox",
+    "t": "EPIC",
+    "cost": 11,
+    "gp": 5,
+    "copies": 1,
+    "txt": "Draw 4 Flavor cards; then keep 2 and discard the other 2.",
+    "v": "scan",
+    "art": 1307,
+    "set": "base",
+    "fx": [
+      {
+        "op": "drawFlavorKeep",
+        "draw": 4,
+        "keep": 2
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1308",
+    "n": "Monoxide",
+    "t": "EPIC",
+    "cost": 12,
+    "gp": 5,
+    "copies": 1,
+    "txt": "+3 Karma & you may put a non-Epic card from your discard pile into your hand.",
+    "v": "scan",
+    "art": 1308,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 3
+      },
+      {
+        "op": "fromDiscard",
+        "crew": null,
+        "dest": "hand",
+        "opt": true,
+        "nonEpic": true
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1309",
+    "n": "Riddle Box",
+    "t": "EPIC",
+    "cost": 10,
+    "gp": 4,
+    "copies": 1,
+    "txt": "+4 Karma & you may put the next Item or Crew card you obtain this turn into your hand.",
+    "v": "scan",
+    "art": 1309,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 4
+      },
+      {
+        "op": "nextToHand",
+        "types": [
+          "ITEM",
+          "DC",
+          "PSY",
+          "UG"
+        ]
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1310",
+    "n": "Ringmaster",
+    "t": "EPIC",
+    "cost": 11,
+    "gp": 5,
+    "copies": 1,
+    "txt": "+2 Karma & you may abolish up to 2 cards from your hand and/or discard pile. For each card abolished, draw a card.",
+    "v": "scan",
+    "art": 1310,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "abolish",
+        "max": 2,
+        "from": [
+          "hand",
+          "discard"
+        ],
+        "opt": true,
+        "drawEach": true
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1311",
+    "n": "Shaggy 2 Dope",
+    "t": "EPIC",
+    "cost": 11,
+    "gp": 5,
+    "copies": 1,
+    "txt": "Draw 3 cards.",
+    "v": "scan",
+    "art": 1311,
+    "set": "base",
+    "fx": [
+      {
+        "op": "draw",
+        "n": 3
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1312",
+    "n": "Spirit of the Dark Carnival",
+    "t": "EPIC",
+    "cost": 13,
+    "gp": 6,
+    "copies": 1,
+    "txt": "+4 Karma OR Abolish a Fiend card in play or in the Gallery to gain +6 Karma.",
+    "v": "scan",
+    "art": 1312,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "or",
+        "la": "+4 Karma",
+        "a": [
+          {
+            "op": "k",
+            "n": 4
+          }
+        ],
+        "lb": "Abolish a Fiend for +6 Karma",
+        "b": [
+          {
+            "op": "abolishFiend",
+            "gain": 6
+          }
+        ]
+      }
+    ],
+    "shield": true,
+    "baseCopies": 0
+  },
+  {
+    "id": "c1313",
+    "n": "Tech N9ne",
+    "t": "EPIC",
+    "cost": 10,
+    "gp": 4,
+    "copies": 1,
+    "txt": "+4 Karma & when first obtained, you may place this card on top of your deck.",
+    "v": "scan",
+    "art": 1313,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 4
+      }
+    ],
+    "onGain": [
+      {
+        "op": "techTop"
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1314",
+    "n": "The Great Milenko",
+    "t": "EPIC",
+    "cost": 9,
+    "gp": 4,
+    "copies": 1,
+    "txt": "+2 Karma & you may abolish up to 3 cards from your hand and/or discard pile.",
+    "v": "scan",
+    "art": 1314,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "abolish",
+        "max": 3,
+        "from": [
+          "hand",
+          "discard"
+        ],
+        "opt": true
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1400",
+    "n": "Wicked Clownz",
+    "t": "DC",
+    "cost": 3,
+    "gp": 1,
+    "copies": 2,
+    "txt": "+2 Karma OR Discard to stomp an opponent's card being played.",
+    "v": "scan",
+    "art": 1400,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      }
+    ],
+    "reaction": {
+      "cost": "discardSelf",
+      "after": []
+    },
+    "shield": true,
+    "baseCopies": 2
+  },
+  {
+    "id": "c1401",
+    "n": "Willoughby Rags",
+    "t": "DC",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma & you may put the next Dark Carnival card you obtain this turn into your hand.",
+    "v": "scan",
+    "art": 1401,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "nextToHand",
+        "types": [
+          "DC"
+        ]
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1402",
+    "n": "Ali Baba",
+    "t": "DC",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma & you may put an Item card from your discard pile into your hand.",
+    "v": "scan",
+    "art": 1402,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "fromDiscard",
+        "crew": null,
+        "dest": "hand",
+        "opt": true,
+        "type": "ITEM"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1403",
+    "n": "Amy in the Attic",
+    "t": "DC",
+    "cost": 4,
+    "gp": 1,
+    "copies": 1,
+    "txt": "+2 Karma & you may abolish a card from your hand or discard pile.",
+    "v": "scan",
+    "art": 1403,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "abolish",
+        "max": 1,
+        "from": [
+          "hand",
+          "discard"
+        ],
+        "opt": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1404",
+    "n": "Bitch Slap",
+    "t": "DC",
+    "cost": 6,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Fast Effect: +3 Karma & you may choose an opponent's Item or Fiend card in play that is nullified during the current turn.",
+    "v": "scan",
+    "art": 1404,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 3
+      },
+      {
+        "op": "nullify",
+        "max": 1,
+        "until": "turn"
+      }
+    ],
+    "fast": true,
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c1405",
+    "n": "Bang! Pow! Boom!",
+    "t": "DC",
+    "cost": 7,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma & reveal the top card of the Main Deck; then abolish it or obtain it for free.",
+    "v": "scan",
+    "art": 1405,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "revealTopMain"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1406",
+    "n": "Carpenter Jed",
+    "t": "DC",
+    "cost": 4,
+    "gp": 1,
+    "copies": 1,
+    "txt": "+2 Karma & you may place a non-Starter card from the Abyss on the top or bottom of the Main Deck.",
+    "v": "scan",
+    "art": 1406,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "abyssToMain"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c1407",
+    "n": "Cartoon Nightmares",
+    "t": "DC",
+    "cost": 4,
+    "gp": 1,
+    "copies": 2,
+    "txt": "If you already have a Dark Carnival card in play, gain +3 Karma.",
+    "v": "scan",
+    "art": 1407,
+    "set": "base",
+    "fx": [
+      {
+        "op": "condDC",
+        "n": 3,
+        "base": 0
+      }
+    ],
+    "shield": false,
+    "baseCopies": 2
+  },
+  {
+    "id": "c1409",
+    "n": "Dumpin'",
+    "t": "DC",
+    "cost": 4,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Fast Effect: +2 Karma & you may abolish a card from the Gallery.",
+    "v": "scan",
+    "art": 1409,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "galleryWipe",
+        "max": 1,
+        "refill": false
+      }
+    ],
+    "fast": true,
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c1410",
+    "n": "Eye of the Storm",
+    "t": "DC",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma OR Discard to stomp an opponent's non-Epic card being played, even if shielded.",
+    "v": "scan",
+    "art": 1410,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      }
+    ],
+    "reaction": {
+      "cost": "discardSelf",
+      "after": [],
+      "pierceShield": true,
+      "nonEpic": true
+    },
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c1411",
+    "n": "Ezmerella Zella",
+    "t": "DC",
+    "cost": 6,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma & look at an opponent's hand. You may have them discard a Crew or Item card of your choice; then they draw a card (which you may also look at).",
+    "v": "scan",
+    "art": 1411,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "peekAttack"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c1412",
+    "n": "Fortune Teller",
+    "t": "DC",
+    "cost": 3,
+    "gp": 1,
+    "copies": 2,
+    "txt": "+2 Karma & you may abolish a card from the Gallery and replace it.",
+    "v": "scan",
+    "art": 1412,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "galleryWipe",
+        "max": 1,
+        "refill": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 2
+  },
+  {
+    "id": "c1414",
+    "n": "In Yo Face",
+    "t": "DC",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma OR Mirror an opponent who has just drawn a card, drawn a Flavor card, or abolished a card from their hand or discard pile; then gain +2 Karma.",
+    "v": "scan",
+    "art": 1414,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      }
+    ],
+    "mirror": true,
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c1415",
+    "n": "The Amazing Jeckel Brothers",
+    "t": "DC",
+    "cost": 8,
+    "gp": 3,
+    "copies": 1,
+    "txt": "+4 Karma & you may place a non-Epic card from your discard pile on top of your deck.",
+    "v": "scan",
+    "art": 1415,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 4
+      },
+      {
+        "op": "fromDiscard",
+        "crew": null,
+        "dest": "top",
+        "opt": true,
+        "nonEpic": true
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1416",
+    "n": "Juggalo Spirits",
+    "t": "DC",
+    "cost": 4,
+    "gp": 1,
+    "copies": 1,
+    "txt": "+2 Karma & none of your cards (including Fiends) can be stomped this turn.",
+    "v": "scan",
+    "art": 1416,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "kgShield"
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1417",
+    "n": "Killer Carnie",
+    "t": "DC",
+    "cost": 2,
+    "gp": 1,
+    "copies": 2,
+    "txt": "+1 Karma & you may abolish a card from your hand or discard pile. OR Abolish this card to gain +2 Karma.",
+    "v": "scan",
+    "art": 1417,
+    "set": "base",
+    "fx": [
+      {
+        "op": "or",
+        "la": "+1 Karma & abolish a card",
+        "a": [
+          {
+            "op": "k",
+            "n": 1
+          },
+          {
+            "op": "abolish",
+            "max": 1,
+            "from": [
+              "hand",
+              "discard"
+            ],
+            "opt": true
+          }
+        ],
+        "lb": "Abolish this for +2 Karma",
+        "b": [
+          {
+            "op": "abolishSelfK",
+            "n": 2
+          }
+        ]
+      }
+    ],
+    "shield": false,
+    "baseCopies": 2
+  },
+  {
+    "id": "c1419",
+    "n": "Marvelous Missing Link: Found",
+    "t": "DC",
+    "cost": 6,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+3 Karma OR Discard to stomp an opponent's card being played; then draw a card.",
+    "v": "scan",
+    "art": 1419,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 3
+      }
+    ],
+    "reaction": {
+      "cost": "discardSelf",
+      "after": [
+        {
+          "op": "draw",
+          "n": 1
+        }
+      ]
+    },
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1420",
+    "n": "Marvelous Missing Link: Lost",
+    "t": "DC",
+    "cost": 6,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+4 Karma",
+    "v": "scan",
+    "art": 1420,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 4
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1421",
+    "n": "Moon Glorious",
+    "t": "DC",
+    "cost": 4,
+    "gp": 1,
+    "copies": 1,
+    "txt": "+2 Karma OR Obtain 1 Item card of cost 4 or less for free.",
+    "v": "scan",
+    "art": 1421,
+    "set": "base",
+    "fx": [
+      {
+        "op": "or",
+        "la": "+2 Karma",
+        "a": [
+          {
+            "op": "k",
+            "n": 2
+          }
+        ],
+        "lb": "Obtain an Item up to 4 Karma",
+        "b": [
+          {
+            "op": "obtain",
+            "maxCost": 4,
+            "itemOnly": true
+          }
+        ]
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1422",
+    "n": "Mr. White Suit",
+    "t": "DC",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+3 Karma",
+    "v": "scan",
+    "art": 1422,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 3
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1423",
+    "n": "Oracle of the Three Rings",
+    "t": "DC",
+    "cost": 8,
+    "gp": 3,
+    "copies": 1,
+    "txt": "+4 Karma & you may reveal the top card of every player's deck (including your own); then have each player discard the revealed card or return it facedown.",
+    "v": "scan",
+    "art": 1423,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 4
+      },
+      {
+        "op": "revealAllTop"
+      }
+    ],
+    "shield": true,
+    "baseCopies": 0
+  },
+  {
+    "id": "c1424",
+    "n": "Oracle’s Favor",
+    "t": "DC",
+    "cost": 3,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Fast Effect: +2 Karma & you may reveal the top 2 cards of any deck; then place 1 on top and 1 on the bottom of that deck.",
+    "v": "scan",
+    "art": 1424,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "oracleFavor"
+      }
+    ],
+    "fast": true,
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c1425",
+    "n": "Red Moon Howl",
+    "t": "DC",
+    "cost": 4,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+2 Karma & this card is worth 1 GP for each ® Dark Carnival card in your deck (excluding this one).",
+    "v": "scan",
+    "art": 1425,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      }
+    ],
+    "variableGP": "DC",
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c1426",
+    "n": "Sideshow Freaks",
+    "t": "DC",
+    "cost": 3,
+    "gp": 1,
+    "copies": 1,
+    "txt": "+2 Karma & if you already have at least 2 Dark Carnival cards in play, you may abolish a card from your hand or discard pile.",
+    "v": "scan",
+    "art": 1426,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "crewAbolish",
+        "crew": "DC"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c1427",
+    "n": "Squeezy",
+    "t": "DC",
+    "cost": 3,
+    "gp": 1,
+    "copies": 1,
+    "txt": "+2 Karma OR Abolish a card from your hand or discard pile.",
+    "v": "scan",
+    "art": 1427,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "or",
+        "la": "+2 Karma",
+        "a": [
+          {
+            "op": "k",
+            "n": 2
+          }
+        ],
+        "lb": "Abolish a card",
+        "b": [
+          {
+            "op": "abolish",
+            "max": 1,
+            "from": [
+              "hand",
+              "discard"
+            ],
+            "opt": true
+          }
+        ]
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c1428",
+    "n": "Superballs",
+    "t": "DC",
+    "cost": 3,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Obtain a card from the Gallery of cost 4 or less for free.",
+    "v": "scan",
+    "art": 1428,
+    "set": "base",
+    "fx": [
+      {
+        "op": "obtain",
+        "maxCost": 4,
+        "galleryOnly": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1429",
+    "n": "The Butterfly",
+    "t": "DC",
+    "cost": 7,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+3 Karma & draw 3 Main Deck cards to be placed below the Gallery. At the end of your turn, place any not obtained into any empty Gallery slots; then abolish the rest.",
+    "v": "scan",
+    "art": 1429,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 3
+      },
+      {
+        "op": "butterfly"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c1430",
+    "n": "The Loons",
+    "t": "DC",
+    "cost": 2,
+    "gp": 1,
+    "copies": 1,
+    "txt": "+2 Karma",
+    "v": "scan",
+    "art": 1430,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1431",
+    "n": "The Mighty Death Pop!",
+    "t": "DC",
+    "cost": 6,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Abolish a card from your hand or discard pile to gain +3 Karma.",
+    "v": "scan",
+    "art": 1431,
+    "set": "base",
+    "fx": [
+      {
+        "op": "abolish",
+        "max": 1,
+        "from": [
+          "hand",
+          "discard"
+        ],
+        "opt": true,
+        "gainEach": 3
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1432",
+    "n": "The Wraith",
+    "t": "DC",
+    "cost": 7,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma & you may put a Dark Carnival card from your discard pile into your hand.",
+    "v": "scan",
+    "art": 1432,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "fromDiscard",
+        "crew": "DC",
+        "dest": "hand",
+        "opt": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c1433",
+    "n": "Vera Lee",
+    "t": "DC",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma & you may place a Dark Carnival card from your discard pile on top of your deck.",
+    "v": "scan",
+    "art": 1433,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "fromDiscard",
+        "crew": "DC",
+        "dest": "top",
+        "opt": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2500",
+    "n": "Gravedigger’s Shovel",
+    "t": "ITEM",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Once during your turn you may reveal your deck's top card. If its cost is 3 or less, draw it; otherwise return it facedown.",
+    "v": "scan",
+    "art": 2500,
+    "set": "base",
+    "fx": [],
+    "active": [
+      {
+        "op": "shovel"
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2501",
+    "n": "Hatchetman Charm",
+    "t": "ITEM",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Once during your tur when you obtain a Crew card of cost 5 or less, you may place it on top of your deck.",
+    "v": "scan",
+    "art": 2501,
+    "set": "base",
+    "fx": [],
+    "passive": "charm",
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2502",
+    "n": "Joey’s Bazooka",
+    "t": "ITEM",
+    "cost": 3,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Once during your turn you may abolish a card from the Gallery and replace it.",
+    "v": "scan",
+    "art": 2502,
+    "set": "oracle",
+    "fx": [],
+    "active": [
+      {
+        "op": "galleryWipe",
+        "max": 1,
+        "refill": true
+      }
+    ],
+    "shield": true,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2503",
+    "n": "Juggalo Juice",
+    "t": "ITEM",
+    "cost": 2,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Whenever you obtain a card from the Gallery, immediately replace it.",
+    "v": "scan",
+    "art": 2503,
+    "set": "base",
+    "fx": [],
+    "passive": "juice",
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2504",
+    "n": "The Lotus Cross",
+    "t": "ITEM",
+    "cost": 7,
+    "gp": 2,
+    "copies": 1,
+    "txt": "At the start of your turn, if you have less than 5 cards in your hand, you may discard this card to draw back up to 5 cards. Whenever this card is put into play, draw a card.",
+    "v": "scan",
+    "art": 2504,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "draw",
+        "n": 1
+      }
+    ],
+    "passive": "lotus",
+    "shield": true,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2505",
+    "n": "Milenko’s Wand",
+    "t": "ITEM",
+    "cost": 4,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Once during your turn you may flip a card from the Gallery facedown (it can't be obtained or abolished). Then at the start of your next turn, flip it faceup.",
+    "v": "scan",
+    "art": 2505,
+    "set": "oracle",
+    "fx": [],
+    "active": [
+      {
+        "op": "flipGallery",
+        "max": 1
+      }
+    ],
+    "shield": true,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2506",
+    "n": "Marvelous Missing Link Mask",
+    "t": "ITEM",
+    "cost": 8,
+    "gp": 3,
+    "copies": 1,
+    "txt": "When drawing cards at the end of your turn, draw 1 extra card.",
+    "v": "scan",
+    "art": 2506,
+    "set": "base",
+    "fx": [],
+    "passive": "mask",
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2507",
+    "n": "Murder Cloak",
+    "t": "ITEM",
+    "cost": 6,
+    "gp": 2,
+    "copies": 1,
+    "txt": "None of your cards (including Fiends) can be stomped.",
+    "v": "scan",
+    "art": 2507,
+    "set": "base",
+    "fx": [],
+    "passive": "cloak",
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2508",
+    "n": "My Axe",
+    "t": "ITEM",
+    "cost": 3,
+    "gp": 1,
+    "copies": 2,
+    "txt": "Once during your turn when you obtain a Fiend card you may abolish a card from your hand or discard pile.",
+    "v": "scan",
+    "art": 2508,
+    "set": "base",
+    "fx": [],
+    "passive": "axe",
+    "shield": true,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2510",
+    "n": "The Raven’s Mirror",
+    "t": "ITEM",
+    "cost": 4,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Once during your turn you may change a Crew card you have in play to a Crew of your choice until the end of your turn.",
+    "v": "scan",
+    "art": 2510,
+    "set": "base",
+    "fx": [],
+    "active": [
+      {
+        "op": "changeCrew"
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2511",
+    "n": "Ringmaster’s Hat",
+    "t": "ITEM",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Whenever you obtain Item cards, put them directly into play.",
+    "v": "scan",
+    "art": 2511,
+    "set": "base",
+    "fx": [],
+    "passive": "hat",
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2512",
+    "n": "Soopa Soaka",
+    "t": "ITEM",
+    "cost": 7,
+    "gp": 2,
+    "copies": 1,
+    "txt": "When in play, discard this card to stomp an opponent's card being played. Whenever this card is put into play, draw a card.",
+    "v": "scan",
+    "art": 2512,
+    "set": "base",
+    "fx": [
+      {
+        "op": "draw",
+        "n": 1
+      }
+    ],
+    "reaction": {
+      "cost": "discardSelf",
+      "after": []
+    },
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2513",
+    "n": "Toy Box",
+    "t": "ITEM",
+    "cost": 4,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Whenever an opponent's effect would cause you to discard any Item cards in play, ignore that effect.",
+    "v": "scan",
+    "art": 2513,
+    "set": "base",
+    "fx": [],
+    "passive": "toy",
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2514",
+    "n": "Voodoo Doll",
+    "t": "ITEM",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Once during your turn you may choose an opponent's Item or Fiend card in play that is nullified until the start of your next turn.",
+    "v": "scan",
+    "art": 2514,
+    "set": "oracle",
+    "fx": [],
+    "active": [
+      {
+        "op": "nullify",
+        "max": 1,
+        "until": "next"
+      }
+    ],
+    "shield": true,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2515",
+    "n": "The Wraith’s Tome",
+    "t": "ITEM",
+    "cost": 7,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Once during your turn you may draw a Flavor card.",
+    "v": "scan",
+    "art": 2515,
+    "set": "base",
+    "fx": [],
+    "active": [
+      {
+        "op": "drawFlavor",
+        "n": 1
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2516",
+    "n": "The Killjoy Club",
+    "t": "PSY",
+    "cost": 7,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+3 Karma OR Discard to stomp an opponent's card being played, even if shielded or protected by any other effect.",
+    "v": "scan",
+    "art": 2516,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 3
+      }
+    ],
+    "reaction": {
+      "cost": "discardSelf",
+      "after": [],
+      "pierce": true
+    },
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2517",
+    "n": "Axe Murder Boyz",
+    "t": "PSY",
+    "cost": 6,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Draw 3 cards; then keep 2 and discard the other 1.",
+    "v": "scan",
+    "art": 2517,
+    "set": "base",
+    "fx": [
+      {
+        "op": "drawKeep",
+        "draw": 3,
+        "keep": 2
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2518",
+    "n": "Big Hoodoo",
+    "t": "PSY",
+    "cost": 6,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Draw 2 cards; then discard 1 from your hand. OR Discard to stomp an opponent's card being played; then draw a card.",
+    "v": "scan",
+    "art": 2518,
+    "set": "base",
+    "fx": [
+      {
+        "op": "drawDiscard",
+        "draw": 2,
+        "discard": 1
+      }
+    ],
+    "reaction": {
+      "cost": "discardSelf",
+      "after": [
+        {
+          "op": "draw",
+          "n": 1
+        }
+      ]
+    },
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2519",
+    "n": "Big Silva",
+    "t": "PSY",
+    "cost": 3,
+    "gp": 1,
+    "copies": 1,
+    "txt": "+2 Karma OR Abolish a card from your hand or discard pile.",
+    "v": "scan",
+    "art": 2519,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "or",
+        "la": "+2 Karma",
+        "a": [
+          {
+            "op": "k",
+            "n": 2
+          }
+        ],
+        "lb": "Abolish a card",
+        "b": [
+          {
+            "op": "abolish",
+            "max": 1,
+            "from": [
+              "hand",
+              "discard"
+            ],
+            "opt": true
+          }
+        ]
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2520",
+    "n": "Billy Bill",
+    "t": "PSY",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Draw a card; then you may obtain an Item card of cost 5 or less for free.",
+    "v": "scan",
+    "art": 2520,
+    "set": "base",
+    "fx": [
+      {
+        "op": "draw",
+        "n": 1
+      },
+      {
+        "op": "obtain",
+        "maxCost": 5,
+        "itemOnly": true,
+        "opt": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2521",
+    "n": "Bitch Slap",
+    "t": "PSY",
+    "cost": 6,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Fast Effect: +3 Karma & you may choose an opponent's Item or Fiend card in play that is nullified during the current turn.",
+    "v": "scan",
+    "art": 2521,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 3
+      },
+      {
+        "op": "nullify",
+        "max": 1,
+        "until": "turn"
+      }
+    ],
+    "fast": true,
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2522",
+    "n": "Blahzay Rose",
+    "t": "PSY",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma & you may abolish up to 3 cards from the Gallery; then replace them.",
+    "v": "scan",
+    "art": 2522,
+    "set": "promo",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "galleryWipe",
+        "max": 3,
+        "refill": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2523",
+    "n": "Cupcake",
+    "t": "PSY",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+1 Karma & draw a Flavor card.",
+    "v": "scan",
+    "art": 2523,
+    "set": "promo",
+    "fx": [
+      {
+        "op": "k",
+        "n": 1
+      },
+      {
+        "op": "drawFlavor",
+        "n": 1
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2524",
+    "n": "DJ Clay",
+    "t": "PSY",
+    "cost": 6,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+3 Karma & Epic cards cost 1 less Karma to purchase this turn.",
+    "v": "scan",
+    "art": 2524,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 3
+      },
+      {
+        "op": "epicDiscount"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2525",
+    "n": "Dumpin'",
+    "t": "PSY",
+    "cost": 4,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Fast Effect: +2 Karma & you may abolish a card from the Gallery.",
+    "v": "scan",
+    "art": 2525,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "galleryWipe",
+        "max": 1,
+        "refill": false
+      }
+    ],
+    "fast": true,
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2526",
+    "n": "Golden Goldies",
+    "t": "PSY",
+    "cost": 4,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+2 Karma & this card is worth 1 GP for each & Psychopathic card in your deck (excluding this one).",
+    "v": "scan",
+    "art": 2526,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      }
+    ],
+    "variableGP": "PSY",
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2527",
+    "n": "Homies",
+    "t": "PSY",
+    "cost": 3,
+    "gp": 1,
+    "copies": 2,
+    "txt": "+2 Karma & reveal your deck's top card. You may discard it or return it facedown.",
+    "v": "scan",
+    "art": 2527,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "revealTopSelf"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2529",
+    "n": "In Yo Face",
+    "t": "PSY",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma OR Mirror an opponent who has just drawn a card, drawn a Flavor card, or abolished a card from their hand or discard pile; then gain +2 Karma.",
+    "v": "scan",
+    "art": 2529,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      }
+    ],
+    "mirror": true,
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2530",
+    "n": "JCW Wrestlers",
+    "t": "PSY",
+    "cost": 3,
+    "gp": 1,
+    "copies": 2,
+    "txt": "Draw a card. OR Discard to stomp an opponent's card being played.",
+    "v": "scan",
+    "art": 2530,
+    "set": "base",
+    "fx": [
+      {
+        "op": "draw",
+        "n": 1
+      }
+    ],
+    "reaction": {
+      "cost": "discardSelf",
+      "after": []
+    },
+    "shield": true,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2532",
+    "n": "Farris the Juggalawyer",
+    "t": "PSY",
+    "cost": 4,
+    "gp": 1,
+    "copies": 1,
+    "txt": "+2 Karma & flip up to 2 cards from the Gallery facedown (they can't be obtained or abolished). Then at the start of your next turn, flip them faceup.",
+    "v": "scan",
+    "art": 2532,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "flipGallery",
+        "max": 2
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2533",
+    "n": "Jumpsteady",
+    "t": "PSY",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Draw 2 cards.",
+    "v": "scan",
+    "art": 2533,
+    "set": "base",
+    "fx": [
+      {
+        "op": "draw",
+        "n": 2
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2534",
+    "n": "K.G. Kevin Gill",
+    "t": "PSY",
+    "cost": 4,
+    "gp": 1,
+    "copies": 1,
+    "txt": "+2 Karma & none of your cards (including Fiends) can be stomped this turn.",
+    "v": "scan",
+    "art": 2534,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "kgShield"
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2600",
+    "n": "Legz Diamond",
+    "t": "PSY",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Obtain a card of cost 5 or less for free.",
+    "v": "scan",
+    "art": 2600,
+    "set": "base",
+    "fx": [
+      {
+        "op": "obtain",
+        "maxCost": 5
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2601",
+    "n": "Lyte",
+    "t": "PSY",
+    "cost": 7,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma & draw a card; then you may keep it or discard it to draw a new one.",
+    "v": "scan",
+    "art": 2601,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "lyte"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2602",
+    "n": "Mike E. Clark",
+    "t": "PSY",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma & you may place a Psychopathic card from your discard pile on top of your deck.",
+    "v": "scan",
+    "art": 2602,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "fromDiscard",
+        "crew": "PSY",
+        "dest": "top",
+        "opt": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2603",
+    "n": "Natalie the Ring Girl",
+    "t": "PSY",
+    "cost": 3,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Draw 2 cards; then discard 1 from your hand.",
+    "v": "scan",
+    "art": 2603,
+    "set": "base",
+    "fx": [
+      {
+        "op": "drawDiscard",
+        "draw": 2,
+        "discard": 1
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2604",
+    "n": "Oracle’s Favor",
+    "t": "PSY",
+    "cost": 3,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Fast Effect: +2 Karma & you may reveal the top 2 cards of any deck; then place 1 on top and 1 on the bottom of that deck.",
+    "v": "scan",
+    "art": 2604,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "oracleFavor"
+      }
+    ],
+    "fast": true,
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2605",
+    "n": "Ouija Macc",
+    "t": "PSY",
+    "cost": 6,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+3 Karma & when first obtained, you may shuffle up to 2 cards of cost 6 or less (excluding this one) from your discard pile into your deck.",
+    "v": "scan",
+    "art": 2605,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 3
+      }
+    ],
+    "onGain": [
+      {
+        "op": "shuffleBack",
+        "maxCost": 6,
+        "max": 2
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2606",
+    "n": "Psychopathic Rydas",
+    "t": "PSY",
+    "cost": 8,
+    "gp": 3,
+    "copies": 1,
+    "txt": "+3 Karma & you may purchase one card from the Abyss this turn.",
+    "v": "scan",
+    "art": 2606,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 3
+      },
+      {
+        "op": "buyAbyss"
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2607",
+    "n": "Psychopathic Soldiers",
+    "t": "PSY",
+    "cost": 2,
+    "gp": 1,
+    "copies": 2,
+    "txt": "+1 Karma & you may abolish a card from your hand or discard pile. OR Abolish this card to draw a card.",
+    "v": "scan",
+    "art": 2607,
+    "set": "base",
+    "fx": [
+      {
+        "op": "or",
+        "la": "+1 Karma & abolish a card",
+        "a": [
+          {
+            "op": "k",
+            "n": 1
+          },
+          {
+            "op": "abolish",
+            "max": 1,
+            "from": [
+              "hand",
+              "discard"
+            ],
+            "opt": true
+          }
+        ],
+        "lb": "Abolish this to draw a card",
+        "b": [
+          {
+            "op": "abolishSelf"
+          },
+          {
+            "op": "draw",
+            "n": 1
+          }
+        ]
+      }
+    ],
+    "shield": false,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2609",
+    "n": "Road Dogs",
+    "t": "PSY",
+    "cost": 3,
+    "gp": 1,
+    "copies": 1,
+    "txt": "+2 Karma & if you already have at least 2 Psychopathic cards in play, you may abolish a card from your hand or discard pile.",
+    "v": "scan",
+    "art": 2609,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "crewAbolish",
+        "crew": "PSY"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2610",
+    "n": "Rude Boy",
+    "t": "PSY",
+    "cost": 4,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Draw a card; then you may abolish a card from your hand or discard pile.",
+    "v": "scan",
+    "art": 2610,
+    "set": "base",
+    "fx": [
+      {
+        "op": "draw",
+        "n": 1
+      },
+      {
+        "op": "abolish",
+        "max": 1,
+        "from": [
+          "hand",
+          "discard"
+        ],
+        "opt": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2611",
+    "n": "Soopa Ninjas",
+    "t": "PSY",
+    "cost": 4,
+    "gp": 1,
+    "copies": 2,
+    "txt": "+1 Karma & draw a card.",
+    "v": "scan",
+    "art": 2611,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 1
+      },
+      {
+        "op": "draw",
+        "n": 1
+      }
+    ],
+    "shield": false,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2613",
+    "n": "Soopa Villainz",
+    "t": "PSY",
+    "cost": 8,
+    "gp": 3,
+    "copies": 1,
+    "txt": "+3 Karma & you may abolish a non-Epic card from your hand or discard pile; then you may obtain a card of cost up to 1 higher than the abolished card for free.",
+    "v": "scan",
+    "art": 2613,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 3
+      },
+      {
+        "op": "upgrade"
+      }
+    ],
+    "shield": true,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2614",
+    "n": "Street Team",
+    "t": "PSY",
+    "cost": 2,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Draw a card; then you may abolish a card from the Gallery and replace it.",
+    "v": "scan",
+    "art": 2614,
+    "set": "base",
+    "fx": [
+      {
+        "op": "draw",
+        "n": 1
+      },
+      {
+        "op": "galleryWipe",
+        "max": 1,
+        "refill": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2615",
+    "n": "Sugar Slam",
+    "t": "PSY",
+    "cost": 4,
+    "gp": 1,
+    "copies": 1,
+    "txt": "+2 Karma OR If this is the first card played, discard the rest of your hand to draw 5 new cards.",
+    "v": "scan",
+    "art": 2615,
+    "set": "base",
+    "fx": [
+      {
+        "op": "sugarSlam"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2616",
+    "n": "Young Wicked",
+    "t": "PSY",
+    "cost": 7,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma & you may put a Psychopathic card from your discard pile into your hand.",
+    "v": "scan",
+    "art": 2616,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "fromDiscard",
+        "crew": "PSY",
+        "dest": "hand",
+        "opt": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2617",
+    "n": "Zug Izland",
+    "t": "PSY",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Draw a card. OR Discard to stomp an opponent's non-Еpic card being played, even if shielded.",
+    "v": "scan",
+    "art": 2617,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "draw",
+        "n": 1
+      }
+    ],
+    "reaction": {
+      "cost": "discardSelf",
+      "after": [],
+      "pierceShield": true,
+      "nonEpic": true
+    },
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2618",
+    "n": "Ace of Cups",
+    "t": "TAROT",
+    "cost": 0,
+    "gp": 0,
+    "copies": 2,
+    "txt": "Every player may place a card of cost 5 or less from their discard pile on top of their deck.",
+    "v": "scan",
+    "art": 2618,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "tarot",
+        "kind": "cups"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2620",
+    "n": "Ace of Pentacles",
+    "t": "TAROT",
+    "cost": 0,
+    "gp": 0,
+    "copies": 2,
+    "txt": "Every player may draw a card.",
+    "v": "scan",
+    "art": 2620,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "tarot",
+        "kind": "pentacles"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2622",
+    "n": "Death",
+    "t": "TAROT",
+    "cost": 0,
+    "gp": 0,
+    "copies": 4,
+    "txt": "Every player may abolish a card from their hand or discard pile.",
+    "v": "scan",
+    "art": 2622,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "tarot",
+        "kind": "death"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2626",
+    "n": "Knight of Wands",
+    "t": "TAROT",
+    "cost": 0,
+    "gp": 0,
+    "copies": 2,
+    "txt": "Every player may draw a Flavor card, starting with the player whose turn it currently 1s and going clockwise.",
+    "v": "scan",
+    "art": 2626,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "tarot",
+        "kind": "wands"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2628",
+    "n": "Three of Swords",
+    "t": "TAROT",
+    "cost": 0,
+    "gp": 0,
+    "copies": 2,
+    "txt": "Every player gives one non- Epic card in their hand to the player on their left, who then adds it to their hand.",
+    "v": "scan",
+    "art": 2628,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "tarot",
+        "kind": "swords"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2630",
+    "n": "Wheel of Fortune",
+    "t": "TAROT",
+    "cost": 0,
+    "gp": 0,
+    "copies": 2,
+    "txt": "Every player may look at their deck's top 3 cards, discard whichever they choose, and return the rest facedown in any order.",
+    "v": "scan",
+    "art": 2630,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "tarot",
+        "kind": "wheel"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2632",
+    "n": "Bodyguard",
+    "t": "UG",
+    "cost": 3,
+    "gp": 1,
+    "copies": 2,
+    "txt": "Roll on the Wheel of Fate. OR Discard to stomp an opponent's card being played.",
+    "v": "scan",
+    "art": 2632,
+    "set": "base",
+    "fx": [
+      {
+        "op": "wheel",
+        "n": 1
+      }
+    ],
+    "reaction": {
+      "cost": "discardSelf",
+      "after": []
+    },
+    "shield": true,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2633",
+    "n": "Bitch Slap",
+    "t": "UG",
+    "cost": 6,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Fast Effect: +3 Karma & you may choose an opponent's Item or Fiend card in play that is nullified during the current turn.",
+    "v": "scan",
+    "art": 2633,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 3
+      },
+      {
+        "op": "nullify",
+        "max": 1,
+        "until": "turn"
+      }
+    ],
+    "fast": true,
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2700",
+    "n": "Kung Fu Vampire",
+    "t": "UG",
+    "cost": 4,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+2 Karma & this card is worth 1 GP for each ® Underground card in your deck (excluding this one).",
+    "v": "scan",
+    "art": 2700,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      }
+    ],
+    "variableGP": "UG",
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2701",
+    "n": "Lil Wyte",
+    "t": "UG",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Draw a Flavor card. OR Discard to stomp an opponent's non-Epic card being played, even if shielded.",
+    "v": "scan",
+    "art": 2701,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "drawFlavor",
+        "n": 1
+      }
+    ],
+    "reaction": {
+      "cost": "discardSelf",
+      "after": [],
+      "pierceShield": true,
+      "nonEpic": true
+    },
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2702",
+    "n": "Lo Key",
+    "t": "UG",
+    "cost": 3,
+    "gp": 1,
+    "copies": 1,
+    "txt": "+2 Karma OR Abolish a card from your hand or discard pile.",
+    "v": "scan",
+    "art": 2702,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "or",
+        "la": "+2 Karma",
+        "a": [
+          {
+            "op": "k",
+            "n": 2
+          }
+        ],
+        "lb": "Abolish a card",
+        "b": [
+          {
+            "op": "abolish",
+            "max": 1,
+            "from": [
+              "hand",
+              "discard"
+            ],
+            "opt": true
+          }
+        ]
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2703",
+    "n": "Lyrikal Snuff Productions",
+    "t": "UG",
+    "cost": 6,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Roll a 12-sided die: 1-3=+2 Karma / 4-9=+3 Karma / 10-12=+4 Karma & you may abolish a Fiend card in play.",
+    "v": "scan",
+    "art": 2703,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "rollBand",
+        "band": "lsp"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2704",
+    "n": "Madchild",
+    "t": "UG",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Copy the effect of a Crew card in the Gallery of cost 6 or less.",
+    "v": "scan",
+    "art": 2704,
+    "set": "base",
+    "fx": [
+      {
+        "op": "copyGallery",
+        "maxCost": 6
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2705",
+    "n": "Myzery",
+    "t": "UG",
+    "cost": 4,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Roll on the Wheel of Fate; then you may abolish a card from your hand or discard pile.",
+    "v": "scan",
+    "art": 2705,
+    "set": "base",
+    "fx": [
+      {
+        "op": "wheel",
+        "n": 1
+      },
+      {
+        "op": "abolish",
+        "max": 1,
+        "from": [
+          "hand",
+          "discard"
+        ],
+        "opt": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2706",
+    "n": "Necro",
+    "t": "UG",
+    "cost": 7,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+3 Karma OR Discard to stomp an opponent's non-Epic card being played, even if shielded; then abolish the card that was stomped if it costs 3 or less.",
+    "v": "scan",
+    "art": 2706,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 3
+      }
+    ],
+    "reaction": {
+      "cost": "discardSelf",
+      "after": [],
+      "pierceShield": true,
+      "nonEpic": true,
+      "abolishMax": 3
+    },
+    "shield": true,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2707",
+    "n": "Oracle’s Favor",
+    "t": "UG",
+    "cost": 3,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Fast Effect: +2 Karma & you may reveal the top 2 cards of any deck; then place 1 on top and 1 on the bottom of that deck.",
+    "v": "scan",
+    "art": 2707,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "oracleFavor"
+      }
+    ],
+    "fast": true,
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2708",
+    "n": "Project Born",
+    "t": "UG",
+    "cost": 3,
+    "gp": 1,
+    "copies": 1,
+    "txt": "+2 Karma & if you already have at least 2 Underground cards in play, you may abolish a card from your hand or discard pile.",
+    "v": "scan",
+    "art": 2708,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "crewAbolish",
+        "crew": "UG"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2709",
+    "n": "Rittz",
+    "t": "UG",
+    "cost": 6,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Copy the effect of a Starter or Crew card you have in play.",
+    "v": "scan",
+    "art": 2709,
+    "set": "base",
+    "fx": [
+      {
+        "op": "copyOwn",
+        "types": [
+          "START",
+          "DC",
+          "PSY",
+          "UG"
+        ]
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2710",
+    "n": "Vanilla Ice",
+    "t": "UG",
+    "cost": 6,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma & draw a Flavor card.",
+    "v": "scan",
+    "art": 2710,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "drawFlavor",
+        "n": 1
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2711",
+    "n": "Weed Man",
+    "t": "UG",
+    "cost": 2,
+    "gp": 1,
+    "copies": 2,
+    "txt": "+1 Karma & you may abolish a card from your hand or discard pile. OR Abolish this card to draw a Flavor card.",
+    "v": "scan",
+    "art": 2711,
+    "set": "base",
+    "fx": [
+      {
+        "op": "or",
+        "la": "+1 Karma & you may abolish a card",
+        "a": [
+          {
+            "op": "k",
+            "n": 1
+          },
+          {
+            "op": "abolish",
+            "from": [
+              "hand",
+              "discard"
+            ],
+            "max": 1,
+            "opt": true
+          }
+        ],
+        "lb": "Abolish this card to draw Flavor",
+        "b": [
+          {
+            "op": "abolishSelf"
+          },
+          {
+            "op": "drawFlavor",
+            "n": 1
+          }
+        ]
+      }
+    ],
+    "shield": false,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2713",
+    "n": "Whitney Peyton",
+    "t": "UG",
+    "cost": 3,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Draw a Flavor card.",
+    "v": "scan",
+    "art": 2713,
+    "set": "base",
+    "fx": [
+      {
+        "op": "drawFlavor",
+        "n": 1
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2714",
+    "n": "Wolfpac",
+    "t": "UG",
+    "cost": 4,
+    "gp": 1,
+    "copies": 1,
+    "txt": "+2 Karma & none of your cards (including Fiends) can be stomped this turn.",
+    "v": "scan",
+    "art": 2714,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "kgShield"
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2715",
+    "n": "Boondox",
+    "t": "UG",
+    "cost": 8,
+    "gp": 3,
+    "copies": 1,
+    "txt": "+3 Karma & you may copy the effect of an Item card in play (including an opponent's) until the end of your turn.",
+    "v": "scan",
+    "art": 2715,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 3
+      },
+      {
+        "op": "copyItem"
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2716",
+    "n": "Ces Cru",
+    "t": "UG",
+    "cost": 4,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Gain a Unity Benefit of your choice. This is in addition to the once per turn limit.",
+    "v": "scan",
+    "art": 2716,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "freeUnity"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2717",
+    "n": "Da Mafia 6ix",
+    "t": "UG",
+    "cost": 7,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma & draw and immediately play the top card of the Main Deck; then abolish it at the end of your turn.",
+    "v": "scan",
+    "art": 2717,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "playMain"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2718",
+    "n": "Dayton Family",
+    "t": "UG",
+    "cost": 4,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Obtain a card of cost 4 or less for free; then you may abolish a card from the Gallery and replace it.",
+    "v": "scan",
+    "art": 2718,
+    "set": "base",
+    "fx": [
+      {
+        "op": "obtain",
+        "maxCost": 4
+      },
+      {
+        "op": "galleryWipe",
+        "max": 1,
+        "refill": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2719",
+    "n": "Dope DOD",
+    "t": "UG",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma & roll on the Wheel ofFate.",
+    "v": "scan",
+    "art": 2719,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "wheel",
+        "n": 1
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2720",
+    "n": "Dumpin'",
+    "t": "UG",
+    "cost": 4,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Fast Effect: +2 Karma & you may abolish a card from the Gallery.",
+    "v": "scan",
+    "art": 2720,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "galleryWipe",
+        "max": 1,
+        "refill": false
+      }
+    ],
+    "fast": true,
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2721",
+    "n": "Entourage",
+    "t": "UG",
+    "cost": 4,
+    "gp": 1,
+    "copies": 2,
+    "txt": "Copy the effect of a Starter or Crew card you have in play of cost 5 or less.",
+    "v": "scan",
+    "art": 2721,
+    "set": "base",
+    "fx": [
+      {
+        "op": "copyInPlay",
+        "maxCost": 5
+      }
+    ],
+    "shield": false,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2723",
+    "n": "Geto Boys",
+    "t": "UG",
+    "cost": 8,
+    "gp": 3,
+    "copies": 1,
+    "txt": "Roll a 12-sided die: 1-3= +3 Karma / 4-9= +4 Karma / 10-12= +5 Karma & you may choose 1 Item card an opponent has in play and have them discard it.",
+    "v": "scan",
+    "art": 2723,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "rollBand",
+        "band": "geto"
+      }
+    ],
+    "shield": true,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2724",
+    "n": "Groupies",
+    "t": "UG",
+    "cost": 2,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Roll on the Wheel of Fate; then you may abolish a card from the Gallery and replace it.",
+    "v": "scan",
+    "art": 2724,
+    "set": "base",
+    "fx": [
+      {
+        "op": "wheel",
+        "n": 1
+      },
+      {
+        "op": "galleryWipe",
+        "max": 1,
+        "refill": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2725",
+    "n": "GWAR",
+    "t": "UG",
+    "cost": 6,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+1 Karma & draw a Flavor card. OR Discard to stomp an opponent's card being played; then draw a card.",
+    "v": "scan",
+    "art": 2725,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 1
+      },
+      {
+        "op": "drawFlavor",
+        "n": 1
+      }
+    ],
+    "reaction": {
+      "cost": "discardSelf",
+      "after": [
+        {
+          "op": "draw",
+          "n": 1
+        }
+      ]
+    },
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2726",
+    "n": "Hed PE",
+    "t": "UG",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma & you may place an Underground card from your discard pile on top of your deck.",
+    "v": "scan",
+    "art": 2726,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "fromDiscard",
+        "crew": "UG",
+        "dest": "top",
+        "opt": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2727",
+    "n": "Hype Man",
+    "t": "UG",
+    "cost": 3,
+    "gp": 1,
+    "copies": 2,
+    "txt": "+2 Karma & choose a Crew; this card becomes that Crew until the end of your turn.",
+    "v": "scan",
+    "art": 2727,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "chooseCrew"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2729",
+    "n": "Inner City Posse",
+    "t": "UG",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Put a card from the Flavor discard pile into your hand; then place it at the bottom of the Flavor deck at the end of your turn.",
+    "v": "scan",
+    "art": 2729,
+    "set": "promo",
+    "fx": [
+      {
+        "op": "flavorDiscardToHand"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2730",
+    "n": "In Yo Face",
+    "t": "UG",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma OR Mirror an opponent who has just drawn a card, drawn a Flavor card, or abolished a card from their hand or discard pile; then gain +2 Karma.",
+    "v": "scan",
+    "art": 2730,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      }
+    ],
+    "mirror": true,
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2731",
+    "n": "Jelly Roll",
+    "t": "UG",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma & when first obtained, you may abolish up to 2 cards from your hand and/or discard pile.",
+    "v": "scan",
+    "art": 2731,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      }
+    ],
+    "onGain": [
+      {
+        "op": "abolish",
+        "max": 2,
+        "from": [
+          "hand",
+          "discard"
+        ],
+        "opt": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2732",
+    "n": "Kottonmouth Kings",
+    "t": "UG",
+    "cost": 7,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma & you may put an Underground card from your discard pile into your hand.",
+    "v": "scan",
+    "art": 2732,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "fromDiscard",
+        "crew": "UG",
+        "dest": "hand",
+        "opt": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2800",
+    "n": "Wizard of the Hood",
+    "t": "DC",
+    "cost": 5,
+    "gp": 2,
+    "copies": 1,
+    "txt": "+2 Karma & you may shuffle up to 2 cards of cost 4 or less from your discard pile into your deck.",
+    "v": "scan",
+    "art": 2800,
+    "set": "promo",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "shuffleBack",
+        "maxCost": 4,
+        "max": 2
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2801",
+    "n": "Ice Lich",
+    "t": "FIEND",
+    "cost": 3,
+    "gp": 0,
+    "copies": 2,
+    "txt": "+1 Karma & flip up to 3 cards from the Gallery facedown (they can't be obtained or abolished). Then at the start of your next turn abolish these cards and replace them.",
+    "v": "scan",
+    "art": 2801,
+    "set": "base",
+    "fiendUse": [
+      {
+        "op": "k",
+        "n": 1
+      },
+      {
+        "op": "flipGallery",
+        "max": 3,
+        "abolish": true
+      }
+    ],
+    "useWhen": "ownTurn",
+    "shield": false,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2802",
+    "n": "Mad Professor",
+    "t": "FIEND",
+    "cost": 5,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+3 Karma & you may choose up to 5 cards from an opponent's discard pile to be shuffled into their deck.",
+    "v": "scan",
+    "art": 2802,
+    "set": "base",
+    "fiendUse": [
+      {
+        "op": "k",
+        "n": 3
+      },
+      {
+        "op": "enemyShuffle",
+        "max": 5
+      }
+    ],
+    "useWhen": "ownTurn",
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2803",
+    "n": "Mr. Happy",
+    "t": "FIEND",
+    "cost": 4,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+2 Karma OR Abolish this card to stomp an opponent's card being played; then draw a card.",
+    "v": "scan",
+    "art": 2803,
+    "set": "base",
+    "fiendUse": [
+      {
+        "op": "k",
+        "n": 2
+      }
+    ],
+    "useWhen": "ownTurn",
+    "reaction": {
+      "cost": "abolishSelf",
+      "after": [
+        {
+          "op": "draw",
+          "n": 1
+        }
+      ]
+    },
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2804",
+    "n": "Mr. Rotten Treats",
+    "t": "FIEND",
+    "cost": 5,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+3 Karma & for each opponent you may choose 1 Item card they have in play and have them discard it.",
+    "v": "scan",
+    "art": 2804,
+    "set": "base",
+    "fiendUse": [
+      {
+        "op": "k",
+        "n": 3
+      },
+      {
+        "op": "discardEnemyItems",
+        "max": 1,
+        "all": true
+      }
+    ],
+    "useWhen": "ownTurn",
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2805",
+    "n": "Ol’ Evil Eye",
+    "t": "FIEND",
+    "cost": 5,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+3 Karma & flip up to 4 cards from the Gallery facedown (they can't be obtained or abolished). Then at the start of your next turn abolish these cards and replace them.",
+    "v": "scan",
+    "art": 2805,
+    "set": "base",
+    "fiendUse": [
+      {
+        "op": "k",
+        "n": 3
+      },
+      {
+        "op": "flipGallery",
+        "max": 4,
+        "abolish": true
+      }
+    ],
+    "useWhen": "ownTurn",
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2806",
+    "n": "Opaque Brotherhood",
+    "t": "FIEND",
+    "cost": 8,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+4 Karma OR Abolish this card to stomp an opponent's card being played; then obtain the card that was stomped for free if it costs 5 or less.",
+    "v": "scan",
+    "art": 2806,
+    "set": "oracle",
+    "fiendUse": [
+      {
+        "op": "k",
+        "n": 4
+      }
+    ],
+    "useWhen": "ownTurn",
+    "reaction": {
+      "cost": "abolishSelf",
+      "after": [],
+      "obtainMax": 5
+    },
+    "shield": true,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2807",
+    "n": "Pit Demoness",
+    "t": "FIEND",
+    "cost": 2,
+    "gp": 0,
+    "copies": 2,
+    "txt": "Before any cards are played during your turn, discard your hand to draw 5 new ones.",
+    "v": "scan",
+    "art": 2807,
+    "set": "base",
+    "fiendUse": [
+      {
+        "op": "mulligan"
+      }
+    ],
+    "useWhen": "ownStart",
+    "shield": false,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2809",
+    "n": "Prom Queen",
+    "t": "FIEND",
+    "cost": 4,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+2 Karma & you may choose up to 3 cards from an opponent's discard pile to be shuffled into their deck.",
+    "v": "scan",
+    "art": 2809,
+    "set": "base",
+    "fiendUse": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "enemyShuffle",
+        "max": 3
+      }
+    ],
+    "useWhen": "ownTurn",
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2810",
+    "n": "Pumpkin Carver",
+    "t": "FIEND",
+    "cost": 6,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+4 Karma & for each opponent you may have them discard a random card from their hand.",
+    "v": "scan",
+    "art": 2810,
+    "set": "base",
+    "fiendUse": [
+      {
+        "op": "k",
+        "n": 4
+      },
+      {
+        "op": "randomDiscard",
+        "all": true
+      }
+    ],
+    "useWhen": "ownTurn",
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2811",
+    "n": "Roxie Carol",
+    "t": "FIEND",
+    "cost": 6,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+3 Karma & you may look at every opponent's hand. For each opponent, you may have them discard their hand and draw 5 new cards (which you may also look at).",
+    "v": "scan",
+    "art": 2811,
+    "set": "oracle",
+    "fiendUse": [
+      {
+        "op": "k",
+        "n": 3
+      },
+      {
+        "op": "enemyMulligan"
+      }
+    ],
+    "useWhen": "ownTurn",
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2812",
+    "n": "Shadow Demon",
+    "t": "FIEND",
+    "cost": 7,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+4 Karma OR +2 Karma & obtain the last card put into the Abyss for free.",
+    "v": "scan",
+    "art": 2812,
+    "set": "oracle",
+    "fiendUse": [
+      {
+        "op": "or",
+        "la": "+4 Karma",
+        "a": [
+          {
+            "op": "k",
+            "n": 4
+          }
+        ],
+        "lb": "+2 Karma & obtain last card in the Abyss",
+        "b": [
+          {
+            "op": "k",
+            "n": 2
+          },
+          {
+            "op": "lastAbyss"
+          }
+        ]
+      }
+    ],
+    "useWhen": "ownTurn",
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2813",
+    "n": "The Dead One",
+    "t": "FIEND",
+    "cost": 3,
+    "gp": 0,
+    "copies": 1,
+    "txt": "Abolish a card from your hand or discard pile; then you may have an opponent discard a random card from their hand.",
+    "v": "scan",
+    "art": 2813,
+    "set": "base",
+    "fiendUse": [
+      {
+        "op": "abolish",
+        "max": 1,
+        "from": [
+          "hand",
+          "discard"
+        ],
+        "opt": true,
+        "then": [
+          {
+            "op": "randomDiscard"
+          }
+        ]
+      }
+    ],
+    "useWhen": "ownTurn",
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2814",
+    "n": "The Monster",
+    "t": "FIEND",
+    "cost": 4,
+    "gp": 0,
+    "copies": 1,
+    "txt": "Abolish a card from your hand or discard pile; then you may abolish a card from an opponent's discard pile of cost 4 or less.",
+    "v": "scan",
+    "art": 2814,
+    "set": "oracle",
+    "fiendUse": [
+      {
+        "op": "abolish",
+        "max": 1,
+        "from": [
+          "hand",
+          "discard"
+        ],
+        "opt": true,
+        "then": [
+          {
+            "op": "enemyAbolish",
+            "maxCost": 4
+          }
+        ]
+      }
+    ],
+    "useWhen": "ownTurn",
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2815",
+    "n": "The Smog",
+    "t": "FIEND",
+    "cost": 5,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+3 Karma & all of your opponents' Item and Fiend cards are nullified until the start of your next turn.",
+    "v": "scan",
+    "art": 2815,
+    "set": "oracle",
+    "fiendUse": [
+      {
+        "op": "k",
+        "n": 3
+      },
+      {
+        "op": "nullifyAll"
+      }
+    ],
+    "useWhen": "ownTurn",
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2816",
+    "n": "The Witch",
+    "t": "FIEND",
+    "cost": 6,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+3 Karma & for each opponent you may have them discard all of their Item cards in play.",
+    "v": "scan",
+    "art": 2816,
+    "set": "base",
+    "fiendUse": [
+      {
+        "op": "k",
+        "n": 3
+      },
+      {
+        "op": "oppDiscardItems",
+        "all": true
+      }
+    ],
+    "useWhen": "ownTurn",
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2817",
+    "n": "Black-Eyed Children",
+    "t": "FIEND",
+    "cost": 3,
+    "gp": 0,
+    "copies": 2,
+    "txt": "+1 Karma & you may have an opponent discard all of their Item cards in play.",
+    "v": "scan",
+    "art": 2817,
+    "set": "base",
+    "fiendUse": [
+      {
+        "op": "k",
+        "n": 1
+      },
+      {
+        "op": "oppDiscardItems"
+      }
+    ],
+    "useWhen": "ownTurn",
+    "shield": false,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2819",
+    "n": "Boogie Man",
+    "t": "FIEND",
+    "cost": 8,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+4 Karma & you may abolish up to 2 cards from your hand and/or discard pile. OR Abolish this card to stomp an opponent's card being played; then abolish the card that was stomped.",
+    "v": "scan",
+    "art": 2819,
+    "set": "base",
+    "fiendUse": [
+      {
+        "op": "k",
+        "n": 4
+      },
+      {
+        "op": "abolish",
+        "max": 2,
+        "from": [
+          "hand",
+          "discard"
+        ],
+        "opt": true
+      }
+    ],
+    "useWhen": "ownTurn",
+    "reaction": {
+      "cost": "abolishSelf",
+      "after": [],
+      "abolishMax": 99
+    },
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2820",
+    "n": "Cemetery Girl",
+    "t": "FIEND",
+    "cost": 5,
+    "gp": 0,
+    "copies": 1,
+    "txt": "Draw 2 cards. OR Abolish this card to stomp an opponent's card being played; then draw a card.",
+    "v": "scan",
+    "art": 2820,
+    "set": "base",
+    "fiendUse": [
+      {
+        "op": "draw",
+        "n": 2
+      }
+    ],
+    "useWhen": "ownTurn",
+    "reaction": {
+      "cost": "abolishSelf",
+      "after": [
+        {
+          "op": "draw",
+          "n": 1
+        }
+      ]
+    },
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2821",
+    "n": "Damien",
+    "t": "FIEND",
+    "cost": 4,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+2 Karma & you may have an opponent discard a random card from their hand.",
+    "v": "scan",
+    "art": 2821,
+    "set": "base",
+    "fiendUse": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "randomDiscard"
+      }
+    ],
+    "useWhen": "ownTurn",
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2822",
+    "n": "Dead Body Man",
+    "t": "FIEND",
+    "cost": 7,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+3 Karma & for each opponent you may abolish a card from their discard pile with a cost 5 or less.",
+    "v": "scan",
+    "art": 2822,
+    "set": "base",
+    "fiendUse": [
+      {
+        "op": "k",
+        "n": 3
+      },
+      {
+        "op": "enemyAbolish",
+        "all": true,
+        "maxCost": 5
+      }
+    ],
+    "useWhen": "ownTurn",
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2823",
+    "n": "Drainer Road Monks",
+    "t": "FIEND",
+    "cost": 2,
+    "gp": 0,
+    "copies": 2,
+    "txt": "Abolish this card to stomp an opponent's card being played.",
+    "v": "scan",
+    "art": 2823,
+    "set": "base",
+    "fiendUse": [],
+    "useWhen": "ownTurn",
+    "reaction": {
+      "cost": "abolishSelf",
+      "after": []
+    },
+    "shield": true,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2825",
+    "n": "Electric Witch",
+    "t": "FIEND",
+    "cost": 3,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+1 Karma & for each opponent you may choose 1 Item or Fiend card they have in play and nullify it until the start of your next turn.",
+    "v": "scan",
+    "art": 2825,
+    "set": "oracle",
+    "fiendUse": [
+      {
+        "op": "k",
+        "n": 1
+      },
+      {
+        "op": "nullify",
+        "max": 1,
+        "until": "next",
+        "all": true
+      }
+    ],
+    "useWhen": "ownTurn",
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2826",
+    "n": "Halloween Head",
+    "t": "FIEND",
+    "cost": 4,
+    "gp": 0,
+    "copies": 1,
+    "txt": "Draw a Flavor card; then for each opponent you may choose 1 Item card they have in play and have them discard it.",
+    "v": "scan",
+    "art": 2826,
+    "set": "base",
+    "fiendUse": [
+      {
+        "op": "drawFlavor",
+        "n": 1
+      },
+      {
+        "op": "discardEnemyItems",
+        "max": 1,
+        "all": true
+      }
+    ],
+    "useWhen": "ownTurn",
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2828",
+    "n": "Chuck the Chainsaw",
+    "t": "ITEM",
+    "cost": 6,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Once during your turn you may roll on the Wheel of Fate.",
+    "v": "scan",
+    "art": 2828,
+    "set": "base",
+    "fx": [],
+    "active": [
+      {
+        "op": "wheel",
+        "n": 1
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2829",
+    "n": "Crystal Skull",
+    "t": "ITEM",
+    "cost": 6,
+    "gp": 2,
+    "copies": 1,
+    "txt": "Once during your turn you may gain +1 Karma.",
+    "v": "scan",
+    "art": 2829,
+    "set": "oracle",
+    "fx": [],
+    "active": [
+      {
+        "op": "k",
+        "n": 1
+      }
+    ],
+    "shield": true,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2830",
+    "n": "Crystal Ball",
+    "t": "ITEM",
+    "cost": 3,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Once during your turn you may look at an opponent's hand.",
+    "v": "scan",
+    "art": 2830,
+    "set": "base",
+    "fx": [],
+    "active": [
+      {
+        "op": "peekHand"
+      }
+    ],
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2831",
+    "n": "Flying Guillotine",
+    "t": "ITEM",
+    "cost": 4,
+    "gp": 1,
+    "copies": 1,
+    "txt": "Whenever you need to shuffle your discard pile, you may abolish a card from your hand or discard pile before you do.",
+    "v": "scan",
+    "art": 2831,
+    "set": "base",
+    "fx": [],
+    "passive": "guillotine",
+    "shield": true,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2832",
+    "n": "Backstage Pass",
+    "t": "ITEM",
+    "cost": 2,
+    "gp": 1,
+    "copies": 2,
+    "txt": "Once during your turn you may have an opponent reveal their deck's top card; then have them discard it or return it facedown.",
+    "v": "scan",
+    "art": 2832,
+    "set": "base",
+    "fx": [],
+    "active": [
+      {
+        "op": "enemyTop"
+      }
+    ],
+    "shield": true,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2834",
+    "n": "Bowling Balls",
+    "t": "ITEM",
+    "cost": 2,
+    "gp": 3,
+    "copies": 1,
+    "txt": "This card does absolutely nothing.",
+    "v": "scan",
+    "art": 2834,
+    "set": "oracle",
+    "fx": [],
+    "shield": true,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2900",
+    "n": "Black Crows",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 2,
+    "txt": "Obtain a Juggalo card for free; then you may abolish a card from your hand or discard pile.",
+    "v": "scan",
+    "art": 2900,
+    "set": "base",
+    "fx": [
+      {
+        "op": "obtainJuggalo"
+      },
+      {
+        "op": "abolish",
+        "max": 1,
+        "from": [
+          "hand",
+          "discard"
+        ],
+        "opt": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2902",
+    "n": "Chicken Huntin’",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 2,
+    "txt": "Each opponent reveals their deck's top card. You may copy the effect of one Starter or Crew card revealed Then return all cards facedown.",
+    "v": "scan",
+    "art": 2902,
+    "set": "base",
+    "fx": [
+      {
+        "op": "chicken"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2904",
+    "n": "Clown Love",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 3,
+    "txt": "+2 Karma",
+    "v": "scan",
+    "art": 2904,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      }
+    ],
+    "shield": false,
+    "baseCopies": 3
+  },
+  {
+    "id": "c2907",
+    "n": "Gang Related",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "Gain a Unity Benefit of your choice. This is in addition to the once per turn limit.",
+    "v": "scan",
+    "art": 2907,
+    "set": "base",
+    "fx": [
+      {
+        "op": "freeUnity"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2908",
+    "n": "Gathering of the Juggalos",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+3 Karma",
+    "v": "scan",
+    "art": 2908,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 3
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2909",
+    "n": "Halls of Illusions",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+2 Karma & you may look at every opponent's hand.",
+    "v": "scan",
+    "art": 2909,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "peekAll"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2910",
+    "n": "Hatchetman",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+2 Karma & you may abolish a card from your hand or discard pile.",
+    "v": "scan",
+    "art": 2910,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "abolish",
+        "max": 1,
+        "from": [
+          "hand",
+          "discard"
+        ],
+        "opt": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2911",
+    "n": "Hokus Pokus",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+2 Karma & you may put the next Item card you obtain this turn into your hand.",
+    "v": "scan",
+    "art": 2911,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "hocusPocus"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2912",
+    "n": "Hallowicked",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "Draw a card; then draw a Flavor card.",
+    "v": "scan",
+    "art": 2912,
+    "set": "base",
+    "fx": [
+      {
+        "op": "draw",
+        "n": 1
+      },
+      {
+        "op": "drawFlavor",
+        "n": 1
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2913",
+    "n": "If I Was King",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "Draw 3 cards; then keep 1 and discard the other 2.",
+    "v": "scan",
+    "art": 2913,
+    "set": "base",
+    "fx": [
+      {
+        "op": "drawKeep",
+        "draw": 3,
+        "keep": 1
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2914",
+    "n": "Into the Light",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+1 Karma & you may place a non-Epic card from your discard pile on top of your deck.",
+    "v": "scan",
+    "art": 2914,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 1
+      },
+      {
+        "op": "fromDiscard",
+        "crew": null,
+        "dest": "top",
+        "opt": true,
+        "nonEpic": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2915",
+    "n": "Jacob’s Word",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+2 Karma & you may look at the top 5 cards of the Main Deck and arrange them in any order.",
+    "v": "scan",
+    "art": 2915,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "reorderMain",
+        "n": 5
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2916",
+    "n": "Juggalo Day",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "Reveal cards from the top of the Main Deck equal to the number of players. T'hen place one ot these cards in each player's discard pile, or into their play area if it's a Fiend.",
+    "v": "scan",
+    "art": 2916,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "juggaloDay"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2917",
+    "n": "Joker’s Wild",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 2,
+    "txt": "Roll on the Wheel of Fate and add 2 to the result.",
+    "v": "scan",
+    "art": 2917,
+    "set": "base",
+    "fx": [
+      {
+        "op": "wheel",
+        "n": 1,
+        "bonus": 2
+      }
+    ],
+    "shield": false,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2919",
+    "n": "Joke Ya Mind",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 2,
+    "txt": "Draw a card.",
+    "v": "scan",
+    "art": 2919,
+    "set": "base",
+    "fx": [
+      {
+        "op": "draw",
+        "n": 1
+      }
+    ],
+    "shield": false,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2921",
+    "n": "Lil Somethin’ Somethin’",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "Obtain a card of cost 4 or less for free.",
+    "v": "scan",
+    "art": 2921,
+    "set": "base",
+    "fx": [
+      {
+        "op": "obtain",
+        "maxCost": 4
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2922",
+    "n": "Multiple Myselves",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "Copy the effect of a Starter or Crew card you have in play of cost 4 or less.",
+    "v": "scan",
+    "art": 2922,
+    "set": "base",
+    "fx": [
+      {
+        "op": "copyInPlay",
+        "maxCost": 4
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2923",
+    "n": "My Shine",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "Obtain a card of cost 5 or less for free.",
+    "v": "scan",
+    "art": 2923,
+    "set": "base",
+    "fx": [
+      {
+        "op": "obtain",
+        "maxCost": 5
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2924",
+    "n": "Night of the Axe",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+2 Karma & you may abolish up to 6 cards from the Gallery; then replace them.",
+    "v": "scan",
+    "art": 2924,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "galleryWipe",
+        "max": 6,
+        "refill": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2925",
+    "n": "Pendulum’s Promise",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "Draw and immediately play the top card of the Main Deck; then abolish it at the end of your turn.",
+    "v": "scan",
+    "art": 2925,
+    "set": "base",
+    "fx": [
+      {
+        "op": "playMain"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2926",
+    "n": "Picker Forest",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "Put a non-Epic card from your discard pile into your hand.",
+    "v": "scan",
+    "art": 2926,
+    "set": "base",
+    "fx": [
+      {
+        "op": "fromDiscard",
+        "crew": null,
+        "dest": "hand",
+        "opt": true,
+        "nonEpic": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2927",
+    "n": "Ringmaster’s Word",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "You may abolish up to 2 cards from your hand and/or discard pile.",
+    "v": "scan",
+    "art": 2927,
+    "set": "base",
+    "fx": [
+      {
+        "op": "abolish",
+        "max": 2,
+        "from": [
+          "hand",
+          "discard"
+        ],
+        "opt": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c2928",
+    "n": "The Shaggy Show",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+1 Karma & you may copy the effect of an Item card in play (including an opponent's), in the Gallery, or in the Abyss until the end of your turn.",
+    "v": "scan",
+    "art": 2928,
+    "set": "promo",
+    "fx": [
+      {
+        "op": "k",
+        "n": 1
+      },
+      {
+        "op": "copyItem",
+        "extra": true
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2929",
+    "n": "Still Stabbin’",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 2,
+    "txt": "+1 Karma",
+    "v": "scan",
+    "art": 2929,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 1
+      }
+    ],
+    "shield": false,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2931",
+    "n": "Southwest Voodoo",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 2,
+    "txt": "+1 Karma & roll on the Wheel ofFate.",
+    "v": "scan",
+    "art": 2931,
+    "set": "base",
+    "fx": [
+      {
+        "op": "k",
+        "n": 1
+      },
+      {
+        "op": "wheel",
+        "n": 1
+      }
+    ],
+    "shield": false,
+    "baseCopies": 2
+  },
+  {
+    "id": "c2933",
+    "n": "Tilt-A-Whirl",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+2 Karma & you may shuffle your discard pile into your deck.",
+    "v": "scan",
+    "art": 2933,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      },
+      {
+        "op": "shuffleAll"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2934",
+    "n": "The Tempest",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "+1 Karma & you may obtain a card from the Abyss of cost 4 or less for free.",
+    "v": "scan",
+    "art": 2934,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "k",
+        "n": 1
+      },
+      {
+        "op": "fromAbyss",
+        "maxCost": 4
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2935",
+    "n": "The Amazing Maze",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "Roll on the Wheel of Fate twice, and choose one of the effects rolled.",
+    "v": "scan",
+    "art": 2935,
+    "set": "oracle",
+    "fx": [
+      {
+        "op": "doubleWheel"
+      }
+    ],
+    "shield": false,
+    "baseCopies": 0
+  },
+  {
+    "id": "c2936",
+    "n": "Thy Unveiling",
+    "t": "FLAVOR",
+    "cost": 0,
+    "gp": 0,
+    "copies": 1,
+    "txt": "Draw 3 cards.",
+    "v": "scan",
+    "art": 2936,
+    "set": "base",
+    "fx": [
+      {
+        "op": "draw",
+        "n": 3
+      }
+    ],
+    "shield": false,
+    "baseCopies": 1
+  },
+  {
+    "id": "c3000",
+    "n": "Juggalo",
+    "t": "JUG",
+    "cost": 3,
+    "gp": 1,
+    "copies": 10,
+    "txt": "+2 Karma",
+    "v": "scan",
+    "art": 3000,
+    "set": "multiple",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      }
+    ],
+    "crew": "DC",
+    "shield": false,
+    "baseCopies": 7
+  },
+  {
+    "id": "c3010",
+    "n": "Juggalo",
+    "t": "JUG",
+    "cost": 3,
+    "gp": 1,
+    "copies": 10,
+    "txt": "+2 Karma",
+    "v": "scan",
+    "art": 3010,
+    "set": "multiple",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      }
+    ],
+    "crew": "PSY",
+    "shield": false,
+    "baseCopies": 7
+  },
+  {
+    "id": "c3020",
+    "n": "Juggalo",
+    "t": "JUG",
+    "cost": 3,
+    "gp": 1,
+    "copies": 10,
+    "txt": "+2 Karma",
+    "v": "scan",
+    "art": 3020,
+    "set": "multiple",
+    "fx": [
+      {
+        "op": "k",
+        "n": 2
+      }
+    ],
+    "crew": "UG",
+    "shield": false,
+    "baseCopies": 7
+  },
+  {
+    "id": "gambit01",
+    "n": "Gain 1 Karma",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "karma",
+    "txt": "Gain 1 Karma.",
+    "fx": [
+      {
+        "op": "k",
+        "n": 1
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=2s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit02",
+    "n": "3 GP",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 3,
+    "gp": 3,
+    "timing": "end_game",
+    "txt": "This Gambit contributes 3 GP at game end.",
+    "fx": [],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=6s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit03",
+    "n": "Recover an Item",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Return an Item from your discard pile to your hand.",
+    "fx": [
+      {
+        "op": "fromDiscard",
+        "type": "ITEM",
+        "dest": "hand"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=10s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit04",
+    "n": "Karma and reshuffle",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 3,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Gain 1 Karma. You may shuffle your discard pile into your deck.",
+    "fx": [
+      {
+        "op": "k",
+        "n": 1
+      },
+      {
+        "op": "gambitShuffle"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=13s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit05",
+    "n": "Abolish two Gallery cards",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "fast",
+    "txt": "Abolish 2 Gallery cards.",
+    "fx": [
+      {
+        "op": "galleryWipe",
+        "max": 2,
+        "required": true,
+        "refill": false
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=18s",
+    "descriptiveName": true,
+    "fast": true
+  },
+  {
+    "id": "gambit06",
+    "n": "Arrange top five",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "fast",
+    "txt": "Inspect the top 5 cards of any deck and arrange those cards in any order.",
+    "fx": [
+      {
+        "op": "arrangeDeck",
+        "n": 5
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=20s",
+    "descriptiveName": true,
+    "fast": true
+  },
+  {
+    "id": "gambit07",
+    "n": "Stomp a non-Epic, even shielded",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 3,
+    "gp": 0,
+    "timing": "stomp",
+    "txt": "Stomp a non-Epic card an opponent is playing. Shielding does not prevent this stomp.",
+    "fx": [],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=23s",
+    "descriptiveName": true,
+    "reaction": {
+      "nonEpic": true,
+      "pierceShield": true
+    }
+  },
+  {
+    "id": "gambit08",
+    "n": "Trade a Crew or Item",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Abolish a Crew or Item from your hand or discard pile, then obtain a card with equal or lower cost for free.",
+    "fx": [
+      {
+        "op": "gambitTrade"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=27s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit09",
+    "n": "Four of one Crew: abolish",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "If at least 4 cards of the same Crew are in play for you, abolish one card from your hand or discard pile.",
+    "fx": [
+      {
+        "op": "gambitCrewAbolish"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=31s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit10",
+    "n": "Draw one",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Draw 1 card.",
+    "fx": [
+      {
+        "op": "draw",
+        "n": 1
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=34s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit11",
+    "n": "Replace an Epic Tier card",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "fast",
+    "txt": "Put one Epic Tier card on the bottom of the Epic deck, then refill its place.",
+    "fx": [
+      {
+        "op": "replaceEpic"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=37s",
+    "descriptiveName": true,
+    "fast": true
+  },
+  {
+    "id": "gambit12",
+    "n": "Recover cards stomped this turn",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 3,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Return any cards in your discard pile that were stomped during your current turn to your hand.",
+    "fx": [
+      {
+        "op": "recoverStomped",
+        "all": true
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=40s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit13",
+    "n": "Wheel roll minus two",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Roll on the Wheel of Fate and subtract 2 from the roll.",
+    "fx": [
+      {
+        "op": "wheel",
+        "n": 1,
+        "bonus": -2
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=44s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit14",
+    "n": "Abolish your card and Gallery cards",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 3,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Abolish one card from your hand or discard pile. You may then abolish up to 3 Gallery cards and refill their places.",
+    "fx": [
+      {
+        "op": "abolish",
+        "from": [
+          "hand",
+          "discard"
+        ],
+        "max": 1,
+        "then": [
+          {
+            "op": "galleryWipe",
+            "max": 3
+          }
+        ]
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=48s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit15",
+    "n": "Obtain up to cost four",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 3,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Obtain a card costing 4 or less for free.",
+    "fx": [
+      {
+        "op": "obtain",
+        "maxCost": 4
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=52s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit16",
+    "n": "Obtain cost two",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Obtain a card costing exactly 2 for free.",
+    "fx": [
+      {
+        "op": "obtain",
+        "maxCost": 2,
+        "exactCost": 2
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=54s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit17",
+    "n": "Return Abyss cards to Main Deck",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Put up to 5 non-Starter cards from the Abyss onto the top or bottom of the Main Deck, in any order.",
+    "fx": [
+      {
+        "op": "gambitAbyss"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=56s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit18",
+    "n": "Obtain up to cost three",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Obtain a card costing 3 or less for free.",
+    "fx": [
+      {
+        "op": "obtain",
+        "maxCost": 3
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=60s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit19",
+    "n": "Top-deck up to cost five",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Put a card costing 5 or less from your discard pile on top of your deck.",
+    "fx": [
+      {
+        "op": "fromDiscard",
+        "maxCost": 5,
+        "dest": "top"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=63s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit20",
+    "n": "Mirror Mirror",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "mirror",
+    "txt": "Mirror an opponent immediately after they draw a card, draw a Flavor card, or abolish a card from their hand or discard pile.",
+    "fx": [],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=66s",
+    "descriptiveName": false,
+    "mirror": true
+  },
+  {
+    "id": "gambit21",
+    "n": "Nullify all of one opponent's Fiends",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "fast",
+    "txt": "Choose one opponent. Nullify their Fiend cards during the current turn.",
+    "fx": [
+      {
+        "op": "gambitNullify",
+        "type": "FIEND"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=69s",
+    "descriptiveName": true,
+    "fast": true
+  },
+  {
+    "id": "gambit22",
+    "n": "Draw Flavor, then discard",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Draw 1 Flavor card, then discard 1 card from your hand.",
+    "fx": [
+      {
+        "op": "drawFlavor",
+        "n": 1
+      },
+      {
+        "op": "gambitDiscard"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=73s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit23",
+    "n": "Discount Epic purchases",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "For this turn, reduce the purchase cost of Epic cards by 1.",
+    "fx": [
+      {
+        "op": "epicDiscount",
+        "n": 1
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=76s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit24",
+    "n": "Wheel roll plus one",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Roll on the Wheel of Fate and add 1 to the roll.",
+    "fx": [
+      {
+        "op": "wheel",
+        "n": 1,
+        "bonus": 1
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=79s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit25",
+    "n": "Stomp Protection",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "For this turn, none of your cards, including Fiends, can be stomped.",
+    "fx": [
+      {
+        "op": "gambitShield"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=82s",
+    "descriptiveName": false
+  },
+  {
+    "id": "gambit26",
+    "n": "Bitch Slap",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "fast",
+    "txt": "Choose an Item or Fiend an opponent has in play. Nullify that card during the current turn.",
+    "fx": [
+      {
+        "op": "nullify",
+        "until": "turn"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=87s",
+    "descriptiveName": false,
+    "fast": true
+  },
+  {
+    "id": "gambit27",
+    "n": "Wheel roll plus three",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 3,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Roll on the Wheel of Fate and add 3 to the roll.",
+    "fx": [
+      {
+        "op": "wheel",
+        "n": 1,
+        "bonus": 3
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=91s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit28",
+    "n": "Stomp up to cost three",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "stomp",
+    "txt": "Stomp a card costing 3 or less that an opponent is playing.",
+    "fx": [],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=94s",
+    "descriptiveName": true,
+    "reaction": {
+      "nonEpic": false,
+      "maxCost": 3
+    }
+  },
+  {
+    "id": "gambit29",
+    "n": "Abolish one of your cards",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Abolish one card from your hand or discard pile.",
+    "fx": [
+      {
+        "op": "abolish",
+        "from": [
+          "hand",
+          "discard"
+        ],
+        "max": 1
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=97s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit30",
+    "n": "Recover a stomped card up to cost four",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Return one card costing 4 or less from your discard pile to your hand, if it was stomped during your current turn.",
+    "fx": [
+      {
+        "op": "recoverStomped",
+        "maxCost": 4
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=100s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit31",
+    "n": "2 GP",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 2,
+    "timing": "end_game",
+    "txt": "This Gambit contributes 2 GP at game end.",
+    "fx": [],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=104s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit32",
+    "n": "Stomp up to cost five",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "stomp",
+    "txt": "Stomp a card costing 5 or less that an opponent is playing.",
+    "fx": [],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=107s",
+    "descriptiveName": true,
+    "reaction": {
+      "nonEpic": false,
+      "maxCost": 5
+    }
+  },
+  {
+    "id": "gambit33",
+    "n": "Top-deck up to cost three",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Put a card costing 3 or less from your discard pile on top of your deck.",
+    "fx": [
+      {
+        "op": "fromDiscard",
+        "maxCost": 3,
+        "dest": "top"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=110s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit34",
+    "n": "Recover a stomped card up to cost six",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 2,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Return one card costing 6 or less from your discard pile to your hand, if it was stomped during your current turn.",
+    "fx": [
+      {
+        "op": "recoverStomped",
+        "maxCost": 6
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=113s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit35",
+    "n": "Top-deck a non-Epic",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 3,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Put a non-Epic card from your discard pile on top of your deck.",
+    "fx": [
+      {
+        "op": "fromDiscard",
+        "nonEpic": true,
+        "dest": "top"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=117s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit36",
+    "n": "1 GP",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 1,
+    "timing": "end_game",
+    "txt": "This Gambit contributes 1 GP at game end.",
+    "fx": [],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=120s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit37",
+    "n": "Nullify all of one opponent's Items",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "fast",
+    "txt": "Choose one opponent. Nullify their Item cards during the current turn.",
+    "fx": [
+      {
+        "op": "gambitNullify",
+        "type": "ITEM"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=123s",
+    "descriptiveName": true,
+    "fast": true
+  },
+  {
+    "id": "gambit38",
+    "n": "Reveal two, keep one on top",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "fast",
+    "txt": "Reveal the top 2 cards of any deck. Put one on top of that deck and the other on its bottom.",
+    "fx": [
+      {
+        "op": "oracleFavor",
+        "publicReveal": true
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=125s",
+    "descriptiveName": true,
+    "fast": true
+  },
+  {
+    "id": "gambit39",
+    "n": "Replace up to three Gallery cards",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "normal",
+    "txt": "Abolish up to 3 Gallery cards, then refill their places.",
+    "fx": [
+      {
+        "op": "galleryWipe",
+        "max": 3
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=128s",
+    "descriptiveName": true
+  },
+  {
+    "id": "gambit40",
+    "n": "Initial Speed",
+    "t": "GAMBIT",
+    "set": "oracle",
+    "copies": 1,
+    "baseCopies": 0,
+    "cost": 0,
+    "draftCost": 1,
+    "gp": 0,
+    "timing": "game_start",
+    "txt": "You take the first turn when the game begins; play then continues clockwise.",
+    "fx": [],
+    "source": "https://www.youtube.com/watch?v=6sEtkXGAqFc&t=138s",
+    "descriptiveName": false
+  }
+]

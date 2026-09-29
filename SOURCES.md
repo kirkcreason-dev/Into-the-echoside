@@ -55,3 +55,22 @@ Artist catalog: https://tomwoodfantasyart.com/collections/icp-art was accessible
 ## Reuse status
 
 No public-domain, Creative Commons, or other open reuse permission was found for these scans or the underlying Tom Wood artwork. The workshop is a third-party fan port; public download availability is not a reuse license. The source page's credit should be retained. The BoardGameGeek physical-card photo page https://boardgamegeek.com/image/3157641/into-the-echoside explicitly says © All rights reserved.
+
+## Recovered official base rulebook
+
+Original publisher file, archived December 20, 2016:
+https://web.archive.org/web/20161220201758id_/http://intotheechoside.com/game/how-to-play?download=1:into-the-echoside-game-rules
+
+The 20-page PDF was extracted and its setup, optional rules, team play and FAQ pages visually checked. References used: p.5 setup; p.9 cleanup; p.10 cycling/abolishing; p.11 stomps; p.12 public decks and end game; p.13 Fiend declarations; p.14 teams; p.15 FAQ/copying/counter-stomps. The complete PDF is research evidence and is not bundled in this repository.
+
+## Forty Gambits and expansion timing
+
+Physical card visual source: MegzDiamond, “Gambit Cards From Into The Echoside Expansion Oracle Of The Three Rings,” July 21, 2023:
+https://www.youtube.com/watch?v=6sEtkXGAqFc
+
+All 40 printed effects and draft costs were visually checked. `sources/gambits.json` records paraphrased mechanics, timing, cost, source timestamp links, and whether a displayed name is descriptive. Four printed names are legible; 36 use descriptive labels. No video footage or still images are redistributed with the game.
+
+Secondary rulebook demonstration: DCFAYGOGUY, “Oracle Of The Three Rings (Unboxing/Review),” May 22, 2018:
+https://www.youtube.com/watch?v=GuQZWbNhZiY
+
+Relevant segments: 10:06 Tarot; 11:48 Oracle's Favor before a draw; 14:14 Dumpin interrupts a purchase without spending buyer Karma; 15:28 Bitch Slap interrupts Item activation; 17:14 Fast Karma survives to the owner's turn; 18:04 Mirror takes one draw from Jumpsteady's two-card draw; 22:26 two-player Gambit setup (ten choices, three points, hidden picks, single use). Narrated examples are secondary evidence, not a recovered complete Oracle manual. The Epic setup count, full three-/four-player Gambit setup, starting-Tarot details, and uncommon priority interactions remain unverified.
