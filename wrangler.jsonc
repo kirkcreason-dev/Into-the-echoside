@@ -1,0 +1,1 @@
+{"name":"echoside-game-table","main":"server/worker.js","compatibility_date":"2026-09-01","assets":{"directory":"public","binding":"ASSETS","run_worker_first":["/api/*"]},"d1_databases":[{"binding":"DB","database_name":"echoside-matches","database_id":"00000000-0000-0000-0000-000000000001","migrations_dir":"drizzle"}]}
